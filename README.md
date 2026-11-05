@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/CANTV_logo.svg/512px-CANTV_logo.svg.png" alt="CANTV Logo" width="300"/>
+  <img src="logo.png" alt="CANTV Logo" width="300"/>
 </p>
 
 # Sistema Integral de Registro, Control y Consulta de MTT (CANTV)
