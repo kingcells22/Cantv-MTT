@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/CANTV_logo.svg" alt="CANTV Logo" width="300"/>
+</p>
+
 # Sistema Integral de Registro, Control y Consulta de MTT (CANTV)
 
 Backend y Base de Datos para el Registro Nacional de Mesas Técnicas de Telecomunicaciones (MTT), diseñado para sustituir herramientas ofimáticas descentralizadas por una plataforma unificada, estructurada y auditable.
