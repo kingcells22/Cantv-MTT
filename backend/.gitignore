@@ -22,3 +22,7 @@ Thumbs.db
 
 # (OPCIONAL) Si no quieres subir los Excel originales que te pasaron:
 # DATA/
+
+# Archivos temporales de Office
+~$*.xlsx
+~$*.docx
