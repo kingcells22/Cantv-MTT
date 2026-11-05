@@ -25,7 +25,7 @@ services:
 
   backend:
     build: ./backend
-    container_name: mtt_fastapi
+    container_name: Cantv_mtt
     restart: always
     ports:
       - "8000:8000"
