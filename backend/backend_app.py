@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -6,6 +7,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from typing import List, Optional
 from datetime import date
 from decimal import Decimal
+from sqlalchemy.orm import sessionmaker, Session, joinedload
 import bcrypt # Para encriptar contraseñas
 
 # === IMPORTACIÓN DE MODELOS ORM ===
@@ -15,7 +17,12 @@ from models import (
 )
 
 # === CONFIGURACIÓN DE BASE DE DATOS POSTGRESQL ===
-DATABASE_URL = "postgresql+psycopg2://postgres:123456@localhost/mtt_db"
+import os
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+psycopg2://postgres:123456@localhost/mtt_db"
+)
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -26,7 +33,11 @@ app = FastAPI(title="API Sistema MTT")
 # === CONFIGURACIÓN DE CORS ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost",
+        "http://127.0.0.1",
+        "http://171.0.40.7",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,6 +57,10 @@ class UsuarioLogin(BaseModel):
     usuario: str
     password: str # Ahora requerimos contraseña en lugar de 'perfil' desde el front
     # perfil: str  <-- Esto ya no se envía desde el front en un login real
+
+class AsignarCodigoPayload(BaseModel):
+    codigo: str
+    estatus: Optional[str] = "Activa"
 
 class UsuarioCreate(BaseModel):
     usuario: str
@@ -182,23 +197,42 @@ def get_parroquias(municipio_id: int, db: Session = Depends(get_db)):
     return db.query(Parroquia).filter(Parroquia.municipio_id == municipio_id).order_by(Parroquia.nombre).all()
 
 # === ENDPOINTS MTT ===
-@app.get("/api/mtt", response_model=List[MTTList])
-def listar_mtt(db: Session = Depends(get_db)):
-    try:
-        # Traemos los últimos 100 para no sobrecargar el front por ahora
-        resultados = db.query(MttPrincipal).order_by(MttPrincipal.id.desc()).limit(100).all()
-        mtts = []
-        for row in resultados:
-            mtts.append(MTTList(
-                codigo=row.codigo_mtt if row.codigo_mtt else "Pendiente",
-                nombre=row.nombre,
-                estatus=row.estatus
-            ))
-        if not mtts:
-            mtts.append(MTTList(codigo="SIN DATOS", nombre="No hay MTTs", estatus="Vacío"))
-        return mtts
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+@app.get("/api/mtt")
+def listar_mtts(db: Session = Depends(get_db)):
+    mtts = db.query(MttPrincipal).options(
+        joinedload(MttPrincipal.parroquia),
+        joinedload(MttPrincipal.organizacion),
+        joinedload(MttPrincipal.voceria),
+        joinedload(MttPrincipal.seguimiento)
+    ).order_by(MttPrincipal.id.desc()).limit(100).all()
+    
+    resultado = []
+    for m in mtts:
+        resultado.append({
+            "id": m.id,
+            "codigo": m.codigo_mtt if m.codigo_mtt else "Pendiente",
+            "nombre": m.nombre,
+            "tipo_mtt": m.tipo,
+            "estatus": m.estatus,
+            "fecha_creacion": str(m.fecha_creacion) if m.fecha_creacion else None,
+            "georreferenciacion": "SI" if m.tiene_georreferenciacion else "NO",
+            "coordenadas_decimales": f"{m.latitud}, {m.longitud}" if m.latitud and m.longitud else None,
+            "parroquia": m.parroquia.nombre if m.parroquia else "N/D",
+            "municipio": m.parroquia.municipio.nombre if m.parroquia and m.parroquia.municipio else "N/D",
+            "entidad_federal": m.parroquia.municipio.estado.nombre if m.parroquia and m.parroquia.municipio and m.parroquia.municipio.estado else "N/D",
+            # Datos comunales
+            "sector": m.organizacion.sector if m.organizacion else "N/D",
+            "comuna_nombre": m.organizacion.comuna_nombre if m.organizacion else "N/D",
+            "consejo_nombre": m.organizacion.consejo_nombre if m.organizacion else "N/D",
+            # Datos de vocería (validando existencia y sumando)
+            "total_voceros": (m.voceria.total_mujeres + m.voceria.total_hombres) if m.voceria and m.voceria.total_mujeres is not None and m.voceria.total_hombres is not None else 0,
+            "total_mujeres": m.voceria.total_mujeres if m.voceria else 0,
+            "total_hombres": m.voceria.total_hombres if m.voceria else 0,
+            # Seguimiento
+            "activador": m.seguimiento[0].activador if m.seguimiento and len(m.seguimiento) > 0 else "N/D",
+            "observacion": m.seguimiento[0].observacion if m.seguimiento and len(m.seguimiento) > 0 else "SIN OBSERVACIÓN"
+        })
+    return resultado
 
 @app.post("/api/mtt")
 def crear_mtt(datos: MTTCreate, db: Session = Depends(get_db)):
@@ -270,3 +304,20 @@ def crear_mtt(datos: MTTCreate, db: Session = Depends(get_db)):
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.patch("/api/mtt/{mtt_id}/codigo")
+def asignar_codigo_mtt(mtt_id: int, payload: AsignarCodigoPayload, db: Session = Depends(get_db)):
+    mtt = db.query(MttPrincipal).filter(MttPrincipal.id == mtt_id).first()
+    if not mtt:
+        raise HTTPException(status_code=404, detail="Mesa Técnica de Telecomunicaciones no encontrada")
+    
+    # Validar que el código no esté duplicado
+    existe = db.query(MttPrincipal).filter(MttPrincipal.codigo_mtt == payload.codigo, MttPrincipal.id != mtt_id).first()
+    if existe:
+        raise HTTPException(status_code=400, detail="El código MTT ya se encuentra asignado a otra mesa")
+    
+    mtt.codigo_mtt = payload.codigo
+    mtt.estatus = payload.estatus
+    db.commit()
+    db.refresh(mtt)
+    return {"status": "success", "mensaje": "Código MTT asignado correctamente", "codigo": mtt.codigo_mtt, "estatus": mtt.estatus}

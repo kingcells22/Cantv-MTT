@@ -20,12 +20,14 @@ class Municipio(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String(100), nullable=False)
     estado_id = Column(Integer, ForeignKey('estados.id'))
+    estado = relationship("Estado")
 
 class Parroquia(Base):
     __tablename__ = 'parroquias'
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String(100), nullable=False)
     municipio_id = Column(Integer, ForeignKey('municipios.id'))
+    municipio = relationship("Municipio")
 
 # === SEGURIDAD ===
 class Rol(Base):
@@ -63,6 +65,7 @@ class MttPrincipal(Base):
     huella_gpon = Column(Boolean)
 
     # Relaciones para acceder fácilmente a los datos vinculados
+    parroquia = relationship("Parroquia")
     organizacion = relationship("OrganizacionComunal", back_populates="mtt", uselist=False, cascade="all, delete")
     voceria = relationship("Voceria", back_populates="mtt", uselist=False, cascade="all, delete")
     seguimiento = relationship("Seguimiento", back_populates="mtt", cascade="all, delete")

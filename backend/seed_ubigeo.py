@@ -1,10 +1,11 @@
+import os
 import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Estado, Municipio, Parroquia
 
 # Configuración de BD
-DATABASE_URL = "postgresql+psycopg2://postgres:123456@localhost/mtt_db"
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg2://postgres:123456@localhost/mtt_db")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 db = SessionLocal()
