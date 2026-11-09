@@ -43,7 +43,7 @@ services:
       mtt-database:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgresql://postgres:123456@mtt-database:5432/mtt_db
+      - DATABASE_URL=postgresql+psycopg2://postgres:123456@mtt-database:5432/mtt_db
       - ENVIRONMENT=production
       - HOST_IP=171.0.40.7
 

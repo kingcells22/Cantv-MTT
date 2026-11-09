@@ -85,6 +85,15 @@ export const mttService = {
   getAll: async (): Promise<MTTRecord[]> => {
     try {
       const response = await api.get('/mtt');
+      // Normalize backend response to frontend MTTRecord schema
+      if (Array.isArray(response.data)) {
+        return response.data.map((item: any) => ({
+          ...item,
+          codigo_mtt: item.codigo_mtt || item.codigo || null,
+          nombre_mtt: item.nombre_mtt || item.nombre || 'N/D',
+          estatus_mtt: item.estatus_mtt || item.estatus || 'ACTIVA',
+        }));
+      }
       return response.data;
     } catch (error) {
       console.warn('API backend not available, running in offline/local storage mode');
@@ -161,7 +170,11 @@ export const mttService = {
   },
 
   assignCode: async (id: string, codigo_mtt: string): Promise<MTTRecord> => {
-    const response = await api.patch(`/mtt/${id}/codigo`, { codigo_mtt });
+    const response = await api.patch(`/mtt/${id}/codigo`, {
+      codigo: codigo_mtt,
+      codigo_mtt: codigo_mtt,
+      estatus: 'Activa',
+    });
     return response.data;
   },
 };
