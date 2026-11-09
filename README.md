@@ -2,44 +2,72 @@
   <img src="logo.png" alt="CANTV Logo" width="300"/>
 </p>
 
-# Sistema Integral de Registro, Control y Consulta de MTT (CANTV)
+# Sistema Integral de Registro, Control y Consulta de MTT (CANTV · SINCOMTT)
+## Gerencia General de Formación y Participación del Poder Popular (GGFPP) · Gerencia de Desarrollo Comunal (GDC)
 
-Backend y Base de Datos para el Registro Nacional de Mesas Técnicas de Telecomunicaciones (MTT), diseñado para sustituir herramientas ofimáticas descentralizadas por una plataforma unificada, estructurada y auditable.
+Plataforma unificada para el Registro Nacional, Actualización, Cartografía y Auditoría de las Mesas Técnicas de Telecomunicaciones (MTT) de Venezuela, diseñada para sustituir herramientas ofimáticas descentralizadas por una plataforma estructurada, segura y auditable.
 
-## Arquitectura del Proyecto
+---
 
-El sistema está construido bajo una arquitectura de microservicios orientada a contenedores, separando claramente las responsabilidades:
+## 🏛️ Arquitectura del Sistema
 
-- **Base de Datos:** PostgreSQL. Estructura relacional normalizada a partir del Diccionario de Datos Oficial (51 variables).
-- **Backend:** FastAPI (Python 3). Implementa SQLAlchemy (ORM) para la gestión segura de datos, Pydantic para la validación estricta de esquemas y `bcrypt` para el cifrado de contraseñas.
-- **Frontend (Prueba de Concepto):** Vue.js + Vite.
+El sistema implementa una arquitectura desacoplada de alto rendimiento basada en microservicios orquestados mediante **Docker Compose (Debian Bookworm)**:
 
-> **⚠️ NOTA IMPORTANTE SOBRE EL FRONTEND:**
-> La interfaz gráfica incluida en este repositorio (`/frontend/vue-app`) fue desarrollada **exclusivamente como un entorno de pruebas funcionales (PoC)**. Su único propósito es validar la operatividad de los endpoints del backend, las políticas de CORS, la inserción relacional y el control de acceso basado en roles (RBAC). No representa el producto final y está diseñado para garantizar que el equipo de desarrollo Frontend reciba una API robusta, probada y libre de errores.
+- **Frontend (Cliente Web SPA):**
+  - Desarrollado en **React 19**, **TypeScript 5.x**, **Vite** y **Tailwind CSS 3.4+**.
+  - Formulario estricto de 5 bloques normativos basado en la plantilla oficial (`Sistema de Registro y Actualización de MTT Vers2.html`).
+  - Validación de esquemas defensiva con **Zod** y manejo reactivo con **React Hook Form**.
+  - Servido mediante **Nginx Reverse Proxy (Debian Bookworm)** que implementa una arquitectura *Same-Origin* canalizando `/api/` internamente para mitigar cualquier riesgo de CORS.
+  - Generación de Ficha Técnica Oficial en PDF con código QR verificador dinámico (`jspdf` + `qrcode`).
+  - Matriz Nacional de Datos con **TanStack Table v8** soportando las 51 variables normativas, filtros multicriterio y exportación a Excel / CSV.
 
-## Estructura de la Base de Datos
+- **Backend (API REST):**
+  - Desarrollado en **FastAPI** (Python 3.12).
+  - ORM **SQLAlchemy** con **psycopg2** y validación Pydantic.
+  - Endpoints REST para autenticación con cifrado **bcrypt**, catálogos de Ubigeo INE 2026 en cascada (Estados $\rightarrow$ Municipios $\rightarrow$ Parroquias), consulta relacional multicapa y asignación oficial de código MTT por parte de Consultores GDC.
 
-La base de datos (`mtt_db`) fue modelada en DBeaver siguiendo las normativas de la Gerencia de Desarrollo Comunal (GDC):
+- **Base de Datos (RDBMS):**
+  - **PostgreSQL 16 (Debian Bookworm)**.
+  - Estructura relacional normalizada (`mtt_principal`, `organizacion_comunal`, `vocerias`, `seguimiento`, `estados`, `municipios`, `parroquias`, `roles`, `usuarios`) poblada con 2.187 registros históricos de MTTs.
 
-1.  **Catálogos Geográficos:** Tablas jerárquicas (Regiones > Estados > Municipios > Parroquias) pobladas con la data oficial del Instituto Nacional de Estadística (INE).
-2.  **Seguridad:** Tablas de `roles` y `usuarios` con contraseñas hasheadas.
-3.  **Core MTT:** Tabla central `mtt_principal` vinculada geográficamente y expandida a través de tablas relacionales (`organizacion_comunal`, `vocerias`, `seguimiento`) con eliminación en cascada.
+---
 
-## Despliegue Local y Migración de Datos
+## 🚀 Despliegue Rápido con Docker Compose
 
-### 1. Población Inicial (Seeds)
-
-Para cargar el catálogo geográfico (Ubigeo) y la data histórica unificada, se crearon scripts de migración basados en `pandas`:
-
-- `seed_ubigeo.py`: Carga y normaliza los estados, municipios y parroquias.
-- `seed_mtt.py`: Fusiona los archivos de registro y georreferenciación, limpiando valores nulos y formateando tipos de datos antes de la inserción relacional.
-
-### 2. Extracción de Backup (Para migración a Docker)
-
-Para exportar la estructura y los datos ya procesados en el entorno local (laptop) hacia un entorno de producción, se utiliza `pg_dump`.
-
-Ejecutar en la terminal local teniendo PostgreSQL instalado en el sistema:
+La solución está lista para ejecutarse en entornos de producción o pruebas (VM `171.0.40.7`):
 
 ```bash
-pg_dump -U postgres -d mtt_db -F p -f mtt_db_backup.sql
+# 1. Clonar el repositorio y situarse en la raíz del proyecto
+cd CANTV-MMT
+
+# 2. Construir imágenes y levantar servicios
+docker compose up -d --build
+
+# 3. Verificar estado de los contenedores
+docker compose ps
 ```
+
+El aplicativo estará disponible inmediatamente en el puerto 80:
+- **Interfaz Web Frontend:** `http://171.0.40.7` (o `http://localhost`)
+- **Health Check Nginx:** `http://localhost/health`
+- **API Backend (Interna):** `http://localhost/api/mtt`
+
+---
+
+## 👥 Control de Acceso Basado en Roles (RBAC)
+
+1. **Promotor / Promotora (Nivel 1):** Consulta y lectura territorial de MTTs asignadas.
+2. **Coordinador / Coordinadora (Nivel 2):** Registro inicial de MTTs y actualización de datos comunitarios y vocerías.
+3. **Gerente Regional (Nivel 3):** Validación estadística y seguimiento estadal.
+4. **Consultor GDC (Nivel 4):** Asignación exclusiva del código oficial MTT (`PATCH /api/mtt/{id}/codigo`) y emisión de providencias.
+5. **Consultor GPACyG (Nivel 4):** Auditoría nacional y control de gestión.
+6. **Gerente de Línea / Usuario Consulta (Nivel 5):** Dashboards ejecutivos, métricas globales y reportes consolidados.
+
+---
+
+## 📊 Reglas de Oro para Consistencia de Datos
+
+- **Regla 1 (Listas desplegables y Ubigeo):** Estrictamente vacía (`null`) si no se cuenta con el dato fidedigno.
+- **Regla 2 (Numéricos, conteos, cédulas, códigos):** Estrictamente vacía (`null`). Prohibido colocar `0` a menos que sea confirmado en campo.
+- **Regla 3 (Texto libre y teléfonos):** Obligatorio el literal `«N/D»` (No Disponible).
+- **Regla 4 (Fórmulas y Observaciones):** `ano_creacion` derivado de `fecha_creacion`; `total_voceros = mujeres + hombres`; `observacion` por defecto `«SIN OBSERVACIÓN»`.
