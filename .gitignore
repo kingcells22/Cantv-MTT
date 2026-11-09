@@ -17,6 +17,7 @@ SESSION_HILO.md
 backend/sql/
 backend/main.py
 /data/
+*.pdf
 
 # Dependencias y artefactos de compilación Frontend
 node_modules/
