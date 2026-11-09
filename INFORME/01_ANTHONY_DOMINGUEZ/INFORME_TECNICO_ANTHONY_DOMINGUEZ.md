@@ -82,3 +82,4 @@ Si el desarrollador backend (Kenny Navarro) experimenta retrasos, bloqueos de en
 1. **Anthony Domínguez dispone del set de parches listos** documentados en el informe de Kenny.
 2. La aplicación de las correcciones del backend (cambio de imagen base en `Dockerfile`, corrección de `DATABASE_URL` con `os.getenv` y `joinedload` en `GET /api/mtt`) requiere menos de 10 minutos de trabajo técnico.
 3. Se procederá a aplicar los parches, reconstruir el backend y unir ambas soluciones en la rama `Devs` para entregar el sistema final sin retrasos al cliente.
+

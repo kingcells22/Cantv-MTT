@@ -42,3 +42,4 @@ gitGraph
 3. **Fase 3: Promoción a Rama `master` (Producción):**
    - Validación integral en VM `171.0.40.7` con los contenedores `mtt-frontend`, `mtt-backend` y `mtt-database` saludables.
    - Merge definitivo a `origin/master`.
+

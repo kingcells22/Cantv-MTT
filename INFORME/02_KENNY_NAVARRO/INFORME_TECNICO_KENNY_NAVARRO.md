@@ -217,3 +217,4 @@ def asignar_codigo_mtt(mtt_id: int, payload: AsignarCodigoPayload, db: Session =
 > [!NOTE]  
 > Estimado Kenny, todas estas soluciones fueron probadas y diseñadas para que solo requieras copiarlas y pegarlas en tus archivos locales.  
 > Si te encuentras en un punto muerto, tienes problemas con tu instalación de Docker o requieres apoyo para aplicar cualquiera de estos bloques, **Anthony Domínguez tiene listos los parches para aplicarlos en conjunto**. Nuestro objetivo común es realizar el merge hacia la rama `Devs` y poner el sistema en producción (`master`) a la brevedad posible.
+
