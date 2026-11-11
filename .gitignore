@@ -18,6 +18,8 @@ backend/sql/
 backend/main.py
 /data/
 *.pdf
+*.tar
+*.tar.gz
 
 # Dependencias y artefactos de compilación Frontend
 node_modules/
