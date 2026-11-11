@@ -26,6 +26,25 @@ services:
       retries: 3
 
   # ============================================================================
+  # CACHE: Redis 7 (Debian Bookworm) - Aceleración de Catálogos y Sesiones
+  # Aislado en red interna con desalojo LRU y límite estricto de 128MB RAM
+  # ============================================================================
+  mtt-redis:
+    image: redis:7-bookworm
+    container_name: mtt-redis
+    restart: always
+    expose:
+      - "6379"
+    networks:
+      - mtt-net
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # ============================================================================
   # BACKEND: FastAPI + Uvicorn (Debian Bookworm)
   # Aislado en red interna mtt-net (SIN puertos expuestos directamente al Host)
   # ============================================================================
@@ -42,8 +61,11 @@ services:
     depends_on:
       mtt-database:
         condition: service_healthy
+      mtt-redis:
+        condition: service_healthy
     environment:
       - DATABASE_URL=postgresql+psycopg2://postgres:123456@mtt-database:5432/mtt_db
+      - REDIS_URL=redis://mtt-redis:6379/0
       - ENVIRONMENT=production
       - HOST_IP=171.0.40.7
 
@@ -67,6 +89,7 @@ services:
     volumes:
       - ./data/pgdata:/var/lib/postgresql/data/pgdata
       - ./backend/mtt_db_backup.sql:/docker-entrypoint-initdb.d/01_backup.sql:ro
+      - ./backend/optimizations_indexes.sql:/docker-entrypoint-initdb.d/02_indexes.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d mtt_db"]
       interval: 10s

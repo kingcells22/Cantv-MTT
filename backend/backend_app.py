@@ -1,14 +1,20 @@
 import os
+import json
+import logging
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, joinedload
 from typing import List, Optional
 from datetime import date
 from decimal import Decimal
-from sqlalchemy.orm import sessionmaker, Session, joinedload
 import bcrypt # Para encriptar contraseñas
+import redis
+
+# === CONFIGURACIÓN DE LOGGING ===
+logger = logging.getLogger("mtt_api")
+logging.basicConfig(level=logging.INFO)
 
 # === IMPORTACIÓN DE MODELOS ORM ===
 from models import (
@@ -16,15 +22,63 @@ from models import (
     Voceria, Seguimiento, Region, Estado, Municipio, Parroquia
 )
 
-# === CONFIGURACIÓN DE BASE DE DATOS POSTGRESQL ===
-import os
-
+# === CONFIGURACIÓN DE BASE DE DATOS POSTGRESQL (POOLING DE ALTO RENDIMIENTO) ===
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
     "postgresql+psycopg2://postgres:123456@localhost/mtt_db"
 )
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=20,           # 20 conexiones permanentes calientes
+    max_overflow=30,        # hasta 30 conexiones pico (soporta 50 concurrentes)
+    pool_timeout=10,        # tiempo máximo de espera antes de abortar
+    pool_recycle=1800,      # recicla conexiones cada 30 min para evitar sockets viejos
+    pool_pre_ping=True      # verifica la conexión antes de entregarla (evita zombies)
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# === CONFIGURACIÓN DE REDIS (CACHÉ DEFENSIVO CON FALLBACK) ===
+REDIS_URL = os.getenv("REDIS_URL", "redis://mtt-redis:6379/0")
+redis_client = None
+try:
+    redis_client = redis.from_url(REDIS_URL, decode_responses=True, socket_timeout=2, socket_connect_timeout=2)
+    redis_client.ping()
+    logger.info("Conexión exitosa a Redis Caché.")
+except Exception as e:
+    logger.warning(f"Redis no disponible al inicio ({e}). La API operará en modo directo a PostgreSQL.")
+    redis_client = None
+
+def get_cache(key: str):
+    if not redis_client:
+        return None
+    try:
+        data = redis_client.get(key)
+        if data:
+            return json.loads(data)
+    except Exception as e:
+        logger.warning(f"Error leyendo caché para {key}: {e}")
+    return None
+
+def set_cache(key: str, data: any, ttl_seconds: int = 3600):
+    if not redis_client:
+        return
+    try:
+        redis_client.setex(key, ttl_seconds, json.dumps(data, default=str))
+    except Exception as e:
+        logger.warning(f"Error guardando caché para {key}: {e}")
+
+def invalidate_cache(pattern_or_key: str):
+    if not redis_client:
+        return
+    try:
+        if "*" in pattern_or_key:
+            keys = redis_client.keys(pattern_or_key)
+            if keys:
+                redis_client.delete(*keys)
+        else:
+            redis_client.delete(pattern_or_key)
+    except Exception as e:
+        logger.warning(f"Error invalidando caché para {pattern_or_key}: {e}")
 
 app = FastAPI(title="API Sistema MTT")
 
@@ -183,24 +237,51 @@ def login(datos: UsuarioLogin, db: Session = Depends(get_db)):
     }
 
 
-# === ENDPOINTS DE CATÁLOGOS (COMBOS EN CASCADA) ===
+# === ENDPOINTS DE CATÁLOGOS (COMBOS EN CASCADA CON REDIS CACHÉ) ===
 @app.get("/api/catalogos/estados", response_model=List[ItemCombo])
 def get_estados(db: Session = Depends(get_db)):
-    return db.query(Estado).order_by(Estado.nombre).all()
+    cache_key = "catalogo:estados"
+    cached = get_cache(cache_key)
+    if cached:
+        return cached
+    estados = db.query(Estado).order_by(Estado.nombre).all()
+    resultado = [{"id": e.id, "nombre": e.nombre} for e in estados]
+    set_cache(cache_key, resultado, ttl_seconds=86400) # 24 horas de caché
+    return resultado
 
 @app.get("/api/catalogos/municipios/{estado_id}", response_model=List[ItemCombo])
 def get_municipios(estado_id: int, db: Session = Depends(get_db)):
-    return db.query(Municipio).filter(Municipio.estado_id == estado_id).order_by(Municipio.nombre).all()
+    cache_key = f"catalogo:municipios:{estado_id}"
+    cached = get_cache(cache_key)
+    if cached:
+        return cached
+    municipios = db.query(Municipio).filter(Municipio.estado_id == estado_id).order_by(Municipio.nombre).all()
+    resultado = [{"id": m.id, "nombre": m.nombre} for m in municipios]
+    set_cache(cache_key, resultado, ttl_seconds=86400) # 24 horas de caché
+    return resultado
 
 @app.get("/api/catalogos/parroquias/{municipio_id}", response_model=List[ItemCombo])
 def get_parroquias(municipio_id: int, db: Session = Depends(get_db)):
-    return db.query(Parroquia).filter(Parroquia.municipio_id == municipio_id).order_by(Parroquia.nombre).all()
+    cache_key = f"catalogo:parroquias:{municipio_id}"
+    cached = get_cache(cache_key)
+    if cached:
+        return cached
+    parroquias = db.query(Parroquia).filter(Parroquia.municipio_id == municipio_id).order_by(Parroquia.nombre).all()
+    resultado = [{"id": p.id, "nombre": p.nombre} for p in parroquias]
+    set_cache(cache_key, resultado, ttl_seconds=86400) # 24 horas de caché
+    return resultado
 
-# === ENDPOINTS MTT ===
+# === ENDPOINTS MTT (CON CARGA PRECOMPILADA JOINEDLOAD Y CACHÉ) ===
 @app.get("/api/mtt")
 def listar_mtts(db: Session = Depends(get_db)):
+    cache_key = "mtt:list:100"
+    cached = get_cache(cache_key)
+    if cached:
+        return cached
+
+    # Solución definitiva al problema N+1: joinedload encadenado MTT -> Parroquia -> Municipio -> Estado
     mtts = db.query(MttPrincipal).options(
-        joinedload(MttPrincipal.parroquia),
+        joinedload(MttPrincipal.parroquia).joinedload(Parroquia.municipio).joinedload(Municipio.estado),
         joinedload(MttPrincipal.organizacion),
         joinedload(MttPrincipal.voceria),
         joinedload(MttPrincipal.seguimiento)
@@ -232,6 +313,7 @@ def listar_mtts(db: Session = Depends(get_db)):
             "activador": m.seguimiento[0].activador if m.seguimiento and len(m.seguimiento) > 0 else "N/D",
             "observacion": m.seguimiento[0].observacion if m.seguimiento and len(m.seguimiento) > 0 else "SIN OBSERVACIÓN"
         })
+    set_cache(cache_key, resultado, ttl_seconds=120) # 2 minutos de caché con invalidación reactiva
     return resultado
 
 @app.post("/api/mtt")
@@ -299,6 +381,8 @@ def crear_mtt(datos: MTTCreate, db: Session = Depends(get_db)):
         db.add(seg)
 
         db.commit()
+        # Invalidar caché de listas de MTTs para reflejar el nuevo registro
+        invalidate_cache("mtt:list:*")
         return {"status": "success", "mensaje": "MTT registrada exitosamente", "mtt_id": mtt.id}
 
     except Exception as e:
@@ -320,4 +404,6 @@ def asignar_codigo_mtt(mtt_id: int, payload: AsignarCodigoPayload, db: Session =
     mtt.estatus = payload.estatus
     db.commit()
     db.refresh(mtt)
+    # Invalidar caché de listas de MTTs para reflejar el nuevo código/estatus
+    invalidate_cache("mtt:list:*")
     return {"status": "success", "mensaje": "Código MTT asignado correctamente", "codigo": mtt.codigo_mtt, "estatus": mtt.estatus}
