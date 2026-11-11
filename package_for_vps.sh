@@ -35,3 +35,4 @@ echo "     tar -xzvf ${BUNDLE_NAME}"
 echo "  3. Levantar todo el ecosistema (Frontend + Backend + Postgres + Redis):"
 echo "     docker compose up -d --build"
 echo "================================================================================"
+
