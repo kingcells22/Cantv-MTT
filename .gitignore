@@ -21,6 +21,13 @@ backend/main.py
 *.tar
 *.tar.gz
 
+# Excepciones: Permitir copias de seguridad en Backup/ para versionado del repositorio
+!Backup/
+!Backup/*.tar
+!Backup/*.tar.gz
+!Backup/*.sql
+!Backup/*.md
+
 # Dependencias y artefactos de compilación Frontend
 node_modules/
 dist/

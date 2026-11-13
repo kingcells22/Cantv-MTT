@@ -16,13 +16,21 @@ tar --exclude='frontend/node_modules' \
     --exclude='.git' \
     --exclude='*.log' \
     --exclude='data/pgdata/*' \
+    --exclude='sincomtt_vps_bundle_*.tar.gz' \
+    --exclude='.agents' \
+    --exclude='Agents' \
+    --exclude='Workflow' \
+    --exclude='Datos_del_Proyecto' \
     -czvf "${BUNDLE_NAME}" \
     docker-compose.yml \
     frontend \
     backend \
+    Backup \
+    backup_db.sh \
+    restore_db.sh \
+    package_for_vps.sh \
     Docker.md \
-    README.md \
-    INFORME
+    README.md
 
 echo "================================================================================"
 echo "✅ ARCHIVO GENERADO CON ÉXITO: ${BUNDLE_NAME}"
