@@ -18,6 +18,8 @@ backend/sql/
 backend/main.py
 sync_laptop.sh
 sync_personal.sh
+publish_official.sh
+publish_official.bat
 /data/
 *.pdf
 *.tar
