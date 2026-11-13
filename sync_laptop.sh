@@ -17,22 +17,33 @@ echo "🔄 SINCRONIZADOR MULTI-MÁQUINA PERSONAL (PC Linux ⟷ PC Windows ⟷ La
 echo "   Rama de sincronización total: ${BRANCH_SYNC}"
 echo "================================================================================"
 
-# 1. Verificar si existe el remote 'personal'
+# 1. Verificar y autoconfigurar remotes inteligentemente
 if ! git remote | grep -q "^personal$"; then
-    echo "⚠️  Aún no tienes configurado el repositorio remoto 'personal'."
-    echo ""
-    echo "Por favor, crea un repositorio PRIVADO en tu cuenta de GitHub (ej: cantv-mtt-workspace)"
-    echo "y pega la URL a continuación (HTTPS o SSH):"
-    read -rp "👉 URL del repositorio privado personal: " REPO_URL
-    
-    if [ -z "$REPO_URL" ]; then
-        echo "❌ Operación cancelada. No se configuró el repositorio remoto."
-        exit 1
+    ORIGIN_URL=$(git remote get-url origin 2>/dev/null || echo "")
+    if [[ "${ORIGIN_URL}" =~ "cantv-mtt-workspace" ]] || [[ "${ORIGIN_URL}" =~ "ilidan0160" ]]; then
+        echo "💡 Detectado que clonaste desde tu repositorio privado (${ORIGIN_URL})."
+        echo "🔄 Configurando remotes para sincronización automática..."
+        git remote rename origin personal
+        git remote add origin https://github.com/kingcells22/Cantv-MTT.git 2>/dev/null || true
+        echo "✅ Remote 'personal' configurado hacia tu GitHub privado."
+        echo "✅ Remote 'origin' configurado hacia el repositorio oficial de CANTV."
+        echo ""
+    else
+        echo "⚠️  Aún no tienes configurado el repositorio remoto 'personal'."
+        echo ""
+        echo "Por favor, crea un repositorio PRIVADO en tu cuenta de GitHub (ej: cantv-mtt-workspace)"
+        echo "y pega la URL a continuación (HTTPS o SSH):"
+        read -rp "👉 URL del repositorio privado personal: " REPO_URL
+        
+        if [ -z "$REPO_URL" ]; then
+            echo "❌ Operación cancelada. No se configuró el repositorio remoto."
+            exit 1
+        fi
+        
+        git remote add personal "${REPO_URL}"
+        echo "✅ Remote 'personal' configurado exitosamente: ${REPO_URL}"
+        echo ""
     fi
-    
-    git remote add personal "${REPO_URL}"
-    echo "✅ Remote 'personal' configurado exitosamente: ${REPO_URL}"
-    echo ""
 fi
 
 # 2. Acción PUSH (Guardar y subir snapshot completo de todo el workspace)

@@ -19,6 +19,16 @@ echo "   Destino Oficial: origin (${OFFICIAL_BRANCH})"
 echo "   Fecha/Hora:      ${TIMESTAMP}"
 echo "================================================================================"
 
+# 0. Verificar que 'origin' apunte al repositorio oficial de CANTV
+ORIGIN_URL=$(git remote get-url origin 2>/dev/null || echo "")
+if [[ "${ORIGIN_URL}" =~ "cantv-mtt-workspace" ]] || [[ "${ORIGIN_URL}" =~ "ilidan0160" ]]; then
+    git remote rename origin personal 2>/dev/null || true
+    git remote add origin https://github.com/kingcells22/Cantv-MTT.git 2>/dev/null || true
+fi
+if ! git remote | grep -q "^origin$"; then
+    git remote add origin https://github.com/kingcells22/Cantv-MTT.git 2>/dev/null || true
+fi
+
 # 1. Si estamos en la rama de sincronización personal, nos cambiamos a la oficial y traemos el código
 if [ "${CURRENT_BRANCH}" != "${OFFICIAL_BRANCH}" ]; then
     echo "🔀 Te encuentras en '${CURRENT_BRANCH}'. Cambiando a rama oficial '${OFFICIAL_BRANCH}'..."

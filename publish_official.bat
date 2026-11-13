@@ -11,6 +11,14 @@ echo.
 
 set OFFICIAL_BRANCH=feature/frontend-react19
 
+:: 0. Asegurar que origin apunte a CANTV oficial y personal a tu repo privado
+for /f "tokens=*" %%u in ('git remote get-url origin 2^>nul') do set ORIGIN_URL=%%u
+echo %ORIGIN_URL% | findstr /i "cantv-mtt-workspace" >nul
+if %errorlevel% equ 0 (
+    git remote rename origin personal >nul 2>&1
+    git remote add origin https://github.com/kingcells22/Cantv-MTT.git >nul 2>&1
+)
+
 :: 1. Cambiar a la rama oficial si estamos en otra rama
 for /f "tokens=*" %%a in ('git rev-parse --abbrev-ref HEAD') do set CURRENT_BRANCH=%%a
 
