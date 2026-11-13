@@ -16,6 +16,8 @@ SESSION_HILO.md
 # Archivos locales de desarrollo / scripts de apoyo
 backend/sql/
 backend/main.py
+sync_laptop.sh
+sync_personal.sh
 /data/
 *.pdf
 *.tar
