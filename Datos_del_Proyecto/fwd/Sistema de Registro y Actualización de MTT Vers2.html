@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema MTT - Registro y Actualización</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --dark-color: #212529;
+            --sidebar-width: 260px;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #loginOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(33, 37, 41, 0.95);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background: var(--dark-color);
+            color: #fff;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #111418;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        #sidebar ul.components {
+            padding: 20px 0;
+        }
+        #sidebar ul li a {
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            display: block;
+            color: #adb5bd;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        #sidebar ul li a:hover, #sidebar ul li.active a {
+            color: #fff;
+            background: #343a40;
+            border-left: 4px solid var(--primary-color);
+        }
+        #sidebar ul li a i {
+            margin-right: 10px;
+        }
+        #content {
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        @media (max-width: 992px) {
+            #sidebar {
+                margin-left: calc(-1 * var(--sidebar-width));
+            }
+            #sidebar.mobile-show {
+                margin-left: 0;
+            }
+            #content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+        .card-kpi {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            transition: transform 0.2s;
+        }
+        .card-kpi:hover {
+            transform: translateY(-3px);
+        }
+        .table-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            overflow-x: auto;
+        }
+        .badge-pending { background-color: #ffc107; color: #000; }
+        .badge-active { background-color: #198754; color: #fff; }
+        .form-section-title {
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #0d6efd;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <div id="loginOverlay">
+        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 420px; border-radius: 12px;">
+            <div class="text-center mb-4">
+                <i class="fa-solid fa-tower-broadcast text-primary fs-1 mb-2"></i>
+                <h4 class="fw-bold">Sistema MTT</h4>
+                <p class="text-muted small">Seleccione su rol institucional para acceder</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold small">Usuario o Cédula</label>
+                <input type="text" class="form-control" id="loginUser" value="miguel.salazar">
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold small">Perfil de Acceso</label>
+                <select class="form-select" id="loginRoleSelect">
+                    <option value="Coordinador / Promotor">Coordinador / Promotor (Registro y Edición)</option>
+                    <option value="Gerente Regional">Gerente Regional (Validación / Devolución)</option>
+                    <option value="Consultor GDC" selected>Consultor GDC (Asignación de Códigos)</option>
+                    <option value="Usuario Consulta">Usuario de Consulta (Solo Lectura)</option>
+                </select>
+            </div>
+            <button class="btn btn-primary w-100 py-2 fw-bold" onclick="realizarLogin()"><i class="fa-solid fa-right-to-bracket"></i> Ingresar al Sistema</button>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <nav id="sidebar">
+        <div class="sidebar-header d-flex justify-content-between align-items-center">
+            <span><i class="fa-solid fa-tower-broadcast text-primary"></i> Sistema MTT</span>
+            <button class="btn btn-sm btn-dark d-lg-none text-white" onclick="toggleMobileSidebar()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#" onclick="switchView('dashboardView')"><i class="fa-solid fa-house"></i> Página Principal</a>
+            </li>
+            <li id="menuRegistry" style="display: none;">
+                <a href="#" onclick="switchView('registryView')"><i class="fa-solid fa-file-circle-plus"></i> Registrar Nueva MTT</a>
+            </li>
+            <li id="menuUpdate" style="display: none;">
+                <a href="#" onclick="switchView('updateView')"><i class="fa-solid fa-pen-to-square"></i> Actualizar / Vocerías</a>
+            </li>
+            <li id="menuGDC" style="display: none;">
+                <a href="#" onclick="switchView('gdcView')"><i class="fa-solid fa-shield-halved text-warning"></i> Bandeja GDC (Códigos)</a>
+            </li>
+            <li>
+                <a href="#" onclick="switchView('databaseView')"><i class="fa-solid fa-table"></i> Matriz de Datos (45 Cols)</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTENT -->
+    <div id="content">
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-dark me-3 d-lg-none" onclick="toggleMobileSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <h2 id="viewTitle" class="h4 font-weight-bold text-dark mb-0">Página Principal</h2>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-user-shield"></i> <span id="displayRoleName">Consultor GDC</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item small" href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket text-danger"></i> Cambiar de Rol / Salir</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- VISTA 1: PÁGINA PRINCIPAL -->
+        <div id="dashboardView" class="view-section">
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-kpi p-3 bg-white">
+                        <h6 class="text-muted small">Total MTT Registradas</h6>
+                        <h3 class="fw-bold mb-0">1,428</h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-kpi p-3 bg-white">
+                        <h6 class="text-muted small">MTT Activas / Validadas</h6>
+                        <h3 class="fw-bold text-success mb-0">1,250</h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-kpi p-3 bg-white">
+                        <h6 class="text-muted small">En Revisión de Acta</h6>
+                        <h3 class="fw-bold text-warning mb-0">178</h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card card-kpi p-3 bg-white">
+                        <h6 class="text-muted small">MTT en Huella GPON</h6>
+                        <h3 class="fw-bold text-info mb-0">940</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h5 class="mb-3 fs-6"><i class="fa-solid fa-list-check"></i> MTT Recientes en el Sistema</h5>
+                <table class="table table-hover align-middle small">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Código MTT</th>
+                            <th>Nombre</th>
+                            <th>Entidad / Municipio</th>
+                            <th>Estatus</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MTT-101-04-01</td>
+                            <td>Luz de Catia</td>
+                            <td>Distrito Capital / Libertador</td>
+                            <td><span class="badge badge-active">Activa</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary py-0 px-2" onclick="generatePDF('MTT-101-04-01', 'Luz de Catia')"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PENDIENTE</td>
+                            <td>Comunidad Unido Venceremos</td>
+                            <td>Miranda / Sucre</td>
+                            <td><span class="badge badge-pending">Revisión GDC</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning py-0 px-2" onclick="switchView('gdcView')"><i class="fa-solid fa-gavel"></i> Revisar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- VISTA 2: REGISTRO DE NUEVA MTT -->
+        <div id="registryView" class="view-section" style="display: none;">
+            <div class="card-container bg-white p-3 p-md-4 rounded shadow-sm">
+                <h4 class="mb-3 text-primary fs-5"><i class="fa-solid fa-file-circle-plus"></i> Formulario de Registro - Nueva MTT</h4>
+                <div class="alert alert-info small">
+                    <i class="fa-solid fa-info-circle"></i> Complete todos los módulos requeridos por la estructura oficial (45 columnas).
+                </div>
+                <form id="formRegistroMTT">
+                    <h5 class="form-section-title">1. Identificación y Estatus MTT</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small">Nombre de la Mesa Técnica de Telecomunicaciones (MTT)</label>
+                            <input type="text" id="regNombreMTT" class="form-control form-control-sm" placeholder="Denominación según acta" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">Tipo de MTT</label>
+                            <select id="regTipoMTT" class="form-select form-select-sm">
+                                <option>Urbana</option><option>Rural</option><option>Indígena</option><option>Mixta</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">Fecha de Creación</label>
+                            <input type="date" id="regFechaCreacion" class="form-control form-control-sm" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">Georreferenciación (SI/NO)</label>
+                            <select id="regGeorref" class="form-select form-select-sm"><option>Sí</option><option>No</option></select>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label small">Georreferenciación / Coordenadas (Decimales)</label>
+                            <input type="text" id="regCoordenadas" class="form-control form-control-sm" placeholder="Ej. 10.4806, -66.9036">
+                        </div>
+                    </div>
+
+                    <h5 class="form-section-title">2. Organización Comunal y Demografía (Maestro INE)</h5>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label small">Región</label>
+                            <select id="regRegion" class="form-select form-select-sm"><option>Capital</option><option>Central</option><option>Occidental</option><option>Los Llanos</option><option>Guayana</option><option>Oriente</option><option>Los Andes</option><option>Marítima e Insular</option></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">Entidad Federal (Estado)</label>
+                            <select class="form-select form-select-sm" id="selectEstado" onchange="cargarMunicipios('selectEstado', 'selectMunicipio', 'selectParroquia')">
+                                <option value="">Seleccione Estado...</option>
+                                <option value="DISTRITO CAPITAL">Distrito Capital</option>
+                                <option value="MIRANDA">Miranda</option>
+                                <option value="LA GUAIRA">La Guaira</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">Municipio</label>
+                            <select class="form-select form-select-sm" id="selectMunicipio" onchange="cargarParroquias('selectEstado', 'selectMunicipio', 'selectParroquia')">
+                                <option value="">Seleccione Estado primero...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">Parroquia</label>
+                            <select class="form-select form-select-sm" id="selectParroquia">
+                                <option value="">Seleccione Municipio primero...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">Sector</label>
+                            <input type="text" id="regSector" class="form-control form-control-sm" placeholder="Sector / Comunidad">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">Nombre Circuito Comunal / Comuna</label>
+                            <input type="text" id="regComuna" class="form-control form-control-sm" placeholder="Comuna asociada">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">Código Circuito Comunal / Comuna</label>
+                            <input type="text" id="regCodComuna" class="form-control form-control-sm" placeholder="Código oficial">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small">Nombre del Consejo Comunal</label>
+                            <input type="text" id="regConsejo" class="form-control form-control-sm" placeholder="Consejo Comunal">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small">Código SITUR del Consejo Comunal</label>
+                            <input type="text" id="regSitur" class="form-control form-control-sm" placeholder="Código SITUR">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">SAC Vinculada (SI/NO)</label>
+                            <select id="regSac" class="form-select form-select-sm">
+                                <option>Sí</option>
+                                <option selected>No</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">N° de Comunas Vinculadas</label>
+                            <input type="number" id="regNumComunas" class="form-control form-control-sm" value="1">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">N° de Consejos Comunales</label>
+                            <input type="number" id="regNumCC" class="form-control form-control-sm" value="1">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small">N° de Comités de MTT</label>
+                            <input type="number" id="regNumComites" class="form-control form-control-sm" value="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small">N° de Familias</label>
+                            <input type="number" id="regFamilias" class="form-control form-control-sm" placeholder="Total familias">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small">N° de Habitantes</label>
+                            <input type="number" id="regHabitantes" class="form-control form-control-sm" placeholder="Total habitantes">
+                        </div>
+                    </div>
+
+                    <h5 class="form-section-title">3. Información Técnica</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label small">Zona Servida por CANTV (SI/NO)</label>
+                            <select id="regZonaCantv" class="form-select form-select-sm"><option>Sí</option><option>No</option></select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">Elemento de la Red</label>
+                            <input type="text" id="regElementoRed" class="form-control form-control-sm" placeholder="Ej. Central, Antena, Nodo">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">MTT en Huella GPON (SI/NO)</label>
+                            <select id="regGpon" class="form-select form-select-sm"><option>Sí</option><option>No</option></select>
+                        </div>
+                    </div>
+
+                    <h5 class="form-section-title">4. Información de Voceros y Voceras</h5>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small">N° Voceros (Mujeres)</label>
+                            <input type="number" id="numMujeres" class="form-control form-control-sm" value="1" oninput="calcularTotalVoceros('numMujeres', 'numHombres', 'totalVoceros')">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small">N° Voceros (Hombres)</label>
+                            <input type="number" id="numHombres" class="form-control form-control-sm" value="1" oninput="calcularTotalVoceros('numMujeres', 'numHombres', 'totalVoceros')">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Total Voceras y Voceros</label>
+                            <input type="number" id="totalVoceros" class="form-control form-control-sm bg-light" value="2" readonly>
+                        </div>
+                    </div>
+                    
+                    <h6 class="text-secondary small fw-bold">Datos del Vocero 1</h6>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4"><input type="text" id="v1Nombre" class="form-control form-control-sm" placeholder="Nombre y Apellido - V1"></div>
+                        <div class="col-md-2"><input type="text" id="v1Cedula" class="form-control form-control-sm" placeholder="Cédula - V1"></div>
+                        <div class="col-md-2"><input type="date" id="v1Nacimiento" class="form-control form-control-sm"></div>
+                        <div class="col-md-2">
+                            <select id="v1Sexo" class="form-select form-select-sm"><option>Femenino</option><option>Masculino</option></select>
+                        </div>
+                        <div class="col-md-2"><input type="text" id="v1Telefono" class="form-control form-control-sm" placeholder="Teléfono - V1"></div>
+                    </div>
+
+                    <h6 class="text-secondary small fw-bold">Datos del Vocero 2</h6>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4"><input type="text" id="v2Nombre" class="form-control form-control-sm" placeholder="Nombre y Apellido - V2"></div>
+                        <div class="col-md-2"><input type="text" id="v2Cedula" class="form-control form-control-sm" placeholder="Cédula - V2"></div>
+                        <div class="col-md-2"><input type="date" id="v2Nacimiento" class="form-control form-control-sm"></div>
+                        <div class="col-md-2">
+                            <select id="v2Sexo" class="form-select form-select-sm"><option>Femenino</option><option>Masculino</option></select>
+                        </div>
+                        <div class="col-md-2"><input type="text" id="v2Telefono" class="form-control form-control-sm" placeholder="Teléfono - V2"></div>
+                    </div>
+
+                    <h5 class="form-section-title">5. Control y Seguimiento</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4"><label class="form-label small">Fecha Última Visita</label><input type="date" id="regUltimaVisita" class="form-control form-control-sm"></div>
+                        <div class="col-md-8"><label class="form-label small">Observación</label><input type="text" id="regObservacion" class="form-control form-control-sm" placeholder="Notas de campo"></div>
+                    </div>
+
+                    <h5 class="form-section-title text-danger">Carga de Documentación Oficial</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-12">
+                            <label class="form-label small fw-bold">Adjuntar Acta de Conformación de la MTT (PDF o Imagen)</label>
+                            <input type="file" class="form-control form-control-sm border-danger" accept=".pdf,image/*">
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-success" onclick="alert('Registro enviado exitosamente.')"><i class="fa-solid fa-floppy-disk"></i> Enviar Registro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- VISTA 3: ACTUALIZACIÓN Y VOCERÍAS -->
+        <div id="updateView" class="view-section" style="display: none;">
+            <div class="card-container bg-white p-3 p-md-4 rounded shadow-sm">
+                <h4 class="mb-3 text-primary fs-5"><i class="fa-solid fa-pen-to-square"></i> Actualización y Renovación de MTT</h4>
+                
+                <div class="input-group mb-4">
+                    <input type="text" id="buscarCodigoInput" class="form-control form-control-sm" placeholder="Ingrese Código MTT o Cédula de Vocero...">
+                    <button class="btn btn-dark btn-sm" type="button" onclick="simularBusquedaMTT()"><i class="fa-solid fa-search"></i> Buscar MTT</button>
+                </div>
+
+                <div id="formActualizacionContainer" style="display: none;">
+                    <div class="alert alert-warning small mb-3">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Editando información registrada para la MTT: <b id="lblCodigoEncontrado">MTT-101-04-01</b>. Modifique los campos requeridos y adjunte el acta de renovación al final.
+                    </div>
+                    
+                    <form id="formUpdateMTT">
+                        <h5 class="form-section-title">1. Identificación y Estatus MTT</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small">Nombre de la Mesa Técnica de Telecomunicaciones (MTT)</label>
+                                <input type="text" id="updNombreMTT" class="form-control form-control-sm" value="Luz de Catia">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">Tipo de MTT</label>
+                                <select id="updTipoMTT" class="form-select form-select-sm">
+                                    <option selected>Urbana</option><option>Rural</option><option>Indígena</option><option>Mixta</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">Fecha de Creación</label>
+                                <input type="date" id="updFechaCreacion" class="form-control form-control-sm" value="2024-05-10">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">Georreferenciación (SI/NO)</label>
+                                <select id="updGeorref" class="form-select form-select-sm"><option selected>Sí</option><option>No</option></select>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label small">Georreferenciación / Coordenadas (Decimales)</label>
+                                <input type="text" id="updCoordenadas" class="form-control form-control-sm" value="10.4806, -66.9036">
+                            </div>
+                        </div>
+
+                        <h5 class="form-section-title">2. Organización Comunal y Demografía (Maestro INE)</h5>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label small">Región</label>
+                                <select id="updRegion" class="form-select form-select-sm"><option selected>Capital</option><option>Central</option><option>Occidental</option></select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">Entidad Federal (Estado)</label>
+                                <select class="form-select form-select-sm" id="updSelectEstado" onchange="cargarMunicipios('updSelectEstado', 'updSelectMunicipio', 'updSelectParroquia')">
+                                    <option value="DISTRITO CAPITAL" selected>Distrito Capital</option>
+                                    <option value="MIRANDA">Miranda</option>
+                                    <option value="LA GUAIRA">La Guaira</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">Municipio</label>
+                                <select class="form-select form-select-sm" id="updSelectMunicipio" onchange="cargarParroquias('updSelectEstado', 'updSelectMunicipio', 'updSelectParroquia')">
+                                    <option value="LIBERTADOR" selected>Libertador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">Parroquia</label>
+                                <select class="form-select form-select-sm" id="updSelectParroquia">
+                                    <option value="ALTAGRACIA" selected>Altagracia</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">Sector</label>
+                                <input type="text" id="updSector" class="form-control form-control-sm" value="Sector Central Catia">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">Nombre Circuito Comunal / Comuna</label>
+                                <input type="text" id="updComuna" class="form-control form-control-sm" value="Comuna Socialista Catia">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">Código Circuito Comunal / Comuna</label>
+                                <input type="text" id="updCodComuna" class="form-control form-control-sm" value="COM-01">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Nombre del Consejo Comunal</label>
+                                <input type="text" id="updConsejo" class="form-control form-control-sm" value="Luchadores de Sucre">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Código SITUR del Consejo Comunal</label>
+                                <input type="text" id="updSitur" class="form-control form-control-sm" value="SITUR-1002">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">SAC Vinculada (SI/NO)</label>
+                                <select id="updSac" class="form-select form-select-sm">
+                                    <option selected>Sí</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">N° de Comunas Vinculadas</label>
+                                <input type="number" id="updNumComunas" class="form-control form-control-sm" value="1">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">N° de Consejos Comunales</label>
+                                <input type="number" id="updNumCC" class="form-control form-control-sm" value="1">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small">N° de Comités de MTT</label>
+                                <input type="number" id="updNumComites" class="form-control form-control-sm" value="1">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">N° de Familias</label>
+                                <input type="number" id="updFamilias" class="form-control form-control-sm" value="350">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">N° de Habitantes</label>
+                                <input type="number" id="updHabitantes" class="form-control form-control-sm" value="1200">
+                            </div>
+                        </div>
+
+                        <h5 class="form-section-title">3. Información Técnica</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label small">Zona Servida por CANTV (SI/NO)</label>
+                                <select id="updZonaCantv" class="form-select form-select-sm"><option selected>Sí</option><option>No</option></select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">Elemento de la Red</label>
+                                <input type="text" id="updElementoRed" class="form-control form-control-sm" value="Central Catia">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">MTT en Huella GPON (SI/NO)</label>
+                                <select id="updGpon" class="form-select form-select-sm"><option selected>Sí</option><option>No</option></select>
+                            </div>
+                        </div>
+
+                        <h5 class="form-section-title">4. Información de Voceros y Voceras</h5>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label small">N° Voceros (Mujeres)</label>
+                                <input type="number" id="updNumMujeres" class="form-control form-control-sm" value="3" oninput="calcularTotalVoceros('updNumMujeres', 'updNumHombres', 'updTotalVoceros')">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small">N° Voceros (Hombres)</label>
+                                <input type="number" id="updNumHombres" class="form-control form-control-sm" value="3" oninput="calcularTotalVoceros('updNumMujeres', 'updNumHombres', 'updTotalVoceros')">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold">Total Voceras y Voceros</label>
+                                <input type="number" id="updTotalVoceros" class="form-control form-control-sm bg-light" value="6" readonly>
+                            </div>
+                        </div>
+                        
+                        <h6 class="text-secondary small fw-bold">Datos del Vocero 1</h6>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4"><input type="text" id="updV1Nombre" class="form-control form-control-sm" value="Juan Pérez"></div>
+                            <div class="col-md-2"><input type="text" id="updV1Cedula" class="form-control form-control-sm" value="V-12345678"></div>
+                            <div class="col-md-2"><input type="date" id="updV1Nacimiento" class="form-control form-control-sm" value="1980-04-12"></div>
+                            <div class="col-md-2">
+                                <select id="updV1Sexo" class="form-select form-select-sm"><option>Femenino</option><option selected>Masculino</option></select>
+                            </div>
+                            <div class="col-md-2"><input type="text" id="updV1Telefono" class="form-control form-control-sm" value="0412-1234567"></div>
+                        </div>
+
+                        <h6 class="text-secondary small fw-bold">Datos del Vocero 2</h6>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4"><input type="text" id="updV2Nombre" class="form-control form-control-sm" value="María Gómez"></div>
+                            <div class="col-md-2"><input type="text" id="updV2Cedula" class="form-control form-control-sm" value="V-87654321"></div>
+                            <div class="col-md-2"><input type="date" id="updV2Nacimiento" class="form-control form-control-sm" value="1985-09-20"></div>
+                            <div class="col-md-2">
+                                <select id="updV2Sexo" class="form-select form-select-sm"><option selected>Femenino</option><option>Masculino</option></select>
+                            </div>
+                            <div class="col-md-2"><input type="text" id="updV2Telefono" class="form-control form-control-sm" value="0414-9876543"></div>
+                        </div>
+
+                        <h5 class="form-section-title">5. Control y Seguimiento</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4"><label class="form-label small">Fecha Última Visita</label><input type="date" id="updUltimaVisita" class="form-control form-control-sm" value="2026-05-15"></div>
+                            <div class="col-md-8"><label class="form-label small">Observación de Actualización</label><input type="text" id="updObservacion" class="form-control form-control-sm" value="Renovación de vocerías período 2026"></div>
+                        </div>
+
+                        <h5 class="form-section-title text-danger">Carga de Documentación de Actualización</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-12">
+                                <label class="form-label small fw-bold">Adjuntar Acta de Renovación / Cambio (PDF o Imagen)</label>
+                                <input type="file" class="form-control form-control-sm border-danger" accept=".pdf,image/*">
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="button" class="btn btn-primary" onclick="alert('Actualización guardada correctamente.')"><i class="fa-solid fa-check-circle"></i> Guardar Actualización</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA 4: BANDEJA GDC -->
+        <div id="gdcView" class="view-section" style="display: none;">
+            <div class="card-container bg-white p-3 p-md-4 rounded shadow-sm">
+                <h4 class="mb-3 text-dark fs-5"><i class="fa-solid fa-shield-halved text-warning"></i> Bandeja GDC (Asignación de Códigos)</h4>
+                <div class="alert alert-warning small">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Verifique los datos contra el acta digitalizada para asignar el código oficial o devolver por inconsistencia.
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle small">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Expediente</th>
+                                <th>Nombre MTT</th>
+                                <th>Ubicación</th>
+                                <th>Acta</th>
+                                <th>Estatus</th>
+                                <th>Acción GDC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>EXP-2026-089</b></td>
+                                <td>Comunidad Unido Venceremos</td>
+                                <td>Miranda / Sucre</td>
+                                <td><a href="#" class="btn btn-sm btn-outline-danger py-0" onclick="alert('Abriendo Acta PDF...')"><i class="fa-solid fa-file-pdf"></i> Ver</a></td>
+                                <td><span class="badge bg-success">Validado Regional</span></td>
+                                <td>
+                                    <div class="input-group input-group-sm mb-1" style="min-width: 180px;">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Ej. MTT-101-15-02">
+                                        <button class="btn btn-success btn-sm" type="button" onclick="alert('¡Código asignado exitosamente!')"><i class="fa-solid fa-check"></i></button>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-danger w-100 py-0" onclick="alert('Registro devuelto para corrección.')"><i class="fa-solid fa-rotate-left"></i> Devolver</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA 5: MATRIZ DE DATOS (CON LA COLUMNA DE ACCIONES Y BOTÓN DE FICHA) -->
+        <div id="databaseView" class="view-section" style="display: none;">
+            <div class="table-container">
+                <h4 class="mb-3 fs-6"><i class="fa-solid fa-table"></i> Matriz de Datos (45 Columnas Estructura)</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm small align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>CÓDIGO</th>
+                                <th>NOMBRE</th>
+                                <th>ESTATUS</th>
+                                <th>REGIÓN</th>
+                                <th>ESTADO</th>
+                                <th>MUNICIPIO</th>
+                                <th>PARROQUIA</th>
+                                <th>GPON</th>
+                                <th>VERIFICADO</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MTT-101-04-01</td>
+                                <td>Luz de Catia</td>
+                                <td>Activa</td>
+                                <td>Capital</td>
+                                <td>Distrito Capital</td>
+                                <td>Libertador</td>
+                                <td>Altagracia</td>
+                                <td>Sí</td>
+                                <td>Sí</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary py-0 px-2" onclick="generatePDF('MTT-101-04-01', 'Luz de Catia')"><i class="fa-solid fa-file-pdf"></i> Ficha</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal Ficha PDF Integral -->
+    <div class="modal fade" id="pdfModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title fs-6"><i class="fa-solid fa-file-pdf text-danger"></i> Ficha Resumen Oficial por Módulos</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body bg-light p-3">
+            <div class="bg-white p-4 border rounded shadow-sm small">
+                <div class="text-center border-bottom pb-2 mb-3">
+                    <h6 class="fw-bold mb-0">REPÚBLICA BOLIVARIANA DE VENEZUELA</h6>
+                    <span class="text-muted" style="font-size: 0.75rem;">SISTEMA DE REGISTRO Y ACTUALIZACIÓN MTT</span>
+                    <div><span class="badge bg-success">Ficha Integral de Validación</span></div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-6"><strong>Código MTT:</strong> <span id="modalCode" class="text-primary fw-bold">MTT-101-04-01</span></div>
+                    <div class="col-6 text-end"><strong>Emisión:</strong> 02/09/2026</div>
+                </div>
+
+                <div class="p-2 bg-light border rounded mb-2">
+                    <h6 class="text-dark fw-bold mb-1" style="font-size:0.85rem;">1. Identificación y Estatus</h6>
+                    <div><strong>Nombre:</strong> <span id="modalName">Luz de Catia</span> | <strong>Tipo:</strong> Urbana | <strong>Estatus:</strong> Activa</div>
+                </div>
+
+                <div class="p-2 bg-light border rounded mb-2">
+                    <h6 class="text-dark fw-bold mb-1" style="font-size:0.85rem;">2. Organización Comunal y Demografía</h6>
+                    <div><strong>Región / Estado / Mun / Parr:</strong> Capital / Distrito Capital / Libertador / Altagracia</div>
+                    <div><strong>Comuna / Consejo:</strong> Comuna Socialista Catia / Luchadores de Sucre</div>
+                    <div><strong>SAC / Comunas Vinculadas:</strong> Sí / 1 Comuna</div>
+                </div>
+
+                <div class="p-2 bg-light border rounded mb-2">
+                    <h6 class="text-dark fw-bold mb-1" style="font-size:0.85rem;">3. Información Técnica</h6>
+                    <div><strong>Zona CANTV:</strong> Sí | <strong>Huella GPON:</strong> Sí</div>
+                </div>
+
+                <div class="p-2 bg-light border rounded mb-2">
+                    <h6 class="text-dark fw-bold mb-1" style="font-size:0.85rem;">4. Voceros y Voceras</h6>
+                    <div><strong>Total Voceros:</strong> 6 (3 Mujeres, 3 Hombres)</div>
+                    <div><strong>Vocero 1:</strong> Juan Pérez (V-12345678)</div>
+                    <div><strong>Vocero 2:</strong> María Gómez (V-87654321)</div>
+                </div>
+
+                <div class="p-2 bg-light border rounded mb-3">
+                    <h6 class="text-dark fw-bold mb-1" style="font-size:0.85rem;">5. Control y Seguimiento</h6>
+                    <div><strong>Verificado Gerencia Regional:</strong> Sí</div>
+                </div>
+
+                <div class="text-center mt-2">
+                    <div class="border d-inline-block p-2 bg-white">
+                        <i class="fa-solid fa-qrcode fs-2"></i>
+                        <div class="text-muted" style="font-size: 0.65rem;">QR de Verificación Oficial</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer py-1">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="alert('Descargando Ficha PDF Oficial...')"><i class="fa-solid fa-download"></i> Descargar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const datosINE = {
+            "DISTRITO CAPITAL": {
+                "LIBERTADOR": ["ALTAGRACIA", "ANTIMANO", "CANDELARIA", "CARICUAO", "CATEDRAL", "COCHE", "EL JUNQUITO", "EL PARAISO", "EL RECREO", "EL VALLE", "LA PASTORA", "LA VEGA", "MACARAO", "SAN AGUSTIN", "SAN BERNARDINO", "SAN JOSE", "SAN JUAN", "SAN PEDRO", "SANTA ROSALIA", "SANTA TERESA", "SUCRE", "23 DE ENERO"]
+            },
+            "MIRANDA": {
+                "SUCRE": ["PETARE", "CANTAGUACIO", "MARIGUITAR", "LEONCIO MARTÍNEZ", "CAUCAGUITA", "FILAS DE MARICHAS", "LA DOLORITA"],
+                "BARUTA": ["BARUTA", "EL HATILLO", "LAS MINAS"]
+            },
+            "LA GUAIRA": {
+                "VARGAS": ["CARABALLEDA", "MACUTO", "MAIQUETÍA", "CATIA LA MAR", "EL JUNKO"]
+            }
+        };
+
+        function cargarMunicipios(estadoId, municipioId, parroquiaId) {
+            const estadoSelect = document.getElementById(estadoId).value;
+            const municipioSelect = document.getElementById(municipioId);
+            const parroquiaSelect = document.getElementById(parroquiaId);
+            municipioSelect.innerHTML = '<option value="">Seleccione...</option>';
+            parroquiaSelect.innerHTML = '<option value="">Seleccione...</option>';
+            if (datosINE[estadoSelect]) {
+                for (let municipio in datosINE[estadoSelect]) {
+                    let opt = document.createElement("option");
+                    opt.value = municipio; opt.innerHTML = municipio;
+                    municipioSelect.appendChild(opt);
+                }
+            }
+        }
+
+        function cargarParroquias(estadoId, municipioId, parroquiaId) {
+            const estadoSelect = document.getElementById(estadoId).value;
+            const municipioSelect = document.getElementById(municipioId).value;
+            const parroquiaSelect = document.getElementById(parroquiaId);
+            parroquiaSelect.innerHTML = '<option value="">Seleccione...</option>';
+            if (datosINE[estadoSelect] && datosINE[estadoSelect][municipioSelect]) {
+                datosINE[estadoSelect][municipioSelect].forEach(parroquia => {
+                    let opt = document.createElement("option");
+                    opt.value = parroquia; opt.innerHTML = parroquia;
+                    parroquiaSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function calcularTotalVoceros(mId, hId, tId) {
+            let mujeres = parseInt(document.getElementById(mId).value) || 0;
+            let hombres = parseInt(document.getElementById(hId).value) || 0;
+            document.getElementById(tId).value = mujeres + hombres;
+        }
+
+        function simularBusquedaMTT() {
+            const codigo = document.getElementById("buscarCodigoInput").value.trim();
+            if(!codigo) {
+                alert("Por favor ingrese un Código MTT o Cédula para buscar.");
+                return;
+            }
+            document.getElementById("lblCodigoEncontrado").innerText = codigo;
+            document.getElementById("formActualizacionContainer").style.display = "block";
+            alert("¡MTT encontrada! Cargando información registrada para su actualización.");
+        }
+
+        function realizarLogin() {
+            const rol = document.getElementById("loginRoleSelect").value;
+            document.getElementById("displayRoleName").innerText = rol;
+            document.getElementById("loginOverlay").style.display = "none";
+            document.getElementById("menuRegistry").style.display = "block";
+            document.getElementById("menuUpdate").style.display = "block";
+            document.getElementById("menuGDC").style.display = "block";
+
+            if (rol === "Usuario Consulta") {
+                document.getElementById("menuRegistry").style.display = "none";
+                document.getElementById("menuUpdate").style.display = "none";
+                document.getElementById("menuGDC").style.display = "none";
+            } else if (rol === "Coordinador / Promotor") {
+                document.getElementById("menuGDC").style.display = "none";
+            } else if (rol === "Consultor GDC") {
+                document.getElementById("menuRegistry").style.display = "none";
+                document.getElementById("menuUpdate").style.display = "none";
+            }
+            switchView('dashboardView');
+        }
+
+        function logout() { document.getElementById("loginOverlay").style.display = "flex"; }
+        function toggleMobileSidebar() { document.getElementById("sidebar").classList.toggle("mobile-show"); }
+
+        function switchView(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
+            document.getElementById(viewId).style.display = 'block';
+            document.getElementById("sidebar").classList.remove("mobile-show");
+            document.querySelectorAll('#sidebar ul li').forEach(el => el.classList.remove('active'));
+            event.currentTarget.parentElement.classList.add('active');
+        }
+
+        function generatePDF(code, name) {
+            document.getElementById('modalCode').innerText = code;
+            document.getElementById('modalName').innerText = name;
+            var myModal = new bootstrap.Modal(document.getElementById('pdfModal'));
+            myModal.show();
+        }
+    </script>
+</body>
+</html>

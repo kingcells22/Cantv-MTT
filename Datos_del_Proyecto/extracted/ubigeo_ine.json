@@ -1,0 +1,7492 @@
+{
+  "DISTRITO CAPITAL": {
+    "cod_entidad": "01",
+    "municipios": {
+      "BOLIVARIANO LIBERTADOR": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "ALTAGRACIA",
+            "ubigeo_code": "010101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTIMANO",
+            "ubigeo_code": "010102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CANDELARIA",
+            "ubigeo_code": "010103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CARICUAO",
+            "ubigeo_code": "010104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "CATEDRAL",
+            "ubigeo_code": "010105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "COCHE",
+            "ubigeo_code": "010106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "EL JUNQUITO",
+            "ubigeo_code": "010107",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "EL PARAISO",
+            "ubigeo_code": "010108",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "EL RECREO",
+            "ubigeo_code": "010109",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "EL VALLE",
+            "ubigeo_code": "010110",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "LA PASTORA",
+            "ubigeo_code": "010111",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "LA VEGA",
+            "ubigeo_code": "010112",
+            "cod_parroquia": "12"
+          },
+          {
+            "nombre": "MACARAO",
+            "ubigeo_code": "010113",
+            "cod_parroquia": "13"
+          },
+          {
+            "nombre": "SAN AGUSTIN",
+            "ubigeo_code": "010114",
+            "cod_parroquia": "14"
+          },
+          {
+            "nombre": "SAN BERNARDINO",
+            "ubigeo_code": "010115",
+            "cod_parroquia": "15"
+          },
+          {
+            "nombre": "SAN JOSE",
+            "ubigeo_code": "010116",
+            "cod_parroquia": "16"
+          },
+          {
+            "nombre": "SAN JUAN",
+            "ubigeo_code": "010117",
+            "cod_parroquia": "17"
+          },
+          {
+            "nombre": "SAN PEDRO",
+            "ubigeo_code": "010118",
+            "cod_parroquia": "18"
+          },
+          {
+            "nombre": "SANTA ROSALIA",
+            "ubigeo_code": "010119",
+            "cod_parroquia": "19"
+          },
+          {
+            "nombre": "SANTA TERESA",
+            "ubigeo_code": "010120",
+            "cod_parroquia": "20"
+          },
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "010121",
+            "cod_parroquia": "21"
+          },
+          {
+            "nombre": "23 DE ENERO",
+            "ubigeo_code": "010122",
+            "cod_parroquia": "22"
+          }
+        ]
+      }
+    }
+  },
+  "AMAZONAS": {
+    "cod_entidad": "02",
+    "municipios": {
+      "AUTONOMO ALTO ORINOCO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "HUACHAMACARE",
+            "ubigeo_code": "020101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MARAWAKA",
+            "ubigeo_code": "020102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MAVACA",
+            "ubigeo_code": "020103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SIERRA PARIMA",
+            "ubigeo_code": "020104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "AUTONOMO ATABAPO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "UCATA",
+            "ubigeo_code": "020201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "YACAPANA",
+            "ubigeo_code": "020202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CANAME",
+            "ubigeo_code": "020203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "AUTONOMO ATURES": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "FERNANDO GIRON TOVAR",
+            "ubigeo_code": "020301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LUIS ALBERTO GOMEZ",
+            "ubigeo_code": "020302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PARHUEÑA",
+            "ubigeo_code": "020303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PLATANILLAL",
+            "ubigeo_code": "020304",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "AUTONOMO AUTANA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "SAMARIAPO",
+            "ubigeo_code": "020401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SIPAPO",
+            "ubigeo_code": "020402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MUNDUAPO",
+            "ubigeo_code": "020403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUAYAPO",
+            "ubigeo_code": "020404",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "AUTONOMO MAROA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "VICTORINO",
+            "ubigeo_code": "020501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "COMUNIDAD",
+            "ubigeo_code": "020502",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "AUTONOMO MANAPIARE": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "ALTO VENTUARI",
+            "ubigeo_code": "020601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MEDIO VENTUARI",
+            "ubigeo_code": "020602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BAJO VENTUARI",
+            "ubigeo_code": "020603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "AUTONOMO RIO NEGRO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "SOLANO",
+            "ubigeo_code": "020701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CASIQUIARE",
+            "ubigeo_code": "020702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "COCUY",
+            "ubigeo_code": "020703",
+            "cod_parroquia": "03"
+          }
+        ]
+      }
+    }
+  },
+  "ANZOATEGUI": {
+    "cod_entidad": "03",
+    "municipios": {
+      "ANACO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "ANACO",
+            "ubigeo_code": "030101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN JOAQUIN",
+            "ubigeo_code": "030102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BUENA VISTA",
+            "ubigeo_code": "030103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "ARAGUA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ARAGUA",
+            "ubigeo_code": "030201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CACHIPO",
+            "ubigeo_code": "030202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "FERNANDO DE PENALVER": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL FERNANDO DE PENALVER",
+            "ubigeo_code": "030301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN MIGUEL",
+            "ubigeo_code": "030302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "030303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "FRANCISCO DEL CARMEN CARVAJAL": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "VALLE DE GUANAPE",
+            "ubigeo_code": "030401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SANTA BARBARA",
+            "ubigeo_code": "030402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "FRANCISCO DE MIRANDA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL FRANCISCO DE MIRANDA",
+            "ubigeo_code": "030501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ATAPIRIRE",
+            "ubigeo_code": "030502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BOCA DEL PAO",
+            "ubigeo_code": "030503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL PAO",
+            "ubigeo_code": "030504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "GUANTA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "GUANTA",
+            "ubigeo_code": "030601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHORRERON",
+            "ubigeo_code": "030602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "INDEPENDENCIA": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "SOLEDAD",
+            "ubigeo_code": "030701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MAMO",
+            "ubigeo_code": "030702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JUAN ANTONIO SOTILLO": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "POZUELOS",
+            "ubigeo_code": "030801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PUERTO LA CRUZ",
+            "ubigeo_code": "030802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JUAN MANUEL CAJIGAL": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL JUAN MANUEL CAJIGAL",
+            "ubigeo_code": "030901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN PABLO",
+            "ubigeo_code": "030902",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JOSE GREGORIO MONAGAS": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL JOSE GREGORIO MONAGAS",
+            "ubigeo_code": "031001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PIAR",
+            "ubigeo_code": "031002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN DIEGO DE CABRUTICA",
+            "ubigeo_code": "031003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA CLARA",
+            "ubigeo_code": "031004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "UVERITO",
+            "ubigeo_code": "031005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "ZUATA",
+            "ubigeo_code": "031006",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "LIBERTAD": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LIBERTAD",
+            "ubigeo_code": "031101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL CARITO",
+            "ubigeo_code": "031102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA INÉS",
+            "ubigeo_code": "031103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "MANUEL EZEQUIEL BRUZUAL": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MANUEL EZEQUIEL BRUZUAL",
+            "ubigeo_code": "031201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GUANAPE",
+            "ubigeo_code": "031202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SABANA DE UCHIRE",
+            "ubigeo_code": "031203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PEDRO MARÍA FRÉITES": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PEDRO MARÍA FRÉITES",
+            "ubigeo_code": "031301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LIBERTADOR",
+            "ubigeo_code": "031302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA ROSA",
+            "ubigeo_code": "031303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "URICA",
+            "ubigeo_code": "031304",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "PÍRITU": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "PÍRITU",
+            "ubigeo_code": "031401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "031402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN JOSÉ DE GUANIPA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EL TIGRITO",
+            "ubigeo_code": "031501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SAN JUAN DE CAPISTRANO": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "BOCA DE UCHIRE",
+            "ubigeo_code": "031601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOCA DE CHÁVEZ",
+            "ubigeo_code": "031602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SANTA ANA": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "SANTA ANA",
+            "ubigeo_code": "031701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PUEBLO NUEVO",
+            "ubigeo_code": "031702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SIMÓN BOLÍVAR": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "EL CARMEN",
+            "ubigeo_code": "031801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN CRISTÓBAL",
+            "ubigeo_code": "031802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BERGANTÍN",
+            "ubigeo_code": "031803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CAIGUA",
+            "ubigeo_code": "031804",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "EL PILAR",
+            "ubigeo_code": "031805",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "NARICUAL",
+            "ubigeo_code": "031806",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "SIMÓN RODRÍGUEZ": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "EDMUNDO BARRIOS",
+            "ubigeo_code": "031901",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SIR ARTHUR MC GREGOR": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "EL CHAPARRO",
+            "ubigeo_code": "032001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "TOMÁS ALFARO CALATRAVA",
+            "ubigeo_code": "032002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "TURÍSTICO DIEGO BAUTISTA URBANEJA": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "LECHERÍAS",
+            "ubigeo_code": "032101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL MORRO",
+            "ubigeo_code": "032102",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "APURE": {
+    "cod_entidad": "04",
+    "municipios": {
+      "ACHAGUAS": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "ACHAGUAS",
+            "ubigeo_code": "040101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "APURITO",
+            "ubigeo_code": "040102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL YAGUAL",
+            "ubigeo_code": "040103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUACHARA",
+            "ubigeo_code": "040104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MUCURITAS",
+            "ubigeo_code": "040105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "QUESERAS DEL MEDIO",
+            "ubigeo_code": "040106",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "BIRUACA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "BIRUACA",
+            "ubigeo_code": "040201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "MUÑOZ": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "BRUZUAL",
+            "ubigeo_code": "040301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MANTECAL",
+            "ubigeo_code": "040302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "QUINTERO",
+            "ubigeo_code": "040303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "RINCON HONDO",
+            "ubigeo_code": "040304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN VICENTE",
+            "ubigeo_code": "040305",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "PÁEZ": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "GUASDUALITO",
+            "ubigeo_code": "040401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARAMENDI",
+            "ubigeo_code": "040402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL AMPARO",
+            "ubigeo_code": "040403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN CAMILO",
+            "ubigeo_code": "040404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "URDANETA",
+            "ubigeo_code": "040405",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "PEDRO CAMEJO": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "SAN JUAN DE PAYARA",
+            "ubigeo_code": "040501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CODAZZI",
+            "ubigeo_code": "040502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CUNAVICHE",
+            "ubigeo_code": "040503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "RÓMULO GALLEGOS": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "ELORZA",
+            "ubigeo_code": "040601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA TRINIDAD DE ORICHUNA",
+            "ubigeo_code": "040602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN FERNANDO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "SAN FERNANDO",
+            "ubigeo_code": "040701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL RECREO",
+            "ubigeo_code": "040702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PEÑALVER",
+            "ubigeo_code": "040703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN RAFAEL",
+            "ubigeo_code": "040704",
+            "cod_parroquia": "04"
+          }
+        ]
+      }
+    }
+  },
+  "ARAGUA": {
+    "cod_entidad": "05",
+    "municipios": {
+      "BOLÍVAR": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN MATEO",
+            "ubigeo_code": "050101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CAMATAGUA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAMATAGUA",
+            "ubigeo_code": "050201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CARMEN DE CURA",
+            "ubigeo_code": "050202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "GIRARDOT": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CHORONÍ",
+            "ubigeo_code": "050302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS DELICIAS",
+            "ubigeo_code": "050303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MADRE MARIA DE SAN JOSÉ",
+            "ubigeo_code": "050304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "JOAQUIN CRESPO",
+            "ubigeo_code": "050305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "PEDRO JOSÉ OVALLÉS",
+            "ubigeo_code": "050306",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "JOSÉ CASANOVA GODOY",
+            "ubigeo_code": "050307",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "ANDRÉS ELOY BLANCO",
+            "ubigeo_code": "050308",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "LOS TACARIGUAS",
+            "ubigeo_code": "050309",
+            "cod_parroquia": "09"
+          }
+        ]
+      },
+      "JOSÉ ÁNGEL LAMAS": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SANTA CRUZ",
+            "ubigeo_code": "050401",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "JOSÉ FÉLIX RIBAS": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "JUAN VICENTE BOLÍVAR Y PONTE",
+            "ubigeo_code": "050501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CASTOR NIEVES RÍOS",
+            "ubigeo_code": "050502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS GUACAMAYAS",
+            "ubigeo_code": "050503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PAO DE ZÁRATE",
+            "ubigeo_code": "050504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "ZUATA",
+            "ubigeo_code": "050505",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "JOSÉ RAFAEL REVENGA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EL CONSEJO",
+            "ubigeo_code": "050601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "LIBERTADOR",
+            "ubigeo_code": "050701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN MARTÍN DE PORRES",
+            "ubigeo_code": "050702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "MARIO BRICEÑO IRAGORRY": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "MARIO BRICEÑO IRAGORRY",
+            "ubigeo_code": "050801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAÑA DE AZÚCAR",
+            "ubigeo_code": "050802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN CASIMIRO": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "SAN CASIMIRO",
+            "ubigeo_code": "050901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GUIRIPA",
+            "ubigeo_code": "050902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "OLLAS DE CARAMACATE",
+            "ubigeo_code": "050903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "VALLE MORÍN",
+            "ubigeo_code": "050904",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SAN SEBASTÁN": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN SEBASTIÁN",
+            "ubigeo_code": "051001",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SANTIAGO MARIÑO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "SANTIAGO MARIÑO",
+            "ubigeo_code": "051101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARÉVALO APONTE",
+            "ubigeo_code": "051102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CHUAO",
+            "ubigeo_code": "051103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAMÁN DE GÜERE",
+            "ubigeo_code": "051104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "ALFREDO PACHECO MIRANDA",
+            "ubigeo_code": "051105",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "SANTOS MICHELENA": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "SANTOS MICHELENA",
+            "ubigeo_code": "051201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "TIARA",
+            "ubigeo_code": "051202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "051301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BELLA VISTA",
+            "ubigeo_code": "051302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "TOVAR": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA COLONIA TOVAR",
+            "ubigeo_code": "051401",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "URDANETA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "URDANETA",
+            "ubigeo_code": "051501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LAS PEÑITAS",
+            "ubigeo_code": "051502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FRANCISCO DE CARA",
+            "ubigeo_code": "051503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "TAGUAY",
+            "ubigeo_code": "051504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ZAMORA": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "ZAMORA",
+            "ubigeo_code": "051601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MAGDALENO",
+            "ubigeo_code": "051602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FRANCISCO DE ASÍS",
+            "ubigeo_code": "051603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "VALLES DE TUCUTUNEMO",
+            "ubigeo_code": "051604",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "AUGUSTO MIJARES",
+            "ubigeo_code": "051605",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "FRANCISCO LINARES ALCÁNTARA": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "FRANCISCO LINARES ALCÁNTARA",
+            "ubigeo_code": "051701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "FRANCISCO DE MIRANDA",
+            "ubigeo_code": "051702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MONSEÑOR FELICIANO GONZALEZ",
+            "ubigeo_code": "051703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "OCUMARE DE LA COSTA DE ORO": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL OCUMARE DE LA COSTA",
+            "ubigeo_code": "051801",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  },
+  "BARINAS": {
+    "cod_entidad": "06",
+    "municipios": {
+      "ALBERTO ARVELO TORREALBA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "SABANETA",
+            "ubigeo_code": "060101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RODRÍGUEZ DOMÍNGUEZ",
+            "ubigeo_code": "060102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ANTONIO JOSÉ DE SUCRE": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "TICOPORO",
+            "ubigeo_code": "060201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANDRÉS BELLO",
+            "ubigeo_code": "060202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "NICOLÁS PULIDO",
+            "ubigeo_code": "060203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "ARISMENDI": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "ARISMENDI",
+            "ubigeo_code": "060301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GUADARRAMA",
+            "ubigeo_code": "060302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA UNIÓN",
+            "ubigeo_code": "060303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN ANTONIO",
+            "ubigeo_code": "060304",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "BARINAS": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "BARINAS",
+            "ubigeo_code": "060401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALFREDO ARVELO LARRIVA",
+            "ubigeo_code": "060402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN SILVESTRE",
+            "ubigeo_code": "060403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA INÉS",
+            "ubigeo_code": "060404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTA LUCÍA",
+            "ubigeo_code": "060405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "TORUNOS",
+            "ubigeo_code": "060406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "EL CARMÉN",
+            "ubigeo_code": "060407",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "RÓMULO BETANCOURT",
+            "ubigeo_code": "060408",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "CORAZÓN DE JESÚS",
+            "ubigeo_code": "060409",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "RAMÓN IGNACIO MÉNDEZ",
+            "ubigeo_code": "060410",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "ALTO BARINAS",
+            "ubigeo_code": "060411",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "MANUEL PALACIO FAJARDO",
+            "ubigeo_code": "060412",
+            "cod_parroquia": "12"
+          },
+          {
+            "nombre": "JUAN ANTONIO RODRÍGUEZ DOMÍNGUEZ",
+            "ubigeo_code": "060413",
+            "cod_parroquia": "13"
+          },
+          {
+            "nombre": "DOMINGA ORTIZ DE PÁEZ",
+            "ubigeo_code": "060414",
+            "cod_parroquia": "14"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "BARINITAS",
+            "ubigeo_code": "060501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTAMIRA",
+            "ubigeo_code": "060502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CALDERAS",
+            "ubigeo_code": "060503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CRUZ PAREDES": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "BARRANCAS",
+            "ubigeo_code": "060601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL SOCORRO",
+            "ubigeo_code": "060602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MASPARRITO",
+            "ubigeo_code": "060603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "EZEQUIEL ZAMORA": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "SANTA BÁRBARA",
+            "ubigeo_code": "060701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JOSÉ IGNACIO DEL PUMAR",
+            "ubigeo_code": "060702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PEDRO BRICEÑO MÉNDEZ",
+            "ubigeo_code": "060703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "RAMÓN IGNACIO MÉNDEZ",
+            "ubigeo_code": "060704",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "OBISPOS": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "OBISPOS",
+            "ubigeo_code": "060801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL REAL",
+            "ubigeo_code": "060802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA LUZ",
+            "ubigeo_code": "060803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LOS GUASIMITOS",
+            "ubigeo_code": "060804",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "PEDRAZA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CIUDAD BOLIVIA",
+            "ubigeo_code": "060901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "IGNACIO BRICEÑO",
+            "ubigeo_code": "060902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JOSÉ FÉLIX RIBAS",
+            "ubigeo_code": "060903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PÁEZ",
+            "ubigeo_code": "060904",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ROJAS": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "LIBERTAD",
+            "ubigeo_code": "061001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "DOLORES",
+            "ubigeo_code": "061002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PALACIOS FAJARDO",
+            "ubigeo_code": "061003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA ROSA",
+            "ubigeo_code": "061004",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SOSA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CIUDAD DE NUTRIAS",
+            "ubigeo_code": "061101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL REGALO",
+            "ubigeo_code": "061102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PUERTO DE NUTRIAS",
+            "ubigeo_code": "061103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA CATALINA",
+            "ubigeo_code": "061104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ANDRÉS ELOY BLANCO": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "EL CANTÓN",
+            "ubigeo_code": "061201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SANTA CRUZ DE GUACAS",
+            "ubigeo_code": "061202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PUERTO VIVAS",
+            "ubigeo_code": "061203",
+            "cod_parroquia": "03"
+          }
+        ]
+      }
+    }
+  },
+  "BOLIVAR": {
+    "cod_entidad": "07",
+    "municipios": {
+      "CARONÍ": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CACHAMAY",
+            "ubigeo_code": "070101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHIRICA",
+            "ubigeo_code": "070102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "DALLA COSTA",
+            "ubigeo_code": "070103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "ONCE DE ABRIL",
+            "ubigeo_code": "070104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SIMÓN BOLÍVAR",
+            "ubigeo_code": "070105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "UNARE",
+            "ubigeo_code": "070106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "UNIVERSIDAD",
+            "ubigeo_code": "070107",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "VISTA AL SOL",
+            "ubigeo_code": "070108",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "POZO VERDE",
+            "ubigeo_code": "070109",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "YOCOIMA",
+            "ubigeo_code": "070110",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "CINCO DE JULIO",
+            "ubigeo_code": "070111",
+            "cod_parroquia": "11"
+          }
+        ]
+      },
+      "AUTONOMO GENERAL MANUEL CEDEÑO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CEDEÑO",
+            "ubigeo_code": "070201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTAGRACIA",
+            "ubigeo_code": "070202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ASCENSIÓN FARRERAS",
+            "ubigeo_code": "070203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUANIAMO",
+            "ubigeo_code": "070204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "LA URBANA",
+            "ubigeo_code": "070205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "PIJIGUAOS",
+            "ubigeo_code": "070206",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "EL CALLAO": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EL CALLAO",
+            "ubigeo_code": "070301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "GRAN SABANA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GRAN SABANA",
+            "ubigeo_code": "070401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "IKABAÚ",
+            "ubigeo_code": "070402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ANGOSTURA DEL ORINOCO": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "AGUA SALADA",
+            "ubigeo_code": "070501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CATEDRAL",
+            "ubigeo_code": "070502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JOSÉ ANTONIO PÁEZ",
+            "ubigeo_code": "070503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA SABANITA",
+            "ubigeo_code": "070504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MARHUANTA",
+            "ubigeo_code": "070505",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "VISTA HERMOSA",
+            "ubigeo_code": "070506",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "ORINOCO",
+            "ubigeo_code": "070507",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "PANAPANA",
+            "ubigeo_code": "070508",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "ZEA",
+            "ubigeo_code": "070509",
+            "cod_parroquia": "09"
+          }
+        ]
+      },
+      "PIAR": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PIAR",
+            "ubigeo_code": "070601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANDRÉS ELOY BLANCO",
+            "ubigeo_code": "070602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PEDRO COVA",
+            "ubigeo_code": "070603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "BOLIVARIANO ANGOSTURA": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ANGOSTURA",
+            "ubigeo_code": "070701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BARCELONETA",
+            "ubigeo_code": "070702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "070703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA BÁRBARA",
+            "ubigeo_code": "070704",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ROSCIO": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ROSCIO",
+            "ubigeo_code": "070801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SALOM",
+            "ubigeo_code": "070802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SIFONTES": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SIFONTES",
+            "ubigeo_code": "070901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "DALLA COSTA",
+            "ubigeo_code": "070902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN ISIDRO",
+            "ubigeo_code": "070903",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SUCRE",
+            "ubigeo_code": "071001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARIPAO",
+            "ubigeo_code": "071002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GUARATARO",
+            "ubigeo_code": "071003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LAS MAJADAS",
+            "ubigeo_code": "071004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MOITACO",
+            "ubigeo_code": "071005",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "PADRE PEDRO CHIEN": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EL PALMAR",
+            "ubigeo_code": "071101",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  },
+  "CARABOBO": {
+    "cod_entidad": "08",
+    "municipios": {
+      "BEJUMA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "BEJUMA",
+            "ubigeo_code": "080101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CANOABO",
+            "ubigeo_code": "080102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SIMÓN BOLÍVAR",
+            "ubigeo_code": "080103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CARLOS ARVELO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "GÜIGÜE",
+            "ubigeo_code": "080201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BELÉN",
+            "ubigeo_code": "080202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "TACARIGUA",
+            "ubigeo_code": "080203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "DIEGO IBARRA": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "AGUAS CALIENTES",
+            "ubigeo_code": "080301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MARIARA",
+            "ubigeo_code": "080302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "GUACARA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CIUDAD ALIANZA",
+            "ubigeo_code": "080401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GUACARA",
+            "ubigeo_code": "080402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "YAGUA",
+            "ubigeo_code": "080403",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "JUAN JOSÉ MORA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "MORÓN",
+            "ubigeo_code": "080501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "URAMA",
+            "ubigeo_code": "080502",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "TOCUYITO",
+            "ubigeo_code": "080601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "INDEPENDENCIA",
+            "ubigeo_code": "080602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LOS GUAYOS": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "LOS GUAYOS",
+            "ubigeo_code": "080701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "MIRANDA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "MIRANDA",
+            "ubigeo_code": "080801",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "MONTALBÁN": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "MONTALBÁN",
+            "ubigeo_code": "080901",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "NAGUANAGUA": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "NAGUANAGUA",
+            "ubigeo_code": "081001",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PUERTO CABELLO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "BARTOLOMÉ SALOM",
+            "ubigeo_code": "081101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "DEMOCRACIA",
+            "ubigeo_code": "081102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "FRATERNIDAD",
+            "ubigeo_code": "081103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GOAIGOAZA",
+            "ubigeo_code": "081104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "JUAN JOSÉ FLORES",
+            "ubigeo_code": "081105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "UNIÓN",
+            "ubigeo_code": "081106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "BORBURATA",
+            "ubigeo_code": "081107",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "PATANEMO",
+            "ubigeo_code": "081108",
+            "cod_parroquia": "08"
+          }
+        ]
+      },
+      "SAN DIEGO": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "SAN DIEGO",
+            "ubigeo_code": "081201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SAN JOAQUÍN": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "SAN JOAQUÍN",
+            "ubigeo_code": "081301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "VALENCIA": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CANDELARIA",
+            "ubigeo_code": "081401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CATEDRAL",
+            "ubigeo_code": "081402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL SOCORRO",
+            "ubigeo_code": "081403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MIGUEL PEÑA",
+            "ubigeo_code": "081404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "RAFAEL URDANETA",
+            "ubigeo_code": "081405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SAN BLAS",
+            "ubigeo_code": "081406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SAN JOSÉ",
+            "ubigeo_code": "081407",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "SANTA ROSA",
+            "ubigeo_code": "081408",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "NEGRO PRIMERO",
+            "ubigeo_code": "081409",
+            "cod_parroquia": "09"
+          }
+        ]
+      }
+    }
+  },
+  "COJEDES": {
+    "cod_entidad": "09",
+    "municipios": {
+      "ANZOÁTEGUI": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "COJEDES",
+            "ubigeo_code": "090101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JUAN DE MATA SUÁREZ",
+            "ubigeo_code": "090102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "TINAQUILLO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "TINAQUILLO",
+            "ubigeo_code": "090201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "GIRARDOT": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "EL BAÚL",
+            "ubigeo_code": "090301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "090302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LIMA BLANCO": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "MACAPO",
+            "ubigeo_code": "090401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA AGUADITA",
+            "ubigeo_code": "090402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "PAO DE SAN JUAN BAUTISTA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "EL PAO",
+            "ubigeo_code": "090501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "RICAURTE": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "LIBERTAD DE COJEDES",
+            "ubigeo_code": "090601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL AMPARO",
+            "ubigeo_code": "090602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "RÓMULO GALLEGOS": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "RÓMULO GALLEGOS",
+            "ubigeo_code": "090701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "EZEQUIEL ZAMORA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "SAN CARLOS DE AUSTRIA",
+            "ubigeo_code": "090801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JUAN ÁNGEL BRAVO",
+            "ubigeo_code": "090802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MANUEL MANRIQUE",
+            "ubigeo_code": "090803",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "TINACO": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "GENERAL EN JEFE JOSÉ LAURENCIO SILVA",
+            "ubigeo_code": "090901",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  },
+  "DELTA AMACURO": {
+    "cod_entidad": "10",
+    "municipios": {
+      "ANTONIO DÍAZ": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CURIAPO",
+            "ubigeo_code": "100101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALMIRANTE LUIS BRIÓN",
+            "ubigeo_code": "100102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "FRANCISCO ANICETO LUGO",
+            "ubigeo_code": "100103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MANUEL RENAUD",
+            "ubigeo_code": "100104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "PADRE BARRAL",
+            "ubigeo_code": "100105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SANTOS DE ABELGAS",
+            "ubigeo_code": "100106",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "CASACOIMA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "IMATACA",
+            "ubigeo_code": "100201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CINCO DE JULIO",
+            "ubigeo_code": "100202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JUAN BAUTISTA ARISMENDI",
+            "ubigeo_code": "100203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MANUEL PIAR",
+            "ubigeo_code": "100204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "RÓMULO GALLEGOS",
+            "ubigeo_code": "100205",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "PEDERNALES": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "PEDERNALES",
+            "ubigeo_code": "100301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LUIS BELTRÁN PRIETO FIGUEROA",
+            "ubigeo_code": "100302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "TUCUPITA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "SAN JOSÉ",
+            "ubigeo_code": "100401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JOSÉ VIDAL MARCANO",
+            "ubigeo_code": "100402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JUAN MILÁN",
+            "ubigeo_code": "100403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LEONARDO RUÍZ PINEDA",
+            "ubigeo_code": "100404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MARISCAL ANTONIO JOSÉ DE SUCRE",
+            "ubigeo_code": "100405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MONSEÑOR ARGIMIRO GARÍIA",
+            "ubigeo_code": "100406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SAN RAFAEL",
+            "ubigeo_code": "100407",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "VIRGEN DEL VALLE",
+            "ubigeo_code": "100408",
+            "cod_parroquia": "08"
+          }
+        ]
+      }
+    }
+  },
+  "FALCÓN": {
+    "cod_entidad": "11",
+    "municipios": {
+      "ACOSTA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "SAN JUAN DE LOS CAYOS",
+            "ubigeo_code": "110101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAPADARE",
+            "ubigeo_code": "110102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA PASTORA",
+            "ubigeo_code": "110103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LIBERTADOR",
+            "ubigeo_code": "110104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "SAN LUIS",
+            "ubigeo_code": "110201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARACUA",
+            "ubigeo_code": "110202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA PEÑA",
+            "ubigeo_code": "110203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "BUCHIVACOA": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPATÁRIDA",
+            "ubigeo_code": "110301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BARIRO",
+            "ubigeo_code": "110302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BOROJÓ",
+            "ubigeo_code": "110303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUAJIRO",
+            "ubigeo_code": "110304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SEQUE",
+            "ubigeo_code": "110305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "ZAZÁRIDA",
+            "ubigeo_code": "110306",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "CACIQUE MANUARE": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL YARACAL",
+            "ubigeo_code": "110401",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CARIRUBANA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CARIRUBANA",
+            "ubigeo_code": "110501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "NORTE",
+            "ubigeo_code": "110502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PUNTA CARDÓN",
+            "ubigeo_code": "110503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA ANA",
+            "ubigeo_code": "110504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "COLINA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "LA VELA DE CORO",
+            "ubigeo_code": "110601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ACURIGUA",
+            "ubigeo_code": "110602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GUAIBACOA",
+            "ubigeo_code": "110603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LAS CALDERAS",
+            "ubigeo_code": "110604",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MACORUCA",
+            "ubigeo_code": "110605",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "DABAJURO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL DABAJURO",
+            "ubigeo_code": "110701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "DEMOCRACIA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "PEDREGAL",
+            "ubigeo_code": "110801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AGUA CLARA",
+            "ubigeo_code": "110802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "AVARIA",
+            "ubigeo_code": "110803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PIEDRA GRANDE",
+            "ubigeo_code": "110804",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "PURURECHE",
+            "ubigeo_code": "110805",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "FALCÓN": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "PUEBLO NUEVO",
+            "ubigeo_code": "110901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ADICORA",
+            "ubigeo_code": "110902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BARAIVED",
+            "ubigeo_code": "110903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "BUENA VISTA",
+            "ubigeo_code": "110904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "JADACAQUIVA",
+            "ubigeo_code": "110905",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MORUY",
+            "ubigeo_code": "110906",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "ADAURE",
+            "ubigeo_code": "110907",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "EL HATO",
+            "ubigeo_code": "110908",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "EL VÍNCULO",
+            "ubigeo_code": "110909",
+            "cod_parroquia": "09"
+          }
+        ]
+      },
+      "FEDERACIÓN": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CHURUGUARA",
+            "ubigeo_code": "111001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AGUA LARGA",
+            "ubigeo_code": "111002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL PAUJÍ",
+            "ubigeo_code": "111003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "INDEPENDENCIA",
+            "ubigeo_code": "111004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MAPARARI",
+            "ubigeo_code": "111005",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "JACURA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "JACURA",
+            "ubigeo_code": "111101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AGUA LINDA",
+            "ubigeo_code": "111102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ARAURIMA",
+            "ubigeo_code": "111103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "LOS TAQUES": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "LOS TAQUES",
+            "ubigeo_code": "111201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JUDIBANA",
+            "ubigeo_code": "111202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "MAUROA": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "MENE DE MAUROA",
+            "ubigeo_code": "111301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CASIGUA",
+            "ubigeo_code": "111302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FÉLIX",
+            "ubigeo_code": "111303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "MIRANDA": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "SAN ANTONIO",
+            "ubigeo_code": "111401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN GABRIEL",
+            "ubigeo_code": "111402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA ANA",
+            "ubigeo_code": "111403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUZMÁN GUILLERMO",
+            "ubigeo_code": "111404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MITARE",
+            "ubigeo_code": "111405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "RÍO SECO",
+            "ubigeo_code": "111406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SABANETA",
+            "ubigeo_code": "111407",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "MONSEÑOR ITURRIZA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "CHICHIRIVICHE",
+            "ubigeo_code": "111501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOCA DE TOCUYO",
+            "ubigeo_code": "111502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "TOCUYO DE LA COSTA",
+            "ubigeo_code": "111503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PALMASOLA": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PALMASOLA",
+            "ubigeo_code": "111601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PETIT": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "CABURE",
+            "ubigeo_code": "111701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "COLINA",
+            "ubigeo_code": "111702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CURIMAGUA",
+            "ubigeo_code": "111703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PÍRITU": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "PÍRITU",
+            "ubigeo_code": "111801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN JOSÉ DE LA COSTA",
+            "ubigeo_code": "111802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN FRANCISCO": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MIRIMIRE",
+            "ubigeo_code": "111901",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SILVA": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "TUCACAS",
+            "ubigeo_code": "112001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOCA DE AROA",
+            "ubigeo_code": "112002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "112101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PECAYA",
+            "ubigeo_code": "112102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "TOCÓPERO": {
+        "cod_municipio": "22",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TOCOPERO",
+            "ubigeo_code": "112201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "UNIÓN": {
+        "cod_municipio": "23",
+        "parroquias": [
+          {
+            "nombre": "SANTA CRUZ DE BUCARAL",
+            "ubigeo_code": "112301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL CHARAL",
+            "ubigeo_code": "112302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS VEGAS DEL TUY",
+            "ubigeo_code": "112303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "URUMACO": {
+        "cod_municipio": "24",
+        "parroquias": [
+          {
+            "nombre": "URUMACO",
+            "ubigeo_code": "112401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BRUZUAL",
+            "ubigeo_code": "112402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ZAMORA": {
+        "cod_municipio": "25",
+        "parroquias": [
+          {
+            "nombre": "PUERTO CUMAREBO",
+            "ubigeo_code": "112501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA CIÉNAGA",
+            "ubigeo_code": "112502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA SOLEDAD",
+            "ubigeo_code": "112503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PUEBLO CUMAREBO",
+            "ubigeo_code": "112504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "ZAZÁRIDA",
+            "ubigeo_code": "112505",
+            "cod_parroquia": "05"
+          }
+        ]
+      }
+    }
+  },
+  "GUARICO": {
+    "cod_entidad": "12",
+    "municipios": {
+      "CAMAGUÁN": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAMAGUÁN",
+            "ubigeo_code": "120101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PUERTO MIRANDA",
+            "ubigeo_code": "120102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "UVERITO",
+            "ubigeo_code": "120103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CHAGUARAMAS": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CHAGUARAMAS",
+            "ubigeo_code": "120201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "EL SOCORRO": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "EL SOCORRO",
+            "ubigeo_code": "120301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SAN GERÓNIMO DE GUAYABAL": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN GERÓNIMO DE GUAYABAL",
+            "ubigeo_code": "120401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAZORLA",
+            "ubigeo_code": "120402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LEONARDO INFANTE": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "VALLE DE LA PASCUA",
+            "ubigeo_code": "120501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ESPINO",
+            "ubigeo_code": "120502",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JUAN JOSÉ RONDÓN DELGADILLO": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "LAS MERCEDES",
+            "ubigeo_code": "120601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CABRUTA",
+            "ubigeo_code": "120602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA RITA DE MANAPIRE",
+            "ubigeo_code": "120603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "JULIÁN MELLADO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "EL SOMBRERO",
+            "ubigeo_code": "120701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SOSA",
+            "ubigeo_code": "120702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "FRANCISCO DE MIRANDA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CALABOZO",
+            "ubigeo_code": "120801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL CALVARIO",
+            "ubigeo_code": "120802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL RASTRO",
+            "ubigeo_code": "120803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUARDATINAJAS",
+            "ubigeo_code": "120804",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "JOSÉ TADEO MONAGAS": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "ALTAGRACIA DE ORITUCO",
+            "ubigeo_code": "120901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LEZAMA",
+            "ubigeo_code": "120902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LIBERTAD DE ORITUCO",
+            "ubigeo_code": "120903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PASO REAL DE MACAIRA",
+            "ubigeo_code": "120904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN FRANCISCO DE MACAIRA",
+            "ubigeo_code": "120905",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SAN RAFAEL DE ORITUCO",
+            "ubigeo_code": "120906",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SOUBLETTE",
+            "ubigeo_code": "120907",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "ORTIZ": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "ORTIZ",
+            "ubigeo_code": "121001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN FRANCISCO DE TIZNADO",
+            "ubigeo_code": "121002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN JOSÉ DE TIZNADO",
+            "ubigeo_code": "121003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN LORENZO DE TIZNADO",
+            "ubigeo_code": "121004",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "JOSÉ FÉLIX RIBAS": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "TUCUPIDO",
+            "ubigeo_code": "121101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN RAFAEL DE LAYA",
+            "ubigeo_code": "121102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JUAN GERMÁN ROSCIO NIEVES": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "SAN JUAN DE LOS MORROS",
+            "ubigeo_code": "121201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CANTAGALLO",
+            "ubigeo_code": "121202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PARAPARA",
+            "ubigeo_code": "121203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SAN JOSÉ DE GUARIBE": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "SAN JOSÉ DE GUARIBE",
+            "ubigeo_code": "121301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SANTA MARÍA DE IPIRE": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "SANTA MARÍA DE IPIRE",
+            "ubigeo_code": "121401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTAMIRA",
+            "ubigeo_code": "121402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "PEDRO ZARAZA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "ZARAZA",
+            "ubigeo_code": "121501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN JOSÉ DE UNARE",
+            "ubigeo_code": "121502",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "LARA": {
+    "cod_entidad": "13",
+    "municipios": {
+      "ANDRÉS ELOY BLANCO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "PÍO TAMAYO",
+            "ubigeo_code": "130101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "QUEBRADA HONDA DE GUACHE",
+            "ubigeo_code": "130102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "YACAMBÚ",
+            "ubigeo_code": "130103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CRESPO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "FRÉITEZ",
+            "ubigeo_code": "130201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JOSÉ MARÍA BLANCO",
+            "ubigeo_code": "130202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "IRIBARREN": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CATEDRAL",
+            "ubigeo_code": "130301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CONCEPCIÓN",
+            "ubigeo_code": "130302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL CUJÍ",
+            "ubigeo_code": "130303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUERRERA ANA SOTO",
+            "ubigeo_code": "130304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTA ROSA",
+            "ubigeo_code": "130305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "TAMACA",
+            "ubigeo_code": "130306",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "UNIÓN",
+            "ubigeo_code": "130307",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "AGUEDO FELIPE ALVARADO",
+            "ubigeo_code": "130308",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "BUENA VISTA",
+            "ubigeo_code": "130309",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "JUÁREZ",
+            "ubigeo_code": "130310",
+            "cod_parroquia": "10"
+          }
+        ]
+      },
+      "JIMÉNEZ": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "JUAN BAUTISTA RODRÍGUEZ",
+            "ubigeo_code": "130401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CUARA",
+            "ubigeo_code": "130402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "DIEGO DE LOZADA",
+            "ubigeo_code": "130403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PARAÍSO DE SAN JOSÉ",
+            "ubigeo_code": "130404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN MIGUEL",
+            "ubigeo_code": "130405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "TINTORERO",
+            "ubigeo_code": "130406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "JOSÉ BERNARDO DORANTE",
+            "ubigeo_code": "130407",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "CORONEL MARIANO PERAZA",
+            "ubigeo_code": "130408",
+            "cod_parroquia": "08"
+          }
+        ]
+      },
+      "MORÁN": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "BOLÍVAR",
+            "ubigeo_code": "130501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANZOÁTEGUI",
+            "ubigeo_code": "130502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GUARICO",
+            "ubigeo_code": "130503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "HILARIO LUNA Y LUNA",
+            "ubigeo_code": "130504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "HUMOCARO ALTO",
+            "ubigeo_code": "130505",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "HUMOCARO BAJO",
+            "ubigeo_code": "130506",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "LA CANDELARIA",
+            "ubigeo_code": "130507",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "MORÁN",
+            "ubigeo_code": "130508",
+            "cod_parroquia": "08"
+          }
+        ]
+      },
+      "PALAVECINO": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CABUDARE",
+            "ubigeo_code": "130601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JOSÉ GREGORIO BASTIDAS",
+            "ubigeo_code": "130602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "AGUA VIVA",
+            "ubigeo_code": "130603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SIMÓN PLANAS": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "SARARE",
+            "ubigeo_code": "130701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BURÍA",
+            "ubigeo_code": "130702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GUSTAVO VEGAS LEÓN",
+            "ubigeo_code": "130703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "TORRES": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "TRINIDAD SAMUEL",
+            "ubigeo_code": "130801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTONIO DÍAZ",
+            "ubigeo_code": "130802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CAMACARO",
+            "ubigeo_code": "130803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CASTAÑEDA",
+            "ubigeo_code": "130804",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "CECILIO ZUBILLAGA",
+            "ubigeo_code": "130805",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "CHIQUINQUIRÁ",
+            "ubigeo_code": "130806",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "EL BLANCO",
+            "ubigeo_code": "130807",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "ESPINOZA DE LOS MONTEROS",
+            "ubigeo_code": "130808",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "LARA",
+            "ubigeo_code": "130809",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "LAS MERCEDES",
+            "ubigeo_code": "130810",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "MANUEL MORILLO",
+            "ubigeo_code": "130811",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "MONTAÑA VERDE",
+            "ubigeo_code": "130812",
+            "cod_parroquia": "12"
+          },
+          {
+            "nombre": "MONTES DE OCA",
+            "ubigeo_code": "130813",
+            "cod_parroquia": "13"
+          },
+          {
+            "nombre": "TORRES",
+            "ubigeo_code": "130814",
+            "cod_parroquia": "14"
+          },
+          {
+            "nombre": "REYES VARGAS",
+            "ubigeo_code": "130816",
+            "cod_parroquia": "16"
+          },
+          {
+            "nombre": "ALTAGRACIA",
+            "ubigeo_code": "130817",
+            "cod_parroquia": "17"
+          }
+        ]
+      },
+      "URDANETA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "SIQUISIQUE",
+            "ubigeo_code": "130901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MOROTURO",
+            "ubigeo_code": "130902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN MIGUEL",
+            "ubigeo_code": "130903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "XAGUAS",
+            "ubigeo_code": "130904",
+            "cod_parroquia": "04"
+          }
+        ]
+      }
+    }
+  },
+  "MERIDA": {
+    "cod_entidad": "14",
+    "municipios": {
+      "ALBERTO ADRIANI": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "PRESIDENTE BETANCOURT",
+            "ubigeo_code": "140101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PRESIDENTE PÁEZ",
+            "ubigeo_code": "140102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PRESIDENTE RÓMULO GALLEGOS",
+            "ubigeo_code": "140103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GABRIEL PICÓN GONZÁLEZ",
+            "ubigeo_code": "140104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "HÉCTOR AMABLE MORA",
+            "ubigeo_code": "140105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "JOSÉ NUCETE SARDI",
+            "ubigeo_code": "140106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "PULIDO MÉNDEZ",
+            "ubigeo_code": "140107",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "ANDRES BELLO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA AZULITA",
+            "ubigeo_code": "140201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "ANTONIO PINTO  SALINAS": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ANTONIO PINTO SALINAS",
+            "ubigeo_code": "140301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MESA BOLÍVAR",
+            "ubigeo_code": "140302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MESA DE LAS PALMAS",
+            "ubigeo_code": "140303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "ARICAGUA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ARICAGUA",
+            "ubigeo_code": "140401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN ANTONIO",
+            "ubigeo_code": "140402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ARZOBISPO CHACÓN": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ARZOBISPO CHACÓN",
+            "ubigeo_code": "140501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAPURÍ",
+            "ubigeo_code": "140502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CHACANTÁ",
+            "ubigeo_code": "140503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL MOLINO",
+            "ubigeo_code": "140504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "GUAIMARAL",
+            "ubigeo_code": "140505",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MUCUTUY",
+            "ubigeo_code": "140506",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "MUCUCHACHÍ",
+            "ubigeo_code": "140507",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "CAMPO  ELÍAS": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "FERNÁNDEZ PEÑA",
+            "ubigeo_code": "140601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MATRIZ",
+            "ubigeo_code": "140602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MONTALBÁN",
+            "ubigeo_code": "140603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "ACEQUIAS",
+            "ubigeo_code": "140604",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "JAJÍ",
+            "ubigeo_code": "140605",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "LA MESA",
+            "ubigeo_code": "140606",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SAN JOSÉ DEL SUR",
+            "ubigeo_code": "140607",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "CARACCIOLO PARRA OLMEDO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CARACCIOLO PARRA OLMEDO",
+            "ubigeo_code": "140701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "FLORENCIO RAMÍREZ",
+            "ubigeo_code": "140702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "CARDENAL QUINTERO": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CARDENAL QUINTERO",
+            "ubigeo_code": "140801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LAS PIEDRAS",
+            "ubigeo_code": "140802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "GUARAQUE": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GUARAQUE",
+            "ubigeo_code": "140901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MESA DE QUINTERO",
+            "ubigeo_code": "140902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "RÍO NEGRO",
+            "ubigeo_code": "140903",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "JULIO CÉSAR SALAS": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL JULIO CÉSAR SALAS",
+            "ubigeo_code": "141001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PALMIRA",
+            "ubigeo_code": "141002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "JUSTO BRICEÑO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL JUSTO BRICEÑO",
+            "ubigeo_code": "141101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN CRISTÓBAL DE TORONDOY",
+            "ubigeo_code": "141102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "ANTONIO SPINETTI DINI",
+            "ubigeo_code": "141201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARIAS",
+            "ubigeo_code": "141202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CARACCIOLO PARRA PÉREZ",
+            "ubigeo_code": "141203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "DOMINGO PEÑA",
+            "ubigeo_code": "141204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "EL LLANO",
+            "ubigeo_code": "141205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "GONZALO PICÓN FEBRES",
+            "ubigeo_code": "141206",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "JACINTO PLAZA",
+            "ubigeo_code": "141207",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "JUAN RODRÍGUEZ SUÁREZ",
+            "ubigeo_code": "141208",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "LASSO DE LA VEGA",
+            "ubigeo_code": "141209",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "MARIANO PICÓN SALAS",
+            "ubigeo_code": "141210",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "MILLA",
+            "ubigeo_code": "141211",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "OSUNA RODRÍGUEZ",
+            "ubigeo_code": "141212",
+            "cod_parroquia": "12"
+          },
+          {
+            "nombre": "SAGRARIO",
+            "ubigeo_code": "141213",
+            "cod_parroquia": "13"
+          },
+          {
+            "nombre": "EL MORRO",
+            "ubigeo_code": "141214",
+            "cod_parroquia": "14"
+          },
+          {
+            "nombre": "LOS NEVADOS",
+            "ubigeo_code": "141215",
+            "cod_parroquia": "15"
+          }
+        ]
+      },
+      "MIRANDA": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MIRANDA",
+            "ubigeo_code": "141301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANDRÉS ELOY BLANCO",
+            "ubigeo_code": "141302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA VENTA",
+            "ubigeo_code": "141303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PIÑANGO",
+            "ubigeo_code": "141304",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "OBISPO RAMOS DE LORA": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL OBISPO RAMOS DE LORA",
+            "ubigeo_code": "141401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ELOY PAREDES",
+            "ubigeo_code": "141402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN RAFAEL DE ALCÁZAR",
+            "ubigeo_code": "141403",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PADRE NOGUERA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SANTA MARIA DE CAPARO",
+            "ubigeo_code": "141501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PUEBLO LLANO": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PUEBLO LLANO",
+            "ubigeo_code": "141601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "RANGEL": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL RANGEL",
+            "ubigeo_code": "141701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CACUTE",
+            "ubigeo_code": "141702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA TOMA",
+            "ubigeo_code": "141703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MUCURUBÁ",
+            "ubigeo_code": "141704",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN RAFAEL",
+            "ubigeo_code": "141705",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "RIVAS DÁVILA": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL RIVAS DÁVILA",
+            "ubigeo_code": "141801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GERÓNIMO MALDONADO",
+            "ubigeo_code": "141802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SANTOS MARQUINA": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TABAY",
+            "ubigeo_code": "141901",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SUCRE",
+            "ubigeo_code": "142001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHIGUARÁ",
+            "ubigeo_code": "142002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ESTÁNQUES",
+            "ubigeo_code": "142003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA TRAMPA",
+            "ubigeo_code": "142004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "PUEBLO NUEVO DEL SUR",
+            "ubigeo_code": "142005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SAN JUAN",
+            "ubigeo_code": "142006",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "TOVAR": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "EL AMPARO",
+            "ubigeo_code": "142101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL LLANO",
+            "ubigeo_code": "142102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "142103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "TOVAR",
+            "ubigeo_code": "142104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "TULIO FEBRES CORDERO": {
+        "cod_municipio": "22",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TULIO FEBRES CORDERO",
+            "ubigeo_code": "142201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "INDEPENDENCIA",
+            "ubigeo_code": "142202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MARÁA CONCEPCIÓN PALACIOS",
+            "ubigeo_code": "142203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA APOLONIA",
+            "ubigeo_code": "142204",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ZEA": {
+        "cod_municipio": "23",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ZEA",
+            "ubigeo_code": "142301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAÑO EL TIGRE",
+            "ubigeo_code": "142302",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "BOLIVARIANO DE MIRANDA": {
+    "cod_entidad": "15",
+    "municipios": {
+      "ACEVEDO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAUCAGUA",
+            "ubigeo_code": "150101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARAGÜITA",
+            "ubigeo_code": "150102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ARÉVALO GONZÁLEZ",
+            "ubigeo_code": "150103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CAPAYA",
+            "ubigeo_code": "150104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "EL CAFÉ",
+            "ubigeo_code": "150105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MARIZAPA",
+            "ubigeo_code": "150106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "PANAQUIRE",
+            "ubigeo_code": "150107",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "RIBAS",
+            "ubigeo_code": "150108",
+            "cod_parroquia": "08"
+          }
+        ]
+      },
+      "ANDRÉS BELLO": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "SAN JOSE DE BARLOVENTO",
+            "ubigeo_code": "150201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CUMBO",
+            "ubigeo_code": "150202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BARUTA": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "NUESTRA SEÑORA DEL ROSARIO DE BARUTA",
+            "ubigeo_code": "150301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL CAFETAL",
+            "ubigeo_code": "150302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS MINAS DE BARUTA",
+            "ubigeo_code": "150303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "BRIÓN": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "HIGUEROTE",
+            "ubigeo_code": "150401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CURIEPE",
+            "ubigeo_code": "150402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "TACARIGUA",
+            "ubigeo_code": "150403",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "BUROZ": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "MAMPORAL",
+            "ubigeo_code": "150501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CARRIZAL": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CARRIZAL",
+            "ubigeo_code": "150601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CHACAO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CHACAO",
+            "ubigeo_code": "150701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CRISTÓBAL ROJAS": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CHARALLAVE",
+            "ubigeo_code": "150801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LAS BRISAS",
+            "ubigeo_code": "150802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "EL HATILLO": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "EL HATILLO",
+            "ubigeo_code": "150901",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLIVARIANO GUAICAIPURO": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "LOS TEQUES",
+            "ubigeo_code": "151001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTAGRACIA DE LA MONTAÑA",
+            "ubigeo_code": "151002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CECILIO ACOSTA",
+            "ubigeo_code": "151003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL JARILLO",
+            "ubigeo_code": "151004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "PARACOTOS",
+            "ubigeo_code": "151005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SAN PEDRO",
+            "ubigeo_code": "151006",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "TÁCATA",
+            "ubigeo_code": "151007",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "INDEPENDENCIA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "SANTA TERESA DEL TUY",
+            "ubigeo_code": "151101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CARTANAL",
+            "ubigeo_code": "151102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LANDER": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "OCUMARE DEL TUY",
+            "ubigeo_code": "151201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA DEMOCRACIA",
+            "ubigeo_code": "151202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA BÁRBARA",
+            "ubigeo_code": "151203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "LOS SALIAS": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "SAN ANTONIO DE LOS ALTOS",
+            "ubigeo_code": "151301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PÁEZ": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "RÍ|O CHICO",
+            "ubigeo_code": "151401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL GUAPO",
+            "ubigeo_code": "151402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "TACARIGUA DE LA LAGUNA",
+            "ubigeo_code": "151403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PAPARO",
+            "ubigeo_code": "151404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN FERNANDO DEL GUAPO",
+            "ubigeo_code": "151405",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "PAZ CASTILLO": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "SANTA LUCÍA",
+            "ubigeo_code": "151501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PEDRO  GUAL": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "CÚPIRA",
+            "ubigeo_code": "151601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MACHURUCUTO",
+            "ubigeo_code": "151602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "PLAZA": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "GUARENAS",
+            "ubigeo_code": "151701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SIMÓN BOÍIVAR": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "SAN FRANCISCO DE YARE",
+            "ubigeo_code": "151801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN ANTONIO DE YARE",
+            "ubigeo_code": "151802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "PETARE",
+            "ubigeo_code": "151901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAUCAGÜITA",
+            "ubigeo_code": "151902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "FILA DE MARICHE",
+            "ubigeo_code": "151903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA DOLORITA",
+            "ubigeo_code": "151904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "LEONCIO MARTÍNEZ",
+            "ubigeo_code": "151905",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "URDANETA": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "CÚA",
+            "ubigeo_code": "152001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "NUEVA CÚA",
+            "ubigeo_code": "152002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ZAMORA": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "GUATIRE",
+            "ubigeo_code": "152101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOLÍVAR",
+            "ubigeo_code": "152102",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "MONAGAS": {
+    "cod_entidad": "16",
+    "municipios": {
+      "ACOSTA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ACOSTA",
+            "ubigeo_code": "160101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "160102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "AGUASAY": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL AGUASAY",
+            "ubigeo_code": "160201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CARIPITO",
+            "ubigeo_code": "160301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CARIPE": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CARIPE",
+            "ubigeo_code": "160401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL GUÁCHARO",
+            "ubigeo_code": "160402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA GUANOTA",
+            "ubigeo_code": "160403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SABANA DE PIEDRA",
+            "ubigeo_code": "160404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN AGUSTÍN",
+            "ubigeo_code": "160405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "TERESÉN",
+            "ubigeo_code": "160406",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "CEDEÑO": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CEDEÑO",
+            "ubigeo_code": "160501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AREO",
+            "ubigeo_code": "160502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN FÉLIX",
+            "ubigeo_code": "160503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "VIENTO FRESCO",
+            "ubigeo_code": "160504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "EZEQUIEL ZAMORA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EZEQUIEL ZAMORA",
+            "ubigeo_code": "160601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL TEJERO",
+            "ubigeo_code": "160602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LIBERTADOR",
+            "ubigeo_code": "160701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHAGUARAMAS",
+            "ubigeo_code": "160702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS ALHUACAS",
+            "ubigeo_code": "160703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "TABASCA",
+            "ubigeo_code": "160704",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "MATURIN": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MATURIN",
+            "ubigeo_code": "160801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTO DE LOS GODOS",
+            "ubigeo_code": "160802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BOQUERÓN",
+            "ubigeo_code": "160803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LAS COCUIZAS",
+            "ubigeo_code": "160804",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN SIMÓN",
+            "ubigeo_code": "160805",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SANTA CRUZ",
+            "ubigeo_code": "160806",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "EL COROZO",
+            "ubigeo_code": "160807",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "EL FURRIAL",
+            "ubigeo_code": "160808",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "JUSEPIN",
+            "ubigeo_code": "160809",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "LA PICA",
+            "ubigeo_code": "160810",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "SAN VICENTE",
+            "ubigeo_code": "160811",
+            "cod_parroquia": "11"
+          }
+        ]
+      },
+      "PIAR": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PIAR",
+            "ubigeo_code": "160901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "APARICIO",
+            "ubigeo_code": "160902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CHAGUARAMAL",
+            "ubigeo_code": "160903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL PINTO",
+            "ubigeo_code": "160904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "GUANAGUANA",
+            "ubigeo_code": "160905",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "LA TOSCANA",
+            "ubigeo_code": "160906",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "TAGUAYA",
+            "ubigeo_code": "160907",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "PUNCERES": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PUNCERES",
+            "ubigeo_code": "161001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CACHIPO",
+            "ubigeo_code": "161002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SANTA BÁRBARA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SANTA BÁRBARA",
+            "ubigeo_code": "161101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SOTILLO": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SOTILLO",
+            "ubigeo_code": "161201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LOS BARRANCOS DE FAJARDO",
+            "ubigeo_code": "161202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "URACOA": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL URACOA",
+            "ubigeo_code": "161301",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  },
+  "BOLIVARIANO DE NUEVA ESPARTA": {
+    "cod_entidad": "17",
+    "municipios": {
+      "BOLIVARIANO TENIENTE CORONEL FRANCISCO ANTOLÍN DEL CAMPO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA PLAZA DE PARAGUACHÍ",
+            "ubigeo_code": "170101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLIVARIANO GENERAL EN JEFE JUAN BAUTISTA ARISMENDI": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA ASUNCÓN",
+            "ubigeo_code": "170201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLIVARIANO CAPITÁN DE NAVÍO ANTONIO DÍAZ": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CAPITÁN DE NAVÍO ANTONIO DÍAZ",
+            "ubigeo_code": "170301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ZABALA",
+            "ubigeo_code": "170302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO ALMIRANTE JOSÉ MARÍA GARCÍA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ALMIRANTE JOSÉ MARÍA GARCÍA",
+            "ubigeo_code": "170401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "FRANCISCO FAJARDO",
+            "ubigeo_code": "170402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO GENERAL EN JEFE FRANCISCO ESTEBAN GÓMEZ": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GENERAL EN JEFE FRANCISCO ESTEBAN GÓMEZ",
+            "ubigeo_code": "170501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOLÍVAR",
+            "ubigeo_code": "170502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GUEVARA",
+            "ubigeo_code": "170503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MATASIETE",
+            "ubigeo_code": "170504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SUCRE",
+            "ubigeo_code": "170505",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "BOLIVARIANO MANUEL PLACIDO MANEIRO": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MANUEL PLACIDO MANEIRO",
+            "ubigeo_code": "170601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AGUIRRE",
+            "ubigeo_code": "170602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO TENIENTE CORONEL GASPAR MARCANO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TENIENTE CORONEL GASPAR MARCANO",
+            "ubigeo_code": "170701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ADRIÁN",
+            "ubigeo_code": "170702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO GENERAL EN JEFE SANTIAGO MARIÑO": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PORLAMAR",
+            "ubigeo_code": "170801",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLIVARIANO PENÍNSULA DE MACANAO": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PENÍNSULA DE MACANAO",
+            "ubigeo_code": "170901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "170902",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO CORONEL JOSÉ CELEDONIO TUBORES": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CORONEL JOSÉ CELEDONIO TUBORES",
+            "ubigeo_code": "171001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LOS BARALES",
+            "ubigeo_code": "171002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BOLIVARIANO TENIENTE CORONEL FELIPE VILLALBA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TENIENTE CORONEL FELIPE VILLALBA",
+            "ubigeo_code": "171101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "VICENTE FUENTES",
+            "ubigeo_code": "171102",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "PORTUGUESA": {
+    "cod_entidad": "18",
+    "municipios": {
+      "AGUA BLANCA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL AGUA BLANCA",
+            "ubigeo_code": "180101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "ARAURE": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ARAURE",
+            "ubigeo_code": "180201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RÍO ACARIGUA",
+            "ubigeo_code": "180202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ESTELLER": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ESTELLER",
+            "ubigeo_code": "180301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "UVERAL",
+            "ubigeo_code": "180302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "GUANARE": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GUANARE",
+            "ubigeo_code": "180401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CÓRDOBA",
+            "ubigeo_code": "180402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN JOSÉ DE LA MONTAÑA",
+            "ubigeo_code": "180403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN JUAN DE GUANAGUANARE",
+            "ubigeo_code": "180404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "VIRGEN DE LA COROMOTO",
+            "ubigeo_code": "180405",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "GUANARITO": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GUANARITO",
+            "ubigeo_code": "180501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "TRINIDAD DE LA CAPILLA",
+            "ubigeo_code": "180502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "DIVINA PASTORA",
+            "ubigeo_code": "180503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "MONSEÑOR JOSÉ VICENTE DE UNDA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MONSEÑOR JOSÉ VICENTE DE UNDA",
+            "ubigeo_code": "180601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PEÑA BLANCA",
+            "ubigeo_code": "180602",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "OSPINO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL OSPINO",
+            "ubigeo_code": "180701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "APARICIÓN",
+            "ubigeo_code": "180702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA ESTACIÓN",
+            "ubigeo_code": "180703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PÁEZ": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PÁEZ",
+            "ubigeo_code": "180801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PAYARA",
+            "ubigeo_code": "180802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PIMPINELA",
+            "ubigeo_code": "180803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "RAMÓN PERAZA",
+            "ubigeo_code": "180804",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "PAPELÓN": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PAPELÓN",
+            "ubigeo_code": "180901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAÑO DELGADITO",
+            "ubigeo_code": "180902",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN GENARO DE BOCONOITO": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN GENARO DE BOCONOITO",
+            "ubigeo_code": "181001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTOLÍN TOVAR",
+            "ubigeo_code": "181002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN RAFAEL DE ONOTO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN RAFAEL DE ONOTO",
+            "ubigeo_code": "181101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SANTA FÉ",
+            "ubigeo_code": "181102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "THERMO MORLES",
+            "ubigeo_code": "181103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SANTA ROSALÍA": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SANTA ROSALÍA",
+            "ubigeo_code": "181201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "FLORIDA",
+            "ubigeo_code": "181202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SUCRE",
+            "ubigeo_code": "181301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CONCEPCIÓN",
+            "ubigeo_code": "181302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN RAFAEL DE PALO ALZADO",
+            "ubigeo_code": "181303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "UVENCIO ANTONIO VELÁSQUEZ",
+            "ubigeo_code": "181304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN JOSÉ DE SAGUAZ",
+            "ubigeo_code": "181305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "VILLA ROSA",
+            "ubigeo_code": "181306",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "TURÉN": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TURÉN",
+            "ubigeo_code": "181401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CANELONES",
+            "ubigeo_code": "181402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA CRUZ",
+            "ubigeo_code": "181403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN ISIDRO LABRADOR",
+            "ubigeo_code": "181404",
+            "cod_parroquia": "04"
+          }
+        ]
+      }
+    }
+  },
+  "SUCRE": {
+    "cod_entidad": "19",
+    "municipios": {
+      "ANDRÉS ELOY BLANCO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "MARIÑO",
+            "ubigeo_code": "190101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RÓMULO GALLEGOS",
+            "ubigeo_code": "190102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ANDRÉS MATA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "SAN JOSÉ DE AEROCUAR",
+            "ubigeo_code": "190201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "TAVERA ACOSTA",
+            "ubigeo_code": "190202",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "ARISMENDI": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "RÍO CARIBE",
+            "ubigeo_code": "190301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTONIO JOSÉ DE SUCRE",
+            "ubigeo_code": "190302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL MORRO DE PUERTO SANTO",
+            "ubigeo_code": "190303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PUERTO SANTO",
+            "ubigeo_code": "190304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN JUAN DE LAS GALDONAS",
+            "ubigeo_code": "190305",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "BENÍTEZ": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "EL PILAR",
+            "ubigeo_code": "190401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL RINCÓN",
+            "ubigeo_code": "190402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GENERAL FRANCISCO ANTONIO VÁSQUEZ",
+            "ubigeo_code": "190403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUARAÚNOS",
+            "ubigeo_code": "190404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "TUNAPUICITO",
+            "ubigeo_code": "190405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "UNIÓN",
+            "ubigeo_code": "190406",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "BERMÚDEZ": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "BOLÍVAR",
+            "ubigeo_code": "190501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MACARAPANA",
+            "ubigeo_code": "190502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA CATALINA",
+            "ubigeo_code": "190503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA ROSA",
+            "ubigeo_code": "190504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTA TERESA",
+            "ubigeo_code": "190505",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MARIGÜIITAR",
+            "ubigeo_code": "190601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CAJIGAL": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "YAGUARAPARO",
+            "ubigeo_code": "190701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL PAUJIL",
+            "ubigeo_code": "190702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LIBERTAD",
+            "ubigeo_code": "190703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CRUZ SALMERÓN ACOSTA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "ARAYA",
+            "ubigeo_code": "190801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHACOPATA",
+            "ubigeo_code": "190802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MANICUARE",
+            "ubigeo_code": "190803",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "TUNAPUY",
+            "ubigeo_code": "190901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAMPO ELÍAS",
+            "ubigeo_code": "190902",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "MARIÑO": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "IRAPA",
+            "ubigeo_code": "191001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAMPO CLARO",
+            "ubigeo_code": "191002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MARABAL",
+            "ubigeo_code": "191003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN ANTONIO DE IRAPA",
+            "ubigeo_code": "191004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SORO",
+            "ubigeo_code": "191005",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "MEJÍA": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN ANTONIO DEL GOLFO",
+            "ubigeo_code": "191101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "MONTES": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CUMANACOA",
+            "ubigeo_code": "191201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARENAS",
+            "ubigeo_code": "191202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ARICAGUA",
+            "ubigeo_code": "191203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "COCOLLAR",
+            "ubigeo_code": "191204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN FERNANDO",
+            "ubigeo_code": "191205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "SAN LORENZO",
+            "ubigeo_code": "191206",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "RIBERO": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CARIACO",
+            "ubigeo_code": "191301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CATUARO",
+            "ubigeo_code": "191302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "RENDÓN",
+            "ubigeo_code": "191303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA CRUZ",
+            "ubigeo_code": "191304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTA MARIA",
+            "ubigeo_code": "191305",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "ALTAGRACIA",
+            "ubigeo_code": "191401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AYACUCHO",
+            "ubigeo_code": "191402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA INÉS",
+            "ubigeo_code": "191403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "VALENTÍN VALIENTE",
+            "ubigeo_code": "191404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN JUAN",
+            "ubigeo_code": "191405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "RAÚL LEONI",
+            "ubigeo_code": "191406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "GRAN MARISCAL",
+            "ubigeo_code": "191407",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "VALDEZ": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "GÜIIRIA",
+            "ubigeo_code": "191501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BIDEAU",
+            "ubigeo_code": "191502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CRISTÓBAL COLÓN",
+            "ubigeo_code": "191503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PUNTA DE PIEDRAS",
+            "ubigeo_code": "191504",
+            "cod_parroquia": "04"
+          }
+        ]
+      }
+    }
+  },
+  "TACHIRA": {
+    "cod_entidad": "20",
+    "municipios": {
+      "ANDRÉS BELLO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL CORDERO",
+            "ubigeo_code": "200101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "ANTONIO RÓMULO COSTA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LAS MESAS",
+            "ubigeo_code": "200201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "AYACUCHO": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL COLÓN",
+            "ubigeo_code": "200301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RIVAS BERTI",
+            "ubigeo_code": "200302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN PEDRO DEL RÍO",
+            "ubigeo_code": "200303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN ANTONIO DEL TÁCHIRA",
+            "ubigeo_code": "200401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PALOTAL",
+            "ubigeo_code": "200402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JUAN VICENTE GÓMEZ",
+            "ubigeo_code": "200403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "ISAÍAS MEDINA ANGARITA",
+            "ubigeo_code": "200404",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "CÁRDENAS": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL TÁRIBA",
+            "ubigeo_code": "200501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AMENODORO RANGEL LAMÚS",
+            "ubigeo_code": "200502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA FLORIDA",
+            "ubigeo_code": "200503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CORDOBA": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SANTA ANA",
+            "ubigeo_code": "200601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "FERNÁNDEZ FEO": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN RAFAEL DEL PIÑAL",
+            "ubigeo_code": "200701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALBERTO ADRIANI",
+            "ubigeo_code": "200702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTO DOMINGO",
+            "ubigeo_code": "200703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "FRANCISCO DE MIRANDA": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN JOSÉ DE BOLÍVAR",
+            "ubigeo_code": "200801",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "GARCIA DE HEVIA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA FRÍA",
+            "ubigeo_code": "200901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOCA DE GRITA",
+            "ubigeo_code": "200902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JOSÉ ANTONIO PÁEZ",
+            "ubigeo_code": "200903",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "GUASIMOS": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PALMIRA",
+            "ubigeo_code": "201001",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CAPACHO NUEVO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL INDEPENDENCIA",
+            "ubigeo_code": "201101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JUAN GERMÁN ROSCIO",
+            "ubigeo_code": "201102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ROMÁN CÁRDENAS",
+            "ubigeo_code": "201103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "JÁUREGUI": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA GRITA",
+            "ubigeo_code": "201201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EMILIO CONSTANTINO GUERRERO",
+            "ubigeo_code": "201202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MONSEÑOR MIGUEL ANTONIO SALAS",
+            "ubigeo_code": "201203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "JOSÉ MARÍA VARGAS": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL EL COBRE",
+            "ubigeo_code": "201301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "JUNÍN": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL RUBIO",
+            "ubigeo_code": "201401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA PETRÓLEA",
+            "ubigeo_code": "201402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "QUINIMARÍ",
+            "ubigeo_code": "201403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "BRAMÓN",
+            "ubigeo_code": "201404",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "CAPACHO VIEJO": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LIBERTAD",
+            "ubigeo_code": "201501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CIPRIANO CASTRO",
+            "ubigeo_code": "201502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MANUEL FELIPE RUGELES",
+            "ubigeo_code": "201503",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "LIBERTADOR": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL ABEJALES",
+            "ubigeo_code": "201601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "DON EMETERIO OCHOA",
+            "ubigeo_code": "201602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "DORADAS",
+            "ubigeo_code": "201603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN JOAQUÍN DE NAVAY",
+            "ubigeo_code": "201604",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "LOBATERA": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LOBATERA",
+            "ubigeo_code": "201701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CONSTITUCIÓN",
+            "ubigeo_code": "201702",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "MICHELENA": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL MICHELENA",
+            "ubigeo_code": "201801",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "PANAMERICANO": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL COLONCITO",
+            "ubigeo_code": "201901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA PALMITA",
+            "ubigeo_code": "201902",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "PEDRO MARÍA UREÑA": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL UREÑA",
+            "ubigeo_code": "202001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "NUEVA ARCADIA",
+            "ubigeo_code": "202002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "RAFAEL URDANETA": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL DELICIAS",
+            "ubigeo_code": "202101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SAMUEL DARÍO MALDONADO": {
+        "cod_municipio": "22",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL LA TENDIDA",
+            "ubigeo_code": "202201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOCONO",
+            "ubigeo_code": "202202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "HERNÁNDEZ",
+            "ubigeo_code": "202203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SAN CRISTÓBAL": {
+        "cod_municipio": "23",
+        "parroquias": [
+          {
+            "nombre": "LA CONCORDIA",
+            "ubigeo_code": "202301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "PEDRO MARIA MORANTES",
+            "ubigeo_code": "202302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN JUAN BAUTISTA",
+            "ubigeo_code": "202303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN SEBÁSTIAN",
+            "ubigeo_code": "202304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "DR. FRANCISCO ROMERO LOBO",
+            "ubigeo_code": "202305",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "SEBORUCO": {
+        "cod_municipio": "24",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SEBORUCO",
+            "ubigeo_code": "202401",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SIMÓN RODRÍGUEZ": {
+        "cod_municipio": "25",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN SIMÓN",
+            "ubigeo_code": "202501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "26",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL QUENIQUEA",
+            "ubigeo_code": "202601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ELEAZAR LÓPEZ CONTRERAS",
+            "ubigeo_code": "202602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN PABLO",
+            "ubigeo_code": "202603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "TORBES": {
+        "cod_municipio": "27",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN JOSECITO",
+            "ubigeo_code": "202701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "URIBANTE": {
+        "cod_municipio": "28",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PREGONERO",
+            "ubigeo_code": "202801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CÁRDENAS",
+            "ubigeo_code": "202802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JUAN PABLO PEÑALOZA",
+            "ubigeo_code": "202803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "POTOSÍ",
+            "ubigeo_code": "202804",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SAN JUDAS TADEO": {
+        "cod_municipio": "29",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL UMUQUENA",
+            "ubigeo_code": "202901",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  },
+  "TRUJILLO": {
+    "cod_entidad": "21",
+    "municipios": {
+      "ANDRÉS BELLO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "SANTA ISABEL",
+            "ubigeo_code": "210101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARAGUANEY",
+            "ubigeo_code": "210102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "EL JAGÜITO",
+            "ubigeo_code": "210103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA ESPERANZA",
+            "ubigeo_code": "210104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "BOCONÓ": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "BOCONÓ",
+            "ubigeo_code": "210201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL CARMEN",
+            "ubigeo_code": "210202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MOSQUEY",
+            "ubigeo_code": "210203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "AYACUCHO",
+            "ubigeo_code": "210204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "BURBUSAY",
+            "ubigeo_code": "210205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "GENERAL RIVAS",
+            "ubigeo_code": "210206",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "GUARAMACAL",
+            "ubigeo_code": "210207",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "LA VEGA DE GUARAMACAL",
+            "ubigeo_code": "210208",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "MONSEÑOR JÁUREGUI",
+            "ubigeo_code": "210209",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "RAFAEL RANGEL",
+            "ubigeo_code": "210210",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "SAN MIGUEL",
+            "ubigeo_code": "210211",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "SAN JOSÉ",
+            "ubigeo_code": "210212",
+            "cod_parroquia": "12"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "SABANA GRANDE",
+            "ubigeo_code": "210301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHEREGÜÉ",
+            "ubigeo_code": "210302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GRANADOS",
+            "ubigeo_code": "210303",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "CANDELARIA": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CHEJENDÉ",
+            "ubigeo_code": "210401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARNOLDO GABALDÓN",
+            "ubigeo_code": "210402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "BOLIVIA",
+            "ubigeo_code": "210403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CARRILLO",
+            "ubigeo_code": "210404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "CEGARRA",
+            "ubigeo_code": "210405",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MANUEL SALVADOR ULLOA",
+            "ubigeo_code": "210406",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SAN JOSÉ",
+            "ubigeo_code": "210407",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "CARACHE": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CARACHE",
+            "ubigeo_code": "210501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CUICAS",
+            "ubigeo_code": "210502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA CONCEPCIÓN",
+            "ubigeo_code": "210503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PANAMERICANA",
+            "ubigeo_code": "210504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTA CRUZ",
+            "ubigeo_code": "210505",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "ESCUQUE": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "ESCUQUE",
+            "ubigeo_code": "210601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA UNIÓN",
+            "ubigeo_code": "210602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SABANA LIBRE",
+            "ubigeo_code": "210603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA RITA",
+            "ubigeo_code": "210604",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "JOSÉ FELIPE MÁRQUEZ CAÑIZALES": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "EL SOCORRO",
+            "ubigeo_code": "210701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTONIO JOSÉ DE SUCRE",
+            "ubigeo_code": "210702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LOS CAPRICHOS",
+            "ubigeo_code": "210703",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "VICENTE CAMPO ELÍAS": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAMPO ELÍAS",
+            "ubigeo_code": "210801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ARNOLDO GABALDÓN",
+            "ubigeo_code": "210802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LA CEIBA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "SANTA APOLONIA",
+            "ubigeo_code": "210901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL PROGRESO",
+            "ubigeo_code": "210902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA CEIBA",
+            "ubigeo_code": "210903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "TRES DE FEBRERO",
+            "ubigeo_code": "210904",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "MIRANDA": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "EL DIVIDIVE",
+            "ubigeo_code": "211001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "AGUA SANTA",
+            "ubigeo_code": "211002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "AGUA CALIENTE",
+            "ubigeo_code": "211003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL CENIZO",
+            "ubigeo_code": "211004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "VALERITA",
+            "ubigeo_code": "211005",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "MONTE CARMELO": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "MONTE CARMELO",
+            "ubigeo_code": "211101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BUENA VISTA",
+            "ubigeo_code": "211102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA MARÍA DEL HORCÓN",
+            "ubigeo_code": "211103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "MOTATÁN": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "MOTATÁN",
+            "ubigeo_code": "211201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL BAÑO",
+            "ubigeo_code": "211202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JALISCO",
+            "ubigeo_code": "211203",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PAMPÁN": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "PAMPÁN",
+            "ubigeo_code": "211301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "FLOR DE PATRIA",
+            "ubigeo_code": "211302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LA PAZ",
+            "ubigeo_code": "211303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA ANA",
+            "ubigeo_code": "211304",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "PAMPANITO": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "PAMPANITO",
+            "ubigeo_code": "211401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA CONCEPCIÓN",
+            "ubigeo_code": "211402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "PAMPANITO II",
+            "ubigeo_code": "211403",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "RAFAEL RANGEL": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "BETIJOQUE",
+            "ubigeo_code": "211501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA PUEBLITA",
+            "ubigeo_code": "211502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LOS CEDROS",
+            "ubigeo_code": "211503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "JOSÉ GREGORIO HERNÁNDEZ",
+            "ubigeo_code": "211504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SAN RAFAEL DE CARVAJAL": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "CARVAJAL",
+            "ubigeo_code": "211601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANTONIO NICOLÁS BRICEÑO",
+            "ubigeo_code": "211602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CAMPO ALEGRE",
+            "ubigeo_code": "211603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "JOSÉ LEONARDO SUÁREZ",
+            "ubigeo_code": "211604",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "SABANA DE MENDOZA",
+            "ubigeo_code": "211701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL PARAÍSO",
+            "ubigeo_code": "211702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JUNÍN",
+            "ubigeo_code": "211703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "VALMORE RODRÍGUEZ",
+            "ubigeo_code": "211704",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "TRUJILLO": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "ANDRÉS LINARES",
+            "ubigeo_code": "211801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CHIQUINQUIRÁ",
+            "ubigeo_code": "211802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CRISTÓBAL MENDOZA",
+            "ubigeo_code": "211803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CRUZ CARRILLO",
+            "ubigeo_code": "211804",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MATRIZ",
+            "ubigeo_code": "211805",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MONSEÑOR CARRILLO",
+            "ubigeo_code": "211806",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "TRES ESQUINAS",
+            "ubigeo_code": "211807",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "URDANETA": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "LA QUEBRADA",
+            "ubigeo_code": "211901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CABIMBÚ",
+            "ubigeo_code": "211902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JAJÓ",
+            "ubigeo_code": "211903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA MESA",
+            "ubigeo_code": "211904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SANTIAGO",
+            "ubigeo_code": "211905",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "TUÑAME",
+            "ubigeo_code": "211906",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "VALERA": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "JUAN IGNACIO MONTILLA",
+            "ubigeo_code": "212001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BEATRIZ",
+            "ubigeo_code": "212002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MERCEDES DÍAZ",
+            "ubigeo_code": "212003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN LUIS",
+            "ubigeo_code": "212004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "LA PUERTA",
+            "ubigeo_code": "212005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MENDOZA",
+            "ubigeo_code": "212006",
+            "cod_parroquia": "06"
+          }
+        ]
+      }
+    }
+  },
+  "YARACUY": {
+    "cod_entidad": "22",
+    "municipios": {
+      "ARÍSTIDES BASTIDAS": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN PABLO",
+            "ubigeo_code": "220101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BOLÍVAR": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL AROA",
+            "ubigeo_code": "220201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "BRUZUAL": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL BRUZUAL",
+            "ubigeo_code": "220301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CAMPO ELÍAS",
+            "ubigeo_code": "220302",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "COCOROTE": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL COCOROTE",
+            "ubigeo_code": "220401",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "INDEPENDENCIA": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL INDEPENDENCIA",
+            "ubigeo_code": "220501",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "JOSÉ ANTONIO PÁEZ": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SABANA DE PARRA",
+            "ubigeo_code": "220601",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "LA TRINIDAD": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL BORAURE",
+            "ubigeo_code": "220701",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "MANUEL MONGE": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL YUMARE",
+            "ubigeo_code": "220801",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "NIRGUA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL NIRGUA",
+            "ubigeo_code": "220901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SALOM",
+            "ubigeo_code": "220902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "TEMERLA",
+            "ubigeo_code": "220903",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "PEÑA": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL PEÑA",
+            "ubigeo_code": "221001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "SAN ANDRÉS",
+            "ubigeo_code": "221002",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "SAN FELIPE": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL SAN FELIPE",
+            "ubigeo_code": "221101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALBARICO",
+            "ubigeo_code": "221102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SAN JAVIER",
+            "ubigeo_code": "221103",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL GUAMA",
+            "ubigeo_code": "221201",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "URACHICHE": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL URACHICHE",
+            "ubigeo_code": "221301",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "CORONEL JOSÉ JOAQUÍN VEROES": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "CAPITAL VEROES",
+            "ubigeo_code": "221401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL GUAYABO",
+            "ubigeo_code": "221402",
+            "cod_parroquia": "02"
+          }
+        ]
+      }
+    }
+  },
+  "ZULIA": {
+    "cod_entidad": "23",
+    "municipios": {
+      "ALMIRANTE PADILLA": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "ISLA DE TOAS",
+            "ubigeo_code": "230101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MONAGAS",
+            "ubigeo_code": "230102",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "BARALT": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "SAN TIMOTEO",
+            "ubigeo_code": "230201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "GENERAL URDANETA",
+            "ubigeo_code": "230202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LIBERTADOR",
+            "ubigeo_code": "230203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "MANUEL GUANIPA MATOS",
+            "ubigeo_code": "230204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MARCELINO BRICEÑO",
+            "ubigeo_code": "230205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "PUEBLO NUEVO",
+            "ubigeo_code": "230206",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "CABIMAS": {
+        "cod_municipio": "03",
+        "parroquias": [
+          {
+            "nombre": "AMBROSIO",
+            "ubigeo_code": "230301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CARMEN HERRERA",
+            "ubigeo_code": "230302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GERMÁN RÍOS LINARES",
+            "ubigeo_code": "230303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LA ROSA",
+            "ubigeo_code": "230304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "JORGE HERNÁNDEZ",
+            "ubigeo_code": "230305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "RÓMULO BETANCOURT",
+            "ubigeo_code": "230306",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "SAN BENITO",
+            "ubigeo_code": "230307",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "ARÍSTIDES CALVANI",
+            "ubigeo_code": "230308",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "PUNTA GORDA",
+            "ubigeo_code": "230309",
+            "cod_parroquia": "09"
+          }
+        ]
+      },
+      "CATATUMBO": {
+        "cod_municipio": "04",
+        "parroquias": [
+          {
+            "nombre": "ENCONTRADOS",
+            "ubigeo_code": "230401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "UDON PEREZ",
+            "ubigeo_code": "230402",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "COLÓN": {
+        "cod_municipio": "05",
+        "parroquias": [
+          {
+            "nombre": "SAN CARLOS DEL ZULIA",
+            "ubigeo_code": "230501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "MORALITO",
+            "ubigeo_code": "230502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SANTA BÁARBARA",
+            "ubigeo_code": "230503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SANTA CRUZ DEL ZULIA",
+            "ubigeo_code": "230504",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "URRIBARRI",
+            "ubigeo_code": "230505",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "FRANCISCO JAVIER PULGAR": {
+        "cod_municipio": "06",
+        "parroquias": [
+          {
+            "nombre": "SIMÓN RODRÍGUEZ",
+            "ubigeo_code": "230601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CARLOS QUEVEDO",
+            "ubigeo_code": "230602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "FRANCISCO JAVIER PULGAR",
+            "ubigeo_code": "230603",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "AGUSTÍN CODAZZI",
+            "ubigeo_code": "230604",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "JESÚS ENRIQUE LOSSADA": {
+        "cod_municipio": "07",
+        "parroquias": [
+          {
+            "nombre": "LA CONCEPCIÓN",
+            "ubigeo_code": "230701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "JOSÉ RAMÓN YEPES",
+            "ubigeo_code": "230702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "MARIANO PARRA LEÓN",
+            "ubigeo_code": "230703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN JOSÉ",
+            "ubigeo_code": "230704",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "JESÍS MARÍA SEMPRÚN": {
+        "cod_municipio": "08",
+        "parroquias": [
+          {
+            "nombre": "JESÍS MARÍA SEMPRÚN",
+            "ubigeo_code": "230801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BARÍ",
+            "ubigeo_code": "230802",
+            "cod_parroquia": "02"
+          }
+        ]
+      },
+      "LA CAÑADA DE URDANETA": {
+        "cod_municipio": "09",
+        "parroquias": [
+          {
+            "nombre": "CONCEPCIÓN",
+            "ubigeo_code": "230901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANDRÉS BELLO",
+            "ubigeo_code": "230902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CHIQUINQUIRÁ",
+            "ubigeo_code": "230903",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "EL CARMELO",
+            "ubigeo_code": "230904",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "POTRERITOS",
+            "ubigeo_code": "230905",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "LAGUNILLAS": {
+        "cod_municipio": "10",
+        "parroquias": [
+          {
+            "nombre": "ALONSO DE OJEDA",
+            "ubigeo_code": "231001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LIBERTAD",
+            "ubigeo_code": "231002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CAMPO LARA",
+            "ubigeo_code": "231003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "ELEAZAR LÓPEZ CONTRERAS",
+            "ubigeo_code": "231004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "VENEZUELA",
+            "ubigeo_code": "231005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "EL DANTO",
+            "ubigeo_code": "231006",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "MACHIQUES DE PERIJÁ": {
+        "cod_municipio": "11",
+        "parroquias": [
+          {
+            "nombre": "LIBERTAD",
+            "ubigeo_code": "231101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BARTOLOMÉ DE LAS CASAS",
+            "ubigeo_code": "231102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "RÍO NEGRO",
+            "ubigeo_code": "231103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN JOSE DE PERIJÁ",
+            "ubigeo_code": "231104",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "MARA": {
+        "cod_municipio": "12",
+        "parroquias": [
+          {
+            "nombre": "SAN RAFAEL",
+            "ubigeo_code": "231201",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "LA SIERRITA",
+            "ubigeo_code": "231202",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "LAS PARCELAS",
+            "ubigeo_code": "231203",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "LUIS DE VICENTE",
+            "ubigeo_code": "231204",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MONSEÑOR MARCOS SERGIO GODOY",
+            "ubigeo_code": "231205",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "RICAURTE",
+            "ubigeo_code": "231206",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "TAMARE",
+            "ubigeo_code": "231207",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "MARACAIBO": {
+        "cod_municipio": "13",
+        "parroquias": [
+          {
+            "nombre": "ANTONIO BORJAS ROMERO",
+            "ubigeo_code": "231301",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "BOLÍVAR",
+            "ubigeo_code": "231302",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CACIQUE MARA",
+            "ubigeo_code": "231303",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CARACCIOLO PARRA PÉREZ",
+            "ubigeo_code": "231304",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "CECILIO ACOSTA",
+            "ubigeo_code": "231305",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "CRISTO DE ARANZA",
+            "ubigeo_code": "231306",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "COQUIVACOA",
+            "ubigeo_code": "231307",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "CHIQUINQUIRÁ",
+            "ubigeo_code": "231308",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "FRANCISCO EUGENIO BUSTAMANTE",
+            "ubigeo_code": "231309",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "ILDEFONSO VASQUEZ",
+            "ubigeo_code": "231310",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "JUANA DE AVILA",
+            "ubigeo_code": "231311",
+            "cod_parroquia": "11"
+          },
+          {
+            "nombre": "LUIS HURTADO HIGUERA",
+            "ubigeo_code": "231312",
+            "cod_parroquia": "12"
+          },
+          {
+            "nombre": "MANUEL DAGNINO",
+            "ubigeo_code": "231313",
+            "cod_parroquia": "13"
+          },
+          {
+            "nombre": "OLEGARIO VILLALOBOS",
+            "ubigeo_code": "231314",
+            "cod_parroquia": "14"
+          },
+          {
+            "nombre": "RAÚL LEONI",
+            "ubigeo_code": "231315",
+            "cod_parroquia": "15"
+          },
+          {
+            "nombre": "SANTA LUCÍA",
+            "ubigeo_code": "231316",
+            "cod_parroquia": "16"
+          },
+          {
+            "nombre": "VENANCIO PULGAR",
+            "ubigeo_code": "231317",
+            "cod_parroquia": "17"
+          },
+          {
+            "nombre": "SAN ISIDRO",
+            "ubigeo_code": "231318",
+            "cod_parroquia": "18"
+          }
+        ]
+      },
+      "MIRANDA": {
+        "cod_municipio": "14",
+        "parroquias": [
+          {
+            "nombre": "ALTAGRACIA",
+            "ubigeo_code": "231401",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ANA MARÍA CAMPOS",
+            "ubigeo_code": "231402",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "FARÍA",
+            "ubigeo_code": "231403",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "SAN ANTONIO",
+            "ubigeo_code": "231404",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "SAN JOSE",
+            "ubigeo_code": "231405",
+            "cod_parroquia": "05"
+          }
+        ]
+      },
+      "INDÍGENA BOLIVARIANO GUAJIRA": {
+        "cod_municipio": "15",
+        "parroquias": [
+          {
+            "nombre": "SINAMAICA",
+            "ubigeo_code": "231501",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "ALTA GUAJIRA",
+            "ubigeo_code": "231502",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "ELÍAS SANCHEZ RUBIO",
+            "ubigeo_code": "231503",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "GUAJIRA",
+            "ubigeo_code": "231504",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "ROSARIO DE PERIJÁ": {
+        "cod_municipio": "16",
+        "parroquias": [
+          {
+            "nombre": "EL ROSARIO",
+            "ubigeo_code": "231601",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "DONALDO GARCÍA",
+            "ubigeo_code": "231602",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "SIXTO ZAMBRANO",
+            "ubigeo_code": "231603",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SAN FRANCISCO": {
+        "cod_municipio": "17",
+        "parroquias": [
+          {
+            "nombre": "SAN FRANCISCO",
+            "ubigeo_code": "231701",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL BAJO",
+            "ubigeo_code": "231702",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "DOMITILA FLORES",
+            "ubigeo_code": "231703",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "FRANCISCO OCHOA",
+            "ubigeo_code": "231704",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "LOS CORTIJOS",
+            "ubigeo_code": "231705",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "MARCIAL HERNÁNDEZ",
+            "ubigeo_code": "231706",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "JOSÉ DOMINGO RUS",
+            "ubigeo_code": "231707",
+            "cod_parroquia": "07"
+          }
+        ]
+      },
+      "SANTA RITA": {
+        "cod_municipio": "18",
+        "parroquias": [
+          {
+            "nombre": "SANTA RITA",
+            "ubigeo_code": "231801",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL MENE",
+            "ubigeo_code": "231802",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "JOSÉ CENOVIO URRIBARRI",
+            "ubigeo_code": "231803",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "PEDRO LUCAS URRIBARRI",
+            "ubigeo_code": "231804",
+            "cod_parroquia": "04"
+          }
+        ]
+      },
+      "SIMÓN BOLÍVAR": {
+        "cod_municipio": "19",
+        "parroquias": [
+          {
+            "nombre": "MANUEL MANRIQUE",
+            "ubigeo_code": "231901",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RAFAEL MARÍA BARALT",
+            "ubigeo_code": "231902",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "RAFAEL URDANETA",
+            "ubigeo_code": "231903",
+            "cod_parroquia": "03"
+          }
+        ]
+      },
+      "SUCRE": {
+        "cod_municipio": "20",
+        "parroquias": [
+          {
+            "nombre": "BOBURES",
+            "ubigeo_code": "232001",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "EL BATEY",
+            "ubigeo_code": "232002",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "GIBRALTAR",
+            "ubigeo_code": "232003",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "HERAS",
+            "ubigeo_code": "232004",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "MONSEÑOR ARTURO CELESTINO ÁLVAREZ",
+            "ubigeo_code": "232005",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "RÓMULO GALLEGOS",
+            "ubigeo_code": "232006",
+            "cod_parroquia": "06"
+          }
+        ]
+      },
+      "VALMORE RODRÍGUEZ": {
+        "cod_municipio": "21",
+        "parroquias": [
+          {
+            "nombre": "LA VICTORIA",
+            "ubigeo_code": "232101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "RAFAEL URDANETA",
+            "ubigeo_code": "232102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "RAÚL CUENCA",
+            "ubigeo_code": "232103",
+            "cod_parroquia": "03"
+          }
+        ]
+      }
+    }
+  },
+  "LA GUAIRA": {
+    "cod_entidad": "24",
+    "municipios": {
+      "VARGAS": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "CARABALLEDA",
+            "ubigeo_code": "240101",
+            "cod_parroquia": "01"
+          },
+          {
+            "nombre": "CARAYACA",
+            "ubigeo_code": "240102",
+            "cod_parroquia": "02"
+          },
+          {
+            "nombre": "CARUAO",
+            "ubigeo_code": "240103",
+            "cod_parroquia": "03"
+          },
+          {
+            "nombre": "CATIA LA MAR",
+            "ubigeo_code": "240104",
+            "cod_parroquia": "04"
+          },
+          {
+            "nombre": "EL JUNKO",
+            "ubigeo_code": "240105",
+            "cod_parroquia": "05"
+          },
+          {
+            "nombre": "LA GUAIRA",
+            "ubigeo_code": "240106",
+            "cod_parroquia": "06"
+          },
+          {
+            "nombre": "MACUTO",
+            "ubigeo_code": "240107",
+            "cod_parroquia": "07"
+          },
+          {
+            "nombre": "MAIQUETÍA",
+            "ubigeo_code": "240108",
+            "cod_parroquia": "08"
+          },
+          {
+            "nombre": "NAIGUATÁ",
+            "ubigeo_code": "240109",
+            "cod_parroquia": "09"
+          },
+          {
+            "nombre": "URIMARE",
+            "ubigeo_code": "240110",
+            "cod_parroquia": "10"
+          },
+          {
+            "nombre": "CARLOS SOUBLETTE",
+            "ubigeo_code": "240111",
+            "cod_parroquia": "11"
+          }
+        ]
+      }
+    }
+  },
+  "DEPENDENCIAS FEDERALES": {
+    "cod_entidad": "25",
+    "municipios": {
+      "DEPENDENCIAS FEDERALES": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "SIN PARROQUIA",
+            "ubigeo_code": "250101",
+            "cod_parroquia": "01"
+          }
+        ]
+      },
+      "TERRITORIO INSULAR FRANCISCO DE MIRANDA": {
+        "cod_municipio": "02",
+        "parroquias": [
+          {
+            "nombre": "SIN PARROQUIA",
+            "ubigeo_code": "250201",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
+  }
+}
