@@ -7,7 +7,7 @@ interface AuthContextType {
   rol: RolInstitucional;
   isAuthenticated: boolean;
   esSuperAdmin: boolean;
-  login: (user: string, role: RolInstitucional) => void;
+  login: (user: string, role?: RolInstitucional) => void;
   logout: () => void;
   openLoginModal: () => void;
   closeLoginModal: () => void;
@@ -81,13 +81,38 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = (newUser: string, newRole: RolInstitucional) => {
-    setUsuario(newUser || 'usuario.institucional');
-    setRol(newRole);
+  const login = (newUser: string, newRole?: RolInstitucional) => {
+    const cleanUser = newUser.trim();
+    let effectiveRole: RolInstitucional = newRole || 'Coordinador / Coordinadora';
+
+    if (!newRole) {
+      const cuenta = cuentasUsuarios.find(
+        (u) =>
+          u.usuario.toLowerCase() === cleanUser.toLowerCase() ||
+          u.correo.toLowerCase() === cleanUser.toLowerCase()
+      );
+      if (cuenta) {
+        effectiveRole = cuenta.rol as RolInstitucional;
+      } else {
+        const lower = cleanUser.toLowerCase();
+        if (lower === 'superadmin' || lower.includes('admin')) effectiveRole = 'SuperAdmin';
+        else if (lower.includes('coord')) effectiveRole = 'Coordinador / Coordinadora';
+        else if (lower.includes('reg') || lower.includes('gerente_reg')) effectiveRole = 'Gerente Regional';
+        else if (lower.includes('gdc')) effectiveRole = 'Consultor GDC';
+        else if (lower.includes('gpacyg')) effectiveRole = 'Consultor GPACyG';
+        else if (lower.includes('linea')) effectiveRole = 'Gerente de Línea';
+        else if (lower.includes('general')) effectiveRole = 'Gerente General';
+        else if (lower.includes('consulta')) effectiveRole = 'Usuario Consulta';
+        else effectiveRole = 'Promotor / Promotora';
+      }
+    }
+
+    setUsuario(cleanUser || 'usuario.institucional');
+    setRol(effectiveRole);
     setIsAuthenticated(true);
     setIsLoginModalOpen(false);
-    localStorage.setItem('mtt_user', newUser || 'usuario.institucional');
-    localStorage.setItem('mtt_role', newRole);
+    localStorage.setItem('mtt_user', cleanUser || 'usuario.institucional');
+    localStorage.setItem('mtt_role', effectiveRole);
   };
 
   const logout = () => {
