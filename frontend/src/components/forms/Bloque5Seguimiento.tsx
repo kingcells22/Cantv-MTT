@@ -4,10 +4,16 @@ import { Upload, FileCheck, AlertCircle } from 'lucide-react';
 interface Bloque5Props {
   formData: any;
   onChange: (field: string, value: any) => void;
+  errors?: Record<string, string>;
   isEdit?: boolean;
 }
 
-export const Bloque5Seguimiento: React.FC<Bloque5Props> = ({ formData, onChange, isEdit = false }) => {
+export const Bloque5Seguimiento: React.FC<Bloque5Props> = ({
+  formData,
+  onChange,
+  errors = {},
+  isEdit = false,
+}) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
