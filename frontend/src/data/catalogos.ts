@@ -162,6 +162,102 @@ export const ROLES_DISPONIBLES = [
     puedeEditar: false,
     puedeAsignarCodigo: false,
     puedeValidarRegional: false,
+    esSuperAdmin: false,
+  },
+  {
+    id: 'SuperAdmin',
+    nombre: 'Super Administrador (TI / Infraestructura)',
+    descripcion: 'Control maestro de plataforma, configuración de pasarela SMTP y gestión de credenciales',
+    nivel: 6,
+    puedeRegistrar: true,
+    puedeEditar: true,
+    puedeAsignarCodigo: true,
+    puedeValidarRegional: true,
+    esSuperAdmin: true,
   },
 ] as const;
+
+export interface TestUserAccount {
+  usuario: string;
+  nombre: string;
+  correo: string;
+  rol: (typeof ROLES_DISPONIBLES)[number]['id'];
+  passwordDemo: string;
+  descripcion: string;
+}
+
+export const GENERIC_TEST_USERS: TestUserAccount[] = [
+  {
+    usuario: 'superadmin',
+    nombre: 'Anthony Domínguez (SuperAdmin)',
+    correo: 'anthony.dominguez@cantv.com.ve',
+    rol: 'SuperAdmin',
+    passwordDemo: 'SuperAdmin.2026#CANTV!',
+    descripcion: 'Control maestro de infraestructura, configuración de pasarela SMTP y reseteo de claves',
+  },
+  {
+    usuario: 'test_promotor',
+    nombre: 'Promotor Comunal de Campo',
+    correo: 'promotor.campo@cantv.com.ve',
+    rol: 'Promotor / Promotora',
+    passwordDemo: 'Promotor.2026#C1!',
+    descripcion: 'Nivel 1 - Solo lectura y acompañamiento territorial',
+  },
+  {
+    usuario: 'test_coordinador',
+    nombre: 'Coordinador Territorial GGFPP',
+    correo: 'coordinador.ggfpp@cantv.com.ve',
+    rol: 'Coordinador / Coordinadora',
+    passwordDemo: 'Coord.2026#C2!',
+    descripcion: 'Nivel 2 - Registro de nuevas MTT, actualización de vocerías y carga de actas',
+  },
+  {
+    usuario: 'test_regional',
+    nombre: 'Gerente Regional Estadal',
+    correo: 'gerente.regional@cantv.com.ve',
+    rol: 'Gerente Regional',
+    passwordDemo: 'Regional.2026#C3!',
+    descripcion: 'Nivel 3 - Bandeja de validación estadal y certificación de expedientes',
+  },
+  {
+    usuario: 'test_gdc',
+    nombre: 'Consultor GDC Nacional',
+    correo: 'consultor.gdc@cantv.com.ve',
+    rol: 'Consultor GDC',
+    passwordDemo: 'Gdc.2026#C4!',
+    descripcion: 'Nivel 4 - Asignación definitiva de código censal oficial MTT y QR institucional',
+  },
+  {
+    usuario: 'test_gpacyg',
+    nombre: 'Auditor Nacional GPACyG',
+    correo: 'auditor.gpacyg@cantv.com.ve',
+    rol: 'Consultor GPACyG',
+    passwordDemo: 'Gpacyg.2026#C5!',
+    descripcion: 'Nivel 4 - Auditoría nacional, control metodológico y trazabilidad',
+  },
+  {
+    usuario: 'test_linea',
+    nombre: 'Gerente de Línea Operativa',
+    correo: 'gerente.linea@cantv.com.ve',
+    rol: 'Gerente de Línea',
+    passwordDemo: 'Linea.2026#C6!',
+    descripcion: 'Nivel 5 - Analítica decisional y formulación de políticas comunitarias',
+  },
+  {
+    usuario: 'test_general',
+    nombre: 'Gerente General GGFPP',
+    correo: 'gerente.general@cantv.com.ve',
+    rol: 'Gerente General',
+    passwordDemo: 'General.2026#C7!',
+    descripcion: 'Nivel 5 - Tableros estratégicos y supervisión global de telecomunicaciones',
+  },
+  {
+    usuario: 'test_consulta',
+    nombre: 'Usuario de Consulta Pública',
+    correo: 'consulta.publica@cantv.com.ve',
+    rol: 'Usuario Consulta',
+    passwordDemo: 'Consulta.2026#C8!',
+    descripcion: 'Nivel 5 - Consulta de matriz, verificación de fichas PDF y escaneo de QR',
+  },
+];
 

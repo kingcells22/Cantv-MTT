@@ -6,7 +6,8 @@ export type RolInstitucional =
   | 'Consultor GPACyG'
   | 'Gerente de Línea'
   | 'Gerente General'
-  | 'Usuario Consulta';
+  | 'Usuario Consulta'
+  | 'SuperAdmin';
 
 export type EstatusMTT = 'ACTIVA' | 'INACTIVA' | 'CERRADA';
 export type TipoMTT = 'URBANA' | 'RURAL' | 'MIXTA' | 'INDÍGENA';
@@ -111,5 +112,28 @@ export type ViewType =
   | 'updateView'
   | 'gdcView'
   | 'regionalView'
-  | 'databaseView';
+  | 'databaseView'
+  | 'smtpConfigView';
+
+export interface SmtpConfig {
+  servidor_host: string;
+  puerto: number;
+  seguridad: 'TLS' | 'SSL' | 'NINGUNA';
+  remitente_email: string;
+  remitente_nombre: string;
+  usuario_smtp: string;
+  password_smtp: string;
+  activo: boolean;
+}
+
+export interface UsuarioCuenta {
+  id: string;
+  usuario: string;
+  nombre_completo: string;
+  correo: string;
+  rol: RolInstitucional;
+  activo: boolean;
+  must_change_password: boolean;
+  ultimo_acceso?: string;
+}
 

@@ -11,6 +11,8 @@ import {
   Table,
   X,
   Building2,
+  Shield,
+  KeyRound,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -32,7 +34,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onCloseMobile,
   counts,
 }) => {
-  const { rol, puedeRegistrar, puedeEditar, puedeAsignarCodigo, puedeValidarRegional } = useAuth();
+  const { rol, puedeRegistrar, puedeEditar, puedeAsignarCodigo, puedeValidarRegional, esSuperAdmin } = useAuth();
 
   const isGerente = rol.includes('Gerente');
 
@@ -196,6 +198,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
               {counts.total}
             </span>
           </button>
+
+          {esSuperAdmin && (
+            <button
+              onClick={() => {
+                onSelectView('smtpConfigView');
+                onCloseMobile();
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-medium transition ${
+                currentView === 'smtpConfigView'
+                  ? 'bg-red-600 text-white shadow-sm border-l-4 border-white'
+                  : 'text-gray-300 hover:bg-[#343a40] hover:text-white'
+              }`}
+            >
+              <div className="flex items-center space-x-3">
+                <Shield className="h-4 w-4 text-red-400" />
+                <span>Panel SuperAdmin (SMTP)</span>
+              </div>
+              <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">
+                TI
+              </span>
+            </button>
+          )}
         </nav>
 
         {/* Footer info */}

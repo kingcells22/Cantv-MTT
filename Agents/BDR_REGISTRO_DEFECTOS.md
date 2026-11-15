@@ -146,19 +146,24 @@ Este registro formal documenta los hallazgos, vulnerabilidades, inconsistencias 
 
 ---
 
-### [BDR-012] Enriquecimiento Exhaustivo de Campos Técnicos, Coordenadas GPS y Plan Maestro de 36 Índices
-* **Severidad:** Baja / Optimización Estructural y Extensión de Modelo
-* **Archivo(s) Afectado(s):** `backend/models.py`, `backend/schemas.py`, `backend/mtt_db_backup.sql`, `backend/optimizations_indexes.sql`
-* **Componente / Endpoint:** `MttPrincipal`, `OrganizacionComunal`, `Voceria`, y endpoints `/api/mtt`
-* **Descripción:**
-  A partir de la auditoría y barrido total de los archivos `DATA_CORREGIDA_11-11-26` (VER8 y Consolidado), se identificaron variables técnicas y georreferenciales enriquecidas:
-  - `mtt_principal`: `latitud` y `longitud` (2.384 coordenadas GPS válidas), `correo_electronico` (742 cuentas), `fecha_cambio_estatus` (2.536 registros), `central_cantv_cercana` (2.479 registros), `nombre_nodo`, `eje_territorial`, y redes sociales (`red_x`, `red_instagram`, `red_facebook`, `red_tiktok`).
-  - `organizacion_comunal`: `cec_comuna` (2.496 registros: 'COMUNA' o 'CIRCUITO'), `sala_gobierno_vinculada`, `comite_tecnologia`, `comite_medios`.
-  - `vocerias`: `otras_mujeres`, `otros_hombres`.
-  - **Plan de Indexación:** Se implementaron 36 índices B-Tree, funcionales (`LOWER`) y compuestos en PostgreSQL 16 para garantizar búsquedas instantáneas sub-milisegundo en concurrencia masiva.
-* **Estado:** **RESUELTO EN FRONTEND Y BASE DE DATOS / ENTREGADO EN SQL DUMP**
-* **Resolución Implementada:**
-  1. Base de datos actualizada en `backend/mtt_db_backup.sql`, `backend/optimizations_indexes.sql`, y `Backup/latest.sql` con todos los campos y los 36 índices.
-  2. Frontend sincronizado en `frontend/src/types/mtt.ts`, `frontend/src/schemas/mttSchema.ts` y `frontend/src/data/mtt_dataset.json` (2.563 MTTs enriquecidas).
+### [BDR-013] Especificación de Ciberseguridad: Pasarela SMTP, Recuperación por Correo y Rol SuperAdmin
+* **Severidad:** Media (Seguridad y Gobernanza de Acceso)
+* **Archivo(s) Afectado(s):** `backend/backend_app.py`, `backend/models.py`, `backend/migration_smtp_superadmin.sql`
+* **Componente / Endpoint:** `POST /api/auth/recuperar-clave`, `POST /api/auth/reset-clave`, `GET /api/config/smtp`, `PUT /api/config/smtp`
+* **Descripción del Requerimiento:**
+  1. **Rol SuperAdmin:** Se incorporó el rol institucional `SuperAdmin` (id 8, Nivel 6 - TI/Infraestructura) para gestión de pasarela SMTP y reseteo de claves.
+  2. **Ampliación de Tabla `usuarios`:**
+     - `correo_institucional` VARCHAR(120)
+     - `must_change_password` BOOLEAN DEFAULT FALSE
+     - `reset_token_hash` VARCHAR(64)
+     - `reset_token_expires_at` TIMESTAMP WITH TIME ZONE
+  3. **Padrón de Usuarios Genéricos para Pruebas:**
+     Se crearon 9 cuentas institucionales de prueba (`superadmin`, `test_promotor`, `test_coordinador`, `test_regional`, `test_gdc`, `test_gpacyg`, `test_linea`, `test_general`, `test_consulta`) con contraseñas Bcrypt de alta entropía.
+  4. **Contratos de Endpoints Requeridos en FastAPI:**
+     - `POST /api/auth/recuperar-clave`: Recibe `{"identificador": "usuario_o_correo"}`. Genera token seguro CSPRNG, almacena su hash SHA-256 en BD con vigencia de 15 minutos y despacha el correo vía SMTP. Respuesta opaca: *"Si el usuario está registrado, se han enviado las instrucciones a su correo"*.
+     - `POST /api/auth/reset-clave`: Recibe `{"token": "token_str", "nueva_password": "pass"}`. Valida vigencia, un solo uso y política de complejidad NIST (mínimo 12 caracteres, mayúscula, minúscula, número y símbolo). Actualiza `password_hash` con bcrypt y revoca sesiones en Redis.
+     - `GET /api/config/smtp` y `PUT /api/config/smtp`: CRUD protegido exclusivamente para el rol `SuperAdmin`.
+* **Estado:** **IMPLEMENTADO EN FRONTEND / MIGRACIÓN SQL ENTREGADA (`backend/migration_smtp_superadmin.sql`)**
+
 
 
