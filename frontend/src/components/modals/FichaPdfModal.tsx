@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MTTRecord } from '../../types/mtt';
-import { X, Printer, QrCode, ShieldCheck } from 'lucide-react';
+import { X, Printer, QrCode, ShieldCheck, ExternalLink, Copy, Check } from 'lucide-react';
 import { QrCodeView } from '../common/QrCodeView';
 
 interface FichaPdfModalProps {
@@ -10,6 +10,7 @@ interface FichaPdfModalProps {
 }
 
 export const FichaPdfModal: React.FC<FichaPdfModalProps> = ({ record, isOpen, onClose }) => {
+  const [copied, setCopied] = useState(false);
   if (!isOpen || !record) return null;
 
   const handlePrint = () => {
@@ -27,6 +28,14 @@ export const FichaPdfModal: React.FC<FichaPdfModalProps> = ({ record, isOpen, on
     typeof window !== 'undefined' && window.location.origin
       ? `${window.location.origin}/verificar/${encodeURIComponent(verificationCode)}`
       : `http://cantvprueba.fii.gob.ve/verificar/${encodeURIComponent(verificationCode)}`;
+
+  const handleCopyLink = () => {
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(verificationUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto no-print-backdrop">
@@ -240,24 +249,60 @@ export const FichaPdfModal: React.FC<FichaPdfModalProps> = ({ record, isOpen, on
             </div>
           </div>
 
-          {/* QR de Validación Oficial */}
+          {/* QR de Validación Oficial Interactivo */}
           <div className="text-center pt-2 border-t border-gray-200 flex flex-col items-center justify-center">
-            <div className="p-2.5 border border-gray-300 rounded bg-white shadow-sm inline-block">
-              {/* Código QR Real y Escaneable */}
-              <div className="flex justify-center p-1 bg-white rounded">
+            <div className="p-3 border border-gray-300 rounded-lg bg-white shadow-sm inline-block group hover:border-blue-400 hover:shadow-md transition">
+              {/* Código QR Real y Escaneable - Clic abre verificación */}
+              <div
+                onClick={() => window.open(verificationUrl, '_blank')}
+                title="Haga clic para abrir la verificación oficial en una nueva pestaña"
+                className="flex justify-center p-1 bg-white rounded cursor-pointer transition transform hover:scale-105"
+              >
                 <QrCodeView
                   value={verificationUrl}
-                  size={96}
+                  size={100}
                   level="M"
                   className="mx-auto"
                 />
               </div>
-              <p className="text-[10px] text-gray-700 font-bold mt-1.5">
-                QR de Verificación Oficial en Red
+              <p className="text-[10px] text-gray-700 font-bold mt-1.5 flex items-center justify-center gap-1">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+                <span>QR de Verificación Oficial en Red</span>
               </p>
-              <p className="text-[9px] font-mono text-gray-500 max-w-[200px] truncate">
+              <p className="text-[9px] font-mono text-gray-500 max-w-[220px] truncate mx-auto">
                 {verificationUrl}
               </p>
+
+              {/* Botones de Acción Inmediata (no-print) */}
+              <div className="mt-2.5 pt-2 border-t border-gray-100 flex items-center justify-center gap-2 no-print">
+                <button
+                  type="button"
+                  onClick={() => window.open(verificationUrl, '_blank')}
+                  className="px-2.5 py-1 text-[11px] font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded flex items-center space-x-1 transition shadow-sm"
+                  title="Abrir la ficha de verificación oficial en una nueva pestaña"
+                >
+                  <ExternalLink className="h-3 w-3" />
+                  <span>Probar Enlace</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCopyLink}
+                  className="px-2.5 py-1 text-[11px] font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded flex items-center space-x-1 transition shadow-sm"
+                  title="Copiar URL de verificación"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-3 w-3 text-emerald-600" />
+                      <span className="text-emerald-700 font-bold">¡Copiado!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3 w-3 text-gray-500" />
+                      <span>Copiar</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
