@@ -106,3 +106,59 @@ Este registro formal documenta los hallazgos, vulnerabilidades, inconsistencias 
   2. Se configuró `pool_size=20`, `max_overflow=30`, `pool_recycle=1800`, `pool_timeout=10` y `pool_pre_ping=True` (elimina conexiones zombies de forma automática).
   3. Se integró Redis 7 Bookworm con patrón Cache-Aside y Graceful Fallback para catálogos y listas, reduciendo tiempos a 3.5ms sin tocar PostgreSQL.
 
+---
+
+### [BDR-011] Automatización de Código Censal MTT (`XXXXXX.YY`) y Creación de Tabla de Secuencias Parroquiales (`mtt_secuencias_parroquia`)
+* **Severidad:** Media / Requisito Funcional Institucional Mandatorio
+* **Archivo(s) Afectado(s):** `backend/models.py`, `backend/backend_app.py`, `backend/mtt_db_backup.sql`
+* **Componente / Endpoint:** `GET /api/mtt/siguiente-codigo/{parroquia_id}`, `PATCH /api/mtt/{mtt_id}/codigo`
+* **Descripción de la Necesidad:**
+  La nomenclatura censal institucional exige el formato estricto `XXXXXX.YY`:
+  - `XXXXXX` (6 dígitos): Código oficial INE de la Parroquia (Estado 2D + Municipio 2D + Parroquia 2D). Inmutable y generado automáticamente.
+  - `YY` (2 dígitos): Correlativo secuencial censal asignado por GDC (.01, .02, .35, .45).
+  Para evitar colisiones de concurrencia y cálculos lentos de agregación (`MAX(codigo)`), se diseñó la tabla `mtt_secuencias_parroquia`.
+* **Estado:** **RESUELTO EN FRONTEND Y BASE DE DATOS / ESPECIFICACIÓN ENTREGADA PARA FASTAPI**
+* **Resolución Implementada:**
+  1. **Base de Datos:** En `backend/mtt_db_backup.sql` se incorporó la tabla `public.mtt_secuencias_parroquia` (`id`, `codigo_ubigeo_6d`, `parroquia_id`, `ultimo_correlativo`, `updated_at`), precargada con los correlativos máximos de los 2.485 registros activos.
+  2. **Frontend:** Implementado en `useUbigeo.ts` y `BandejaGdcView.tsx`. La interfaz segmenta el bloque de 6 dígitos en modo solo lectura (`[Lock 010121]`) y expone un input numérico de 2 dígitos únicamente para el correlativo (`.35`), pre-llenado con el sugerido y con validación de Ubigeo determinado.
+  3. **Especificación Python Backend para FastAPI:**
+  ```python
+  @app.get("/api/mtt/siguiente-codigo/{parroquia_id}")
+  def obtener_siguiente_codigo(parroquia_id: int, db: Session = Depends(get_db)):
+      parroquia = db.query(Parroquia).filter(Parroquia.id == parroquia_id).first()
+      if not parroquia or not parroquia.codigo_ubigeo:
+          raise HTTPException(status_code=400, detail="Parroquia no posee código Ubigeo INE determinado")
+      
+      secuencia = db.query(MttSecuenciaParroquia).filter(
+          MttSecuenciaParroquia.codigo_ubigeo_6d == parroquia.codigo_ubigeo
+      ).with_for_update().first()
+      
+      ultimo = secuencia.ultimo_correlativo if secuencia else 0
+      siguiente = str(ultimo + 1).zfill(2)
+      return {
+          "status": "success",
+          "codigo_ubigeo_base": parroquia.codigo_ubigeo,
+          "ultimo_correlativo": ultimo,
+          "siguiente_correlativo": siguiente,
+          "codigo_sugerido": f"{parroquia.codigo_ubigeo}.{siguiente}"
+      }
+  ```
+
+---
+
+### [BDR-012] Enriquecimiento Exhaustivo de Campos Técnicos, Coordenadas GPS y Plan Maestro de 36 Índices
+* **Severidad:** Baja / Optimización Estructural y Extensión de Modelo
+* **Archivo(s) Afectado(s):** `backend/models.py`, `backend/schemas.py`, `backend/mtt_db_backup.sql`, `backend/optimizations_indexes.sql`
+* **Componente / Endpoint:** `MttPrincipal`, `OrganizacionComunal`, `Voceria`, y endpoints `/api/mtt`
+* **Descripción:**
+  A partir de la auditoría y barrido total de los archivos `DATA_CORREGIDA_11-11-26` (VER8 y Consolidado), se identificaron variables técnicas y georreferenciales enriquecidas:
+  - `mtt_principal`: `latitud` y `longitud` (2.384 coordenadas GPS válidas), `correo_electronico` (742 cuentas), `fecha_cambio_estatus` (2.536 registros), `central_cantv_cercana` (2.479 registros), `nombre_nodo`, `eje_territorial`, y redes sociales (`red_x`, `red_instagram`, `red_facebook`, `red_tiktok`).
+  - `organizacion_comunal`: `cec_comuna` (2.496 registros: 'COMUNA' o 'CIRCUITO'), `sala_gobierno_vinculada`, `comite_tecnologia`, `comite_medios`.
+  - `vocerias`: `otras_mujeres`, `otros_hombres`.
+  - **Plan de Indexación:** Se implementaron 36 índices B-Tree, funcionales (`LOWER`) y compuestos en PostgreSQL 16 para garantizar búsquedas instantáneas sub-milisegundo en concurrencia masiva.
+* **Estado:** **RESUELTO EN FRONTEND Y BASE DE DATOS / ENTREGADO EN SQL DUMP**
+* **Resolución Implementada:**
+  1. Base de datos actualizada en `backend/mtt_db_backup.sql`, `backend/optimizations_indexes.sql`, y `Backup/latest.sql` con todos los campos y los 36 índices.
+  2. Frontend sincronizado en `frontend/src/types/mtt.ts`, `frontend/src/schemas/mttSchema.ts` y `frontend/src/data/mtt_dataset.json` (2.563 MTTs enriquecidas).
+
+

@@ -18,6 +18,9 @@ export interface MTTRecord {
   id?: string;
   // BLOQUE 1: UBICACIÓN E IDENTIFICACIÓN (Cols A-R)
   codigo_mtt: string | null; // Col A
+  codigo_ubigeo_base?: string | null; // 6 dígitos inmutables INE
+  correlativo_adicional?: string | null; // .YY gestionado por GDC
+  ubigeo_indeterminado?: boolean;
   region: string; // Col B
   entidad_federal: string; // Col C
   municipio: string; // Col D
@@ -32,19 +35,30 @@ export interface MTTRecord {
   estatus_mtt: EstatusMTT; // Col L
   fecha_cambio_estatus: string | null; // Col M
   georreferenciacion: SiNo; // Col N
-  coordenadas_decimales: string | null; // Col O
+  coordenadas_decimales?: string | null; // Col O
+  latitud?: number | null;
+  longitud?: number | null;
   correo_mtt: string; // Col P (Regla 3: N/D)
-  uso_redes_sociales: SiNo; // Col Q
-  red_social_mas_utilizada: string | null; // Col R
+  uso_redes_sociales?: SiNo; // Col Q
+  red_social_mas_utilizada?: string | null; // Col R
+  red_x?: string | null;
+  red_instagram?: string | null;
+  red_facebook?: string | null;
+  red_tiktok?: string | null;
+  eje_territorial?: string | null;
 
   // BLOQUE 2: ORGANIZACIÓN COMUNAL Y DEMOGRAFÍA (Cols S-AA)
   codigo_situr_cc: string | null; // Col S
   nombre_cc_referencia: string; // Col T (Regla 3: N/D)
+  comuna_nombre?: string;
+  codigo_situr_comuna?: string | null;
   sac_vinculada: SiNo; // Col U
-  sac_conectada: 'CANTV' | 'OTRA OPERADORA' | 'SIN CONEXIÓN' | null; // Col V
-  cec_comuna: 'COMUNA' | 'CIRCUITO' | null; // Col W
+  sac_conectada?: 'CANTV' | 'OTRA OPERADORA' | 'SIN CONEXIÓN' | null; // Col V
+  cec_comuna?: 'COMUNA' | 'CIRCUITO' | string | null; // Col W
   num_cc: number | null; // Col X
   num_comites_mtt: number | null; // Col Y
+  comite_tecnologia?: boolean;
+  comite_medios?: boolean;
   num_familias: number | null; // Col Z
   num_habitantes: number | null; // Col AA
 
@@ -52,14 +66,19 @@ export interface MTTRecord {
   zona_servida: SiNo; // Col AB
   medio_transmision: string | null; // Col AC
   otras_operadoras: string | null; // Col AD
+  operadoras?: string | null; // VER8
   elemento_red: string | null; // Col AE
   mtt_en_huella_gpon: SiNo; // Col AF
+  central_cantv_cercana?: string | null; // VER8
+  nombre_nodo?: string | null; // VER8 (170 Nodos)
 
   // BLOQUE 4: VOCEROS Y VOCERAS (Cols AG-AT)
   estatus_vocerias: EstatusVocerias | null; // Col AG
   voceros_mujeres: number | null; // Col AH
   voceros_hombres: number | null; // Col AI
   total_voceros: number | null; // Col AJ (Regla 4: fórmula)
+  otras_mujeres?: number | null;
+  otros_hombres?: number | null;
   v1_nombre_apellido: string; // Col AK (Regla 3: N/D)
   v1_cedula: number | null; // Col AL
   v1_fecha_nacimiento: string | null; // Col AM

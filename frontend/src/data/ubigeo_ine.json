@@ -7488,5 +7488,20 @@
         ]
       }
     }
+  },
+  "GUAYANA ESEQUIBA": {
+    "cod_entidad": "26",
+    "municipios": {
+      "NO TIENE MUNICIPIO": {
+        "cod_municipio": "01",
+        "parroquias": [
+          {
+            "nombre": "NONE",
+            "ubigeo_code": "260101",
+            "cod_parroquia": "01"
+          }
+        ]
+      }
+    }
   }
 }

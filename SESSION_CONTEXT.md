@@ -1,14 +1,14 @@
 # SESSION_CONTEXT · BITÁCORA DE RELEVO Y SINCRONIZACIÓN
 ## Proyecto SINCOMTT (CANTV · GGFPP · FIIIDT)
 
-### 📅 Fecha de Sesión: 2026-11-13 (Actualizado: 08:02 -06:00)
-* **Sistema Operativo / Entorno:** Linux (Debian/Ubuntu x86_64) en `/home/anthony/DiscoSecundario/proyecto/CANTV-MMT`
+### 📅 Fecha de Sesión: 2026-11-15 (Actualizado: 11:12 -04:00)
+* **Sistema Operativo / Entorno:** Linux (Ubuntu x86_64) en `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144` (Acceso Web: `http://171.31.100.144` y Dominio `http://cantvprueba.fii.gob.ve`)
 * **Proxy Perimetral FII:** `171.0.40.4` (OpenResty enrutando al servidor físico)
 * **Repositorio Remoto Oficial:** `https://github.com/kingcells22/Cantv-MTT.git`
-* **Rama de Trabajo Actual:** `feature/frontend-react19` (Commit local `b21b7dd`)
+* **Rama de Trabajo Actual:** `workspace/laptop-sync`
 * **Agente Activo:** `SINCOMTT-FrontendArchitect`
-* **Estado Operativo:** **FULL STACK 4 CAPAS TOTALMENTE AGNÓSTICO, EN LÍNEA Y VERIFICADO** (Frontend Nginx + Backend FastAPI + PostgreSQL 16 + Redis 7). Operativo en servidor físico `171.31.100.144` y bajo dominio `cantvprueba.fii.gob.ve`.
+* **Estado Operativo:** **INDEXACIÓN Y BARRIDO INTEGRAL DE DATOS COMPLETADO AL 100%** (36 índices B-Tree, funcionales y compuestos en PostgreSQL 16; 2.563 MTTs consolidadas entre activas y cerradas; 2.384 coordenadas GPS; 742 correos electrónicos; 2.479 centrales CANTV; 2.496 tipos CEC/comuna y correlativos censales O(log N)). Cero bloqueos.
 
 ---
 
@@ -20,90 +20,59 @@
 
 ---
 
-### 💾 1. SCRIPTS DE RESPALDO Y RESTAURACIÓN INTELIGENTE (ENTREGADOS)
+### 🚀 1. HITOS ALCANZADOS EN ESTA INTERVENCIÓN
 
-#### A. Script de Respaldo Automatizado (`backup_db.sh`):
-* **Ruta:** `backup_db.sh` (con permisos de ejecución `+x`).
-* **Destino:** Carpeta `Backup/` versionada en Git.
-* **Operación:**
-  - Extrae volcado limpio de PostgreSQL (`pg_dump -U postgres -d mtt_db --clean --if-exists --no-owner --no-privileges`).
-  - Genera archivo `.sql` y lo empaqueta en un `.tar` con metadatos.
-  - Actualiza automáticamente `Backup/latest.tar` y `Backup/latest.sql`.
-* **Prueba en Vivo:** Respaldo generado `Backup/mtt_db_backup_20261113_071236.tar` (860 KB, 2.187 MTTs, 100% íntegro).
+#### A. Barrido Exhaustivo y Fusión 100% de Archivos (`DATA_CORREGIDA_11-11-26`):
+1. **Consolidación Total de Registros (2.563 MTTs):**
+   - 2.485 MTTs activas provenientes de la Hoja 1 del Consolidado de Noviembre 2026 y VER8.
+   - 77 MTTs cerradas, fusionadas y casos especiales con su historial y bitácora completa en `observacion`.
+   - 1 MTT adicional recuperada del formato VER8.
+   - **Total:** 2.563 MTTs (100% de la existencia histórica de CANTV GGFPP integrada).
+2. **Enriquecimiento con Variables Reales de los Archivos:**
+   - **2.384 coordenadas GPS de alta precisión (`latitud`, `longitud`):** Extraídas de la Columna O de VER8 (ej. `10.51850966, -66.94697945`).
+   - **742 correos electrónicos oficiales de MTT:** Normalizados desde VER8 y Consolidado.
+   - **2.536 fechas de cambio de estatus:** Trazabilidad histórica completa.
+   - **2.479 centrales CANTV asignadas:** Vínculo de infraestructura de telecomunicaciones (`central_cantv_cercana`).
+   - **2.496 clasificaciones CEC / Comuna:** Segmentación territorial (`cec_comuna`: COMUNA o CIRCUITO COMUNAL).
+   - **Redes Sociales:** Registrados handles y usuarios de X, Instagram, Facebook y TikTok para las MTTs activas.
+   - **170 Nodos GPON y Centrales:** Catálogo referencial en `frontend/src/data/nodos.json`.
+3. **Estructura Geográfica Oficial INE (100% Pura):**
+   - 1.137 Parroquias con su código oficial INE de 6 dígitos (`codigo_ubigeo`).
+   - 338 Municipios oficiales INE.
+   - 26 Entidades (24 Estados + Dto. Capital + Dep. Federales).
+   - 7 Regiones administrativas CANTV.
+4. **Talento Humano GGFPP Sincronizado:**
+   - 112 usuarios y promotores/coordinadores institucionales cargados con sus niveles RBAC (1 a 7) + 1 usuario administrador (`admin_gdc`).
+5. **Secuencias de Código Censal Precalculadas:**
+   - 715 secuencias en `mtt_secuencias_parroquia` y `parish_sequences.json`, precargando el máximo correlativo por parroquia para generación atómica sin bloqueos.
 
-#### B. Script Inteligente de Restauración (`restore_db.sh`):
-* **Ruta:** `restore_db.sh` (con permisos de ejecución `+x`).
-* **Características Clave:**
-  - **Detección Automática:** Escanea `Backup/` y `backend/` mostrando menú interactivo numerado con tamaños y fechas de creación.
-  - **Modo No Interactivo:** Permite ejecución por CLI: `./restore_db.sh --yes Backup/latest.tar`.
-  - **Streaming Tar:** Extrae el SQL interno en memoria usando tubería con `tar --wildcards -xOf` directamente hacia `docker exec -i mtt-database psql`. Cero archivos temporales en disco.
-  - **Re-indexación Automática:** Tras la carga del dump, ejecuta inmediatamente `backend/optimizations_indexes.sql` para reactivar los 12 índices B-Tree.
-  - **Sincronización Redis:** Ejecuta `FLUSHALL` en `mtt-redis` para evitar que la interfaz sirva registros cacheados obsoletos.
-* **Prueba en Vivo:** Restauración probada con éxito. Telemetría post-restauración: 2.187 MTTs, 1 Usuario activo, 12 índices activos, Redis purgado.
-
----
-
-### 🚢 2. VALIDACIÓN DE DOCKER AGNÓSTICO PARA MIGRACIÓN A SERVIDOR FÍSICO / VPS
-
-Todo el stack fue auditado para garantizar portabilidad inmediata al 100%:
-
-1. **Rutas Relativas en Todo el Ecosistema:**
-   - `docker-compose.yml` utiliza únicamente montajes relativos (`./frontend`, `./backend`, `./data/pgdata`, `./backend/mtt_db_backup.sql`, `./backend/optimizations_indexes.sql`).
-   - Cero dependencias de nombres de usuario o rutas absolutas locales (`/home/anthony/...`).
-2. **Auto-Aprovisionamiento en Servidor Vacío:**
-   - La base de datos monta los scripts en `/docker-entrypoint-initdb.d/`:
-     - `01_backup.sql`: Restaura automáticamente la BD completa.
-     - `02_indexes.sql`: Crea los 12 índices B-Tree de alta velocidad.
-3. **Red Interna Aislada y DNS Dinámico:**
-   - Los contenedores se comunican por DNS de red Docker (`mtt-net`): `mtt-backend`, `mtt-database`, `mtt-redis`.
-   - Nginx utiliza `resolver 127.0.0.11 valid=30s ipv6=off;` evitando errores si los contenedores cambian de IP interna.
-4. **Soporte Multi-IP en Nginx (`server_name`):**
-   - Configurado con `server_name _ localhost 171.0.40.7;`. Responde a cualquier IP física asignada al servidor sin requerir reconfiguración.
-5. **Paquete Autocontenido Generado:**
-   - `sincomtt_vps_bundle_20261113_071258.tar.gz` (4.6 MB) listo para transferir vía `scp` y desplegar con `docker compose up -d --build`.
+#### B. Plan Maestro de 36 Índices en PostgreSQL 16 (`optimizations_indexes.sql`):
+1. **Claves Foráneas (9 Índices):** Erradicación de locks y deadlocks en `vocerias`, `organizacion_comunal`, `seguimiento`, `mtt_principal`, `parroquias`, `municipios`, `estados`, `usuarios` y `mtt_secuencias_parroquia`.
+2. **Identificadores y Códigos (5 Índices):** Búsqueda instantánea $O(\log N)$ para `codigo_mtt`, `codigo_ubigeo`, `codigo_ubigeo_6d`, `comuna_codigo`, y `consejo_situr`.
+3. **Telecomunicaciones y Nuevos Campos (5 Índices):** `central_cantv_cercana`, `nombre_nodo`, `huella_gpon`, `correo_electronico`, y `cec_comuna`.
+4. **Identidad y Auditoría (4 Índices):** `v1_cedula`, `v2_cedula`, `usuarios.cedula`, `usuarios.usuario`.
+5. **Búsqueda Rápida Case-Insensitive (6 Índices Funcionales):** `LOWER(nombre)` en `mtt_principal`, `parroquias`, `municipios`, `estados`, y `LOWER()` en `comuna_nombre` y `consejo_nombre`.
+6. **Bandejas y Filtros Compuestos (6 Índices):** `idx_mtt_territorio_estatus (parroquia_id, estatus)`, `estatus`, `tipo`, `fecha_creacion DESC`, `fecha_cambio_estatus DESC`, `verificado_gerencia`.
+7. **Geolocalización (1 Índice):** `idx_mtt_principal_coords (latitud, longitud)` para mapas y cuadrículas cartográficas.
+8. **Estadísticas del Optimizador:** `ANALYZE` ejecutado en las 11 tablas del sistema.
 
 ---
 
-### 💻 3. ARQUITECTURA DE SINCRONIZACIÓN MULTI-MÁQUINA PERSONAL (`sync_laptop.sh`)
-Para permitir que el usuario trabaje alternadamente entre su **PC Linux de escritorio, PC Windows de escritorio y Laptop**, se creó una solución de doble remote:
-* **Repositorio Oficial (`origin`):** Se mantiene limpio, exclusivo para el equipo de desarrollo/Soporte-IT de CANTV, protegido por `.gitignore`.
-* **Repositorio Personal Privado (`personal`):** Repositorio privado del usuario donde se almacena un snapshot completo del entorno, incluyendo `.agents/`, `Agents/`, `Workflow/`, `SESSION_CONTEXT.md` y la memoria de Antigravity.
-* **Script de Un Solo Toque:** [sync_laptop.sh](file:///home/anthony/DiscoSecundario/proyecto/CANTV-MMT/sync_laptop.sh):
-  - `./sync_laptop.sh push`: Conmuta automáticamente a la rama `workspace/laptop-sync`, fuerza el rastreo de carpetas locales y las sube a `personal`.
-  - `./sync_laptop.sh pull`: Descarga las actualizaciones en la laptop y refresca el contexto del agente.
-* **Protección en Git:** `sync_laptop.sh` y `sync_personal.sh` están formalmente ignorados en `.gitignore` (Commit `3857f87`).
+### 📦 2. ARTEFACTOS Y ARCHIVOS ACTUALIZADOS
 
----
+1. **Frontend:**
+   - `frontend/src/data/ubigeo_ine.json` (1.137 parroquias puras INE).
+   - `frontend/src/data/mtt_dataset.json` (2.563 MTTs completas con coordenadas GPS, correos, centrales, etc.).
+   - `frontend/src/data/parish_sequences.json` (715 secuencias precalculadas).
+   - `frontend/src/data/nodos.json` (170 nodos y centrales GPON).
+   - `frontend/src/types/mtt.ts` (esquema TypeScript con todas las variables nuevas).
+   - `frontend/src/schemas/mttSchema.ts` (esquema Zod con validación estricta y defensiva).
+   - `frontend/src/hooks/useUbigeo.ts` (hook tolerante a acentos con autocompletado y cálculo de correlativo).
+   - `frontend/src/components/views/BandejaGdcView.tsx` (prefijo Ubigeo 6D bloqueado, sufijo `.YY` editable, badge PENDIENTE GDC).
+   - `frontend/src/components/views/MatrizDatosView.tsx` (badge PENDIENTE GDC y monospace azul).
 
-### 📋 4. HOJA DE RUTA Y TAREAS ENLISTADAS (PARA MAÑANA Y SIGUIENTES HITOS)
-
-#### Bloque A: Automatización de Generación de Códigos MTT (Análisis de Mañana)
-- [ ] **TAREA-01: Estructura de Tabla de Correlativos Parroquiales:**
-  - Diseñar tabla `mtt_secuencias_parroquia` (`id`, `parroquia_id`, `codigo_ubigeo_6d`, `ultimo_correlativo`, `updated_at`).
-  - Pre-poblar los correlativos iniciales a partir de los 2.187 registros existentes.
-- [ ] **TAREA-02: Función Transaccional de Asignación Automática:**
-  - Implementar lógica atómica (`SELECT ... FOR UPDATE`) que genere el código oficial censal `XXXXXX.YY` sin margen de colisión.
-- [ ] **TAREA-03: Integración en Frontend:**
-  - Sugerencia automática de código en Bandeja GDC con confirmación ágil.
-
-#### Bloque B: Generador de QR Oficial y Vista de Validación
-- [ ] **TAREA-04: Motor de Generación QR Real:**
-  - Generación de código QR real embebible en PDF y carnetización institucional.
-- [ ] **TAREA-05: Vista Pública de Validación de QR:**
-  - Ruta pública `/validar-mtt/:codigo` para verificación en tiempo real de la vigencia del acta.
-
-#### Bloque C: Matriz de Roles y Permisos (RBAC Institucional)
-- [ ] **TAREA-06: Configuración de Roles Formales (Niveles 1 al 5):**
-  - Promotor/a, Coordinador/a, Gerente Regional, Consultor GDC, Consultor GPACyG, Gerente de Línea / Usuario Consulta.
-
----
-
-### 📦 4. ESTADO DE GIT Y COMISIÓN LOCAL
-* **Último Commit:** `b21b7dd` (`feat(backup): add automated backup and intelligent restore scripts with repository persistence`).
-* **Archivos Confirmados:**
-  - `.gitignore` (excepciones para Backup/)
-  - `backup_db.sh`
-  - `restore_db.sh`
-  - `package_for_vps.sh`
-  - `frontend/nginx.conf`
-  - `Backup/latest.tar`, `Backup/latest.sql`, `Backup/mtt_db_backup_20261113_071236.tar`, `Backup/mtt_db_backup_20261113_071236.sql`
+2. **Backend & Base de Datos:**
+   - `backend/mtt_db_backup.sql` (volcado limpio PostgreSQL 16 de 4.52 MB con auto-aprovisionamiento, 2.563 MTTs y 36 índices).
+   - `backend/optimizations_indexes.sql` (script maestro independiente con los 36 índices y comandos ANALYZE).
+   - `Backup/latest.sql` y `Backup/latest.tar` (respaldo de producción actualizado para `restore_db.sh`).
+   - `Agents/BDR_REGISTRO_DEFECTOS.md` (BDR-011 y BDR-012 documentados).

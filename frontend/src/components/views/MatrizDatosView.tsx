@@ -234,12 +234,14 @@ export const MatrizDatosView: React.FC<MatrizDatosViewProps> = ({ records, onOpe
                 const hasCode = mtt.codigo_mtt && mtt.codigo_mtt !== '' && mtt.codigo_mtt !== 'PENDIENTE';
                 return (
                   <tr key={mtt.id} className="hover:bg-blue-50/40 transition">
-                    <td className="px-3.5 py-2.5 font-mono font-bold text-blue-700 whitespace-nowrap">
+                    <td className="px-3.5 py-2.5 font-mono font-bold whitespace-nowrap">
                       {hasCode ? (
-                        mtt.codigo_mtt
+                        <span className="text-blue-600 font-mono font-bold tracking-wide">
+                          {mtt.codigo_mtt}
+                        </span>
                       ) : (
-                        <span className="text-[10px] font-sans px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">
-                          PENDIENTE
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold border border-amber-300">
+                          PENDIENTE GDC
                         </span>
                       )}
                     </td>
