@@ -1,14 +1,14 @@
 # SESSION_CONTEXT · BITÁCORA DE RELEVO Y SINCRONIZACIÓN
 ## Proyecto SINCOMTT (CANTV · GGFPP · FIIIDT)
 
-### 📅 Fecha de Sesión: 2026-11-15 (Actualizado: 12:43 -04:00)
+### 📅 Fecha de Sesión: 2026-11-15 (Actualizado: 12:58 -04:00)
 * **Sistema Operativo / Entorno:** Linux (Ubuntu x86_64) en `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144` (Acceso Web: `http://171.31.100.144` y Dominio `http://cantvprueba.fii.gob.ve`)
 * **Proxy Perimetral FII:** `171.0.40.4` (OpenResty enrutando al servidor físico)
 * **Repositorio Remoto Oficial:** `git@github.com:kingcells22/Cantv-MTT.git` (`feature/frontend-react19` PUBLICADA AL 100%)
 * **Repositorio Remoto Personal:** `git@github.com:ilidan0160/cantv-mtt-workspace.git` (`workspace/laptop-sync` SINCRONIZADA AL 100%)
 * **Agente Activo:** `SINCOMTT-FrontendArchitect`
-* **Estado Operativo:** **LIMPIEZA DE INTERFAZ PARROQUIAS Y PUBLICACIÓN DE VERSIÓN MAESTRA** (Erradicados números Ubigeo en combos de parroquia en `Bloque2Comunal.tsx`, paquete `sincomtt_vps_bundle_20261115_124307.tar.gz` listo; 36 índices PostgreSQL 16; 2.563 MTTs consolidadas). Cero discrepancias.
+* **Estado Operativo:** **GENERADOR DE CÓDIGO QR REAL, LIMPIEZA DE INTERFAZ Y PUBLICACIÓN AL 100%** (Generador QR autónomo escaneable ISO/IEC 18004 sin dependencias npm, ruta de verificación `/verificar/:codigo`, dropdown de parroquias limpio sin números de ubigeo visibles, paquete agnóstico VPS `sincomtt_vps_bundle_20261115_125734.tar.gz` generado y ramas remotas sincronizadas). Cero discrepancias.
 
 ---
 
@@ -61,6 +61,11 @@
 ### 📦 2. ARTEFACTOS Y ARCHIVOS ACTUALIZADOS
 
 1. **Frontend:**
+   - `frontend/src/utils/qrCode.ts` (generador autónomo de códigos QR ISO/IEC 18004 en TypeScript puro, corrección de errores Reed-Solomon GF(256), sin librerías externas).
+   - `frontend/src/components/common/QrCodeView.tsx` (componente SVG pixel-perfect para renderizado nítido en pantalla e impresión).
+   - `frontend/src/components/modals/FichaPdfModal.tsx` (integración del QR real escaneable que codifica `/verificar/{codigo_mtt}`).
+   - `frontend/src/App.tsx` (listener automático de ruta `/verificar/:codigo` y query `?verificar=` para apertura directa de la Ficha verificada).
+   - `frontend/src/components/forms/Bloque2Comunal.tsx` (erradicación de números crudos de Ubigeo en el dropdown de parroquias y en el header).
    - `frontend/src/data/ubigeo_ine.json` (1.137 parroquias puras INE).
    - `frontend/src/data/mtt_dataset.json` (2.563 MTTs completas con coordenadas GPS, correos, centrales, etc.).
    - `frontend/src/data/parish_sequences.json` (715 secuencias precalculadas).
@@ -75,4 +80,5 @@
    - `backend/mtt_db_backup.sql` (volcado limpio PostgreSQL 16 de 4.52 MB con auto-aprovisionamiento, 2.563 MTTs y 36 índices).
    - `backend/optimizations_indexes.sql` (script maestro independiente con los 36 índices y comandos ANALYZE).
    - `Backup/latest.sql` y `Backup/latest.tar` (respaldo de producción actualizado para `restore_db.sh`).
+   - `sincomtt_vps_bundle_20261115_125734.tar.gz` (paquete agnóstico de 8.0 MB listo para despliegue en VPS).
    - `Agents/BDR_REGISTRO_DEFECTOS.md` (BDR-011 y BDR-012 documentados).
