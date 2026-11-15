@@ -5,9 +5,10 @@ import { useUbigeo } from '../../hooks/useUbigeo';
 interface Bloque2Props {
   formData: any;
   onChange: (field: string, value: any) => void;
+  errors?: Record<string, string>;
 }
 
-export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) => {
+export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange, errors = {} }) => {
   const {
     estados,
     municipios,
@@ -54,12 +55,17 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
         {/* Región */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Región *
+            Región <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={formData.region || 'CAPITAL'}
             onChange={(e) => onChange('region', e.target.value)}
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
+            required
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white transition-colors ${
+              errors?.region
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             {REGIONES.map((r) => (
               <option key={r} value={r}>
@@ -67,12 +73,15 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
               </option>
             ))}
           </select>
+          {errors?.region && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.region}</p>
+          )}
         </div>
 
         {/* Entidad Federal (Estado) */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Entidad Federal (Estado) *
+            Entidad Federal (Estado) <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={estado || ''}
@@ -84,7 +93,11 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
               onChange('parroquia', '');
             }}
             required
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white font-medium"
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white font-medium transition-colors ${
+              errors?.entidad_federal
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             <option value="">Seleccione Estado...</option>
             {estados.map((edo) => (
@@ -93,12 +106,15 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
               </option>
             ))}
           </select>
+          {errors?.entidad_federal && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.entidad_federal}</p>
+          )}
         </div>
 
         {/* Municipio */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Municipio *
+            Municipio <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={municipio || ''}
@@ -110,7 +126,11 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
             }}
             disabled={!estado || municipios.length === 0}
             required
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white disabled:bg-gray-100 disabled:text-gray-400"
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white disabled:bg-gray-100 disabled:text-gray-400 transition-colors ${
+              errors?.municipio
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             <option value="">
               {!estado ? 'Seleccione Estado primero...' : 'Seleccione Municipio...'}
@@ -121,12 +141,15 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
               </option>
             ))}
           </select>
+          {errors?.municipio && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.municipio}</p>
+          )}
         </div>
 
         {/* Parroquia */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Parroquia *
+            Parroquia <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={parroquia || ''}
@@ -137,7 +160,11 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
             }}
             disabled={!municipio || parroquias.length === 0}
             required
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white disabled:bg-gray-100 disabled:text-gray-400"
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white disabled:bg-gray-100 disabled:text-gray-400 transition-colors ${
+              errors?.parroquia
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             <option value="">
               {!municipio ? 'Seleccione Municipio primero...' : 'Seleccione Parroquia...'}
@@ -148,6 +175,10 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
               </option>
             ))}
           </select>
+          {errors?.parroquia && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.parroquia}</p>
+          )}
+        </div>
         </div>
 
         {/* Nombre Circuito Comunal */}

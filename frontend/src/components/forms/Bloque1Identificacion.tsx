@@ -4,10 +4,16 @@ import { TIPOS_MTT, REDES_SOCIALES_LIST } from '../../data/catalogos';
 interface Bloque1Props {
   formData: any;
   onChange: (field: string, value: any) => void;
+  errors?: Record<string, string>;
   isEdit?: boolean;
 }
 
-export const Bloque1Identificacion: React.FC<Bloque1Props> = ({ formData, onChange, isEdit = false }) => {
+export const Bloque1Identificacion: React.FC<Bloque1Props> = ({
+  formData,
+  onChange,
+  errors = {},
+  isEdit = false,
+}) => {
   return (
     <div className="space-y-4">
       <div className="border-b-2 border-blue-600 pb-1 mb-4 flex items-center justify-between">
@@ -29,27 +35,39 @@ export const Bloque1Identificacion: React.FC<Bloque1Props> = ({ formData, onChan
         {/* Nombre MTT */}
         <div className="md:col-span-6">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Nombre de la Mesa Técnica de Telecomunicaciones (MTT) *
+            Nombre de la Mesa Técnica de Telecomunicaciones (MTT) <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <input
             type="text"
             value={formData.nombre_mtt || ''}
             onChange={(e) => onChange('nombre_mtt', e.target.value)}
             required
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none transition-colors ${
+              errors?.nombre_mtt
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
             placeholder="Denominación según acta de asamblea"
           />
+          {errors?.nombre_mtt && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.nombre_mtt}</p>
+          )}
         </div>
 
         {/* Tipo de MTT */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Tipo de MTT *
+            Tipo de MTT <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={formData.tipo_mtt || 'URBANA'}
             onChange={(e) => onChange('tipo_mtt', e.target.value)}
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
+            required
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white transition-colors ${
+              errors?.tipo_mtt
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             {TIPOS_MTT.map((t) => (
               <option key={t} value={t}>
@@ -57,12 +75,15 @@ export const Bloque1Identificacion: React.FC<Bloque1Props> = ({ formData, onChan
               </option>
             ))}
           </select>
+          {errors?.tipo_mtt && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.tipo_mtt}</p>
+          )}
         </div>
 
         {/* Fecha de Creación */}
         <div className="md:col-span-3">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Fecha de Creación *
+            Fecha de Creación <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <input
             type="date"
@@ -78,8 +99,15 @@ export const Bloque1Identificacion: React.FC<Bloque1Props> = ({ formData, onChan
               }
             }}
             required
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none transition-colors ${
+              errors?.fecha_creacion
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           />
+          {errors?.fecha_creacion && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.fecha_creacion}</p>
+          )}
         </div>
 
         {/* Georreferenciación (SI/NO) */}

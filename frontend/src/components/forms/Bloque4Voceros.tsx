@@ -4,9 +4,10 @@ import { ESTATUS_VOCERIAS_LIST } from '../../data/catalogos';
 interface Bloque4Props {
   formData: any;
   onChange: (field: string, value: any) => void;
+  errors?: Record<string, string>;
 }
 
-export const Bloque4Voceros: React.FC<Bloque4Props> = ({ formData, onChange }) => {
+export const Bloque4Voceros: React.FC<Bloque4Props> = ({ formData, onChange, errors = {} }) => {
   const handleMujeresChange = (val: string) => {
     const numMujeres = val === '' ? null : Number(val);
     onChange('voceros_mujeres', numMujeres);

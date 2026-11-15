@@ -21,12 +21,14 @@ export const ActualizacionView: React.FC<ActualizacionViewProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState<string>('MTT-101-04-01');
   const [selectedMtt, setSelectedMtt] = useState<MTTRecord | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   const handleSearch = () => {
     setErrorMsg(null);
     setSuccessMsg(null);
+    setFieldErrors({});
     const query = searchTerm.trim().toLowerCase();
     if (!query) {
       setErrorMsg('Por favor ingrese un Código MTT, Expediente o Cédula de Vocero para buscar.');
@@ -52,6 +54,13 @@ export const ActualizacionView: React.FC<ActualizacionViewProps> = ({
   const handleFieldChange = (field: string, value: any) => {
     if (!selectedMtt) return;
     setSelectedMtt((prev) => (prev ? { ...prev, [field]: value } : null));
+    if (fieldErrors[field]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -59,22 +68,32 @@ export const ActualizacionView: React.FC<ActualizacionViewProps> = ({
     if (!selectedMtt?.id) return;
     setErrorMsg(null);
     setSuccessMsg(null);
+    setFieldErrors({});
 
-    try {
-      const validated = mttSchema.parse(selectedMtt);
-      onUpdateRecord(selectedMtt.id, validated as any);
-      setSuccessMsg(
-        `¡Actualización guardada correctamente para la MTT "${selectedMtt.nombre_mtt}" (${selectedMtt.codigo_mtt || selectedMtt.expediente_num})!`
+    const result = mttSchema.safeParse(selectedMtt);
+    if (!result.success) {
+      const errorsMap: Record<string, string> = {};
+      result.error.issues.forEach((issue) => {
+        const fieldName = issue.path[0] as string;
+        if (!errorsMap[fieldName]) {
+          errorsMap[fieldName] = issue.message;
+        }
+      });
+      setFieldErrors(errorsMap);
+      setErrorMsg(
+        'Todos los campos con asterisco (*) son obligatorios. Por favor complete los campos resaltados en rojo.'
       );
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err: any) {
-      if (err.errors && err.errors.length > 0) {
-        setErrorMsg(`Error de validación: ${err.errors[0].message}`);
-      } else {
-        setErrorMsg('Error al validar la actualización. Revise los campos obligatorios.');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
+
+    const validated = result.data;
+    onUpdateRecord(selectedMtt.id, validated as any);
+    setSuccessMsg(
+      `¡Actualización guardada correctamente para la MTT "${selectedMtt.nombre_mtt}" (${selectedMtt.codigo_mtt || selectedMtt.expediente_num})!`
+    );
+    setFieldErrors({});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -157,11 +176,11 @@ export const ActualizacionView: React.FC<ActualizacionViewProps> = ({
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <Bloque1Identificacion formData={selectedMtt} onChange={handleFieldChange} isEdit />
-            <Bloque2Comunal formData={selectedMtt} onChange={handleFieldChange} />
-            <Bloque3Tecnico formData={selectedMtt} onChange={handleFieldChange} />
-            <Bloque4Voceros formData={selectedMtt} onChange={handleFieldChange} />
-            <Bloque5Seguimiento formData={selectedMtt} onChange={handleFieldChange} isEdit />
+            <Bloque1Identificacion formData={selectedMtt} onChange={handleFieldChange} errors={fieldErrors} isEdit />
+            <Bloque2Comunal formData={selectedMtt} onChange={handleFieldChange} errors={fieldErrors} />
+            <Bloque3Tecnico formData={selectedMtt} onChange={handleFieldChange} errors={fieldErrors} />
+            <Bloque4Voceros formData={selectedMtt} onChange={handleFieldChange} errors={fieldErrors} />
+            <Bloque5Seguimiento formData={selectedMtt} onChange={handleFieldChange} errors={fieldErrors} isEdit />
 
             <div className="pt-4 border-t border-gray-200 flex justify-end space-x-3">
               <button

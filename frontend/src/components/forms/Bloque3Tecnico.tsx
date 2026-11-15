@@ -10,9 +10,10 @@ import {
 interface Bloque3Props {
   formData: any;
   onChange: (field: string, value: any) => void;
+  errors?: Record<string, string>;
 }
 
-export const Bloque3Tecnico: React.FC<Bloque3Props> = ({ formData, onChange }) => {
+export const Bloque3Tecnico: React.FC<Bloque3Props> = ({ formData, onChange, errors = {} }) => {
   return (
     <div className="space-y-4 pt-2">
       <div className="border-b-2 border-blue-600 pb-1 mb-4 flex items-center justify-between">
@@ -28,31 +29,47 @@ export const Bloque3Tecnico: React.FC<Bloque3Props> = ({ formData, onChange }) =
         {/* Zona Servida */}
         <div className="md:col-span-4">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Zona Servida por CANTV (SI/NO) *
+            Zona Servida por CANTV (SI/NO) <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={formData.zona_servida || 'SI'}
             onChange={(e) => onChange('zona_servida', e.target.value)}
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
+            required
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white transition-colors ${
+              errors?.zona_servida
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             <option value="SI">Sí</option>
             <option value="NO">No</option>
           </select>
+          {errors?.zona_servida && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.zona_servida}</p>
+          )}
         </div>
 
         {/* MTT en Huella GPON */}
         <div className="md:col-span-4">
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            MTT en Huella GPON (SI/NO) *
+            MTT en Huella GPON (SI/NO) <span className="text-red-500 font-bold ml-0.5">*</span>
           </label>
           <select
             value={formData.mtt_en_huella_gpon || 'NO'}
             onChange={(e) => onChange('mtt_en_huella_gpon', e.target.value)}
-            className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
+            required
+            className={`w-full px-3 py-1.5 text-sm border rounded focus:ring-1 outline-none bg-white transition-colors ${
+              errors?.mtt_en_huella_gpon
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/20'
+                : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+            }`}
           >
             <option value="SI">Sí</option>
             <option value="NO">No</option>
           </select>
+          {errors?.mtt_en_huella_gpon && (
+            <p className="text-[11px] text-red-600 font-medium mt-1">{errors.mtt_en_huella_gpon}</p>
+          )}
         </div>
 
         {/* Elemento de la Red */}

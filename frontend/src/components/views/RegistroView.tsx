@@ -71,36 +71,52 @@ const initialFormValues: Partial<MTTRecord> = {
 
 export const RegistroView: React.FC<RegistroViewProps> = ({ onAddRecord, onSwitchView }) => {
   const [formData, setFormData] = useState<Partial<MTTRecord>>(initialFormValues);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   const handleFieldChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    if (fieldErrors[field]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
     setSuccessMsg(null);
+    setFieldErrors({});
 
-    try {
-      // Validate and transform with Zod schema (enforces the 4 Golden Rules)
-      const validated = mttSchema.parse(formData);
-
-      const newRecord = onAddRecord(validated as any);
-      setSuccessMsg(
-        `¡Registro completado exitosamente! Se generó el expediente: ${newRecord.expediente_num}. Remitido a validación estadal.`
+    const result = mttSchema.safeParse(formData);
+    if (!result.success) {
+      const errorsMap: Record<string, string> = {};
+      result.error.issues.forEach((issue) => {
+        const fieldName = issue.path[0] as string;
+        if (!errorsMap[fieldName]) {
+          errorsMap[fieldName] = issue.message;
+        }
+      });
+      setFieldErrors(errorsMap);
+      setErrorMsg(
+        'Todos los campos con asterisco (*) son estrictamente obligatorios. Por favor complete los campos resaltados en rojo.'
       );
-      setFormData(initialFormValues);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err: any) {
-      if (err.errors && err.errors.length > 0) {
-        setErrorMsg(`Error de validación: ${err.errors[0].message} (Campo: ${err.errors[0].path.join('.')})`);
-      } else {
-        setErrorMsg('Error de validación en el formulario. Por favor revise los campos obligatorios.');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
+
+    const validated = result.data;
+    const newRecord = onAddRecord(validated as any);
+    setSuccessMsg(
+      `¡Registro completado exitosamente! Se generó el expediente: ${newRecord.expediente_num}. Remitido a validación estadal.`
+    );
+    setFormData(initialFormValues);
+    setFieldErrors({});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -155,11 +171,11 @@ export const RegistroView: React.FC<RegistroViewProps> = ({ onAddRecord, onSwitc
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <Bloque1Identificacion formData={formData} onChange={handleFieldChange} />
-        <Bloque2Comunal formData={formData} onChange={handleFieldChange} />
-        <Bloque3Tecnico formData={formData} onChange={handleFieldChange} />
-        <Bloque4Voceros formData={formData} onChange={handleFieldChange} />
-        <Bloque5Seguimiento formData={formData} onChange={handleFieldChange} />
+        <Bloque1Identificacion formData={formData} onChange={handleFieldChange} errors={fieldErrors} />
+        <Bloque2Comunal formData={formData} onChange={handleFieldChange} errors={fieldErrors} />
+        <Bloque3Tecnico formData={formData} onChange={handleFieldChange} errors={fieldErrors} />
+        <Bloque4Voceros formData={formData} onChange={handleFieldChange} errors={fieldErrors} />
+        <Bloque5Seguimiento formData={formData} onChange={handleFieldChange} errors={fieldErrors} />
 
         <div className="pt-4 border-t border-gray-200 flex justify-end space-x-3">
           <button
