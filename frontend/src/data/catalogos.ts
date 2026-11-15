@@ -36,6 +36,17 @@ export const OTRAS_OPERADORAS_LIST = [
   'ZONA DE CONECTIVIDAD PLURAL',
 ] as const;
 
+export const OPERADORAS_LIST = [
+  'CANTV',
+  'MOVILNET',
+  'OPERADORA PRIVADA',
+  'OPERADORA COMUNAL',
+  'ZONA DE CONECTIVIDAD PLURAL',
+] as const;
+
+import nodosData from './nodos.json';
+export const NOMBRES_NODOS: string[] = nodosData;
+
 export const ELEMENTOS_RED = [
   'CENTRAL',
   'URL',
