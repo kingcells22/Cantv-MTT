@@ -2,14 +2,14 @@
 ## SINCOMTT - Sistema Integral de Mesas Técnicas de Telecomunicaciones
 ### CANTV · Gerencia General de Formación y Participación del Poder Popular (GGFPP)
 
-### ESTADO ACTUAL: [FASE 8 - BLINDAJE REPO OFICIAL, LOGIN SEGURO Y EMISIÓN PDF DE CREDENCIALES COMPLETADOS]
-* **Fecha:** 2026-11-15 (Actualizado: 17:18 -04:00)
+### ESTADO ACTUAL: [FASE 8 - PURGA CRIPTOGRÁFICA DEFINITIVA DE HISTORIAL EN REPOSITORIO CANTV COMPLETADA]
+* **Fecha:** 2026-11-15 (Actualizado: 17:25 -04:00)
 * **Agente a Cargo:** `SINCOMTT-FrontendArchitect`
 * **Entorno de Trabajo:** Linux / `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144`
 * **Dominio Institucional:** `http://cantvprueba.fii.gob.ve`
-* **Rama Git:** `workspace/laptop-sync` y `feature/frontend-react19`
-* **Hito Alcanzado:** Eliminadas las píldoras de autocompletado en `LoginModal.tsx` para blindar el acceso a datos sensibles (ingreso manual estricto). Emisión del documento oficial institucional [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) (2 páginas ejecutivas con la matriz de 9 roles RBAC, credenciales temporales, alcance funcional y protocolos NIST SP 800-63B). Blindaje total de la rama oficial de CANTV (`origin/feature/frontend-react19`): erradicadas todas las carpetas y bitácoras internas (`.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `SESSION_CONTEXT.md`), quedando el repositorio corporativo pulcro con solo el código ejecutable. Cero discrepancias.
+* **Rama Git:** `workspace/laptop-sync` (Personal) y `feature/frontend-react19` (Oficial CANTV)
+* **Hito Alcanzado:** Purga criptográfica y reescritura total del historial de Git con `git filter-branch` en la rama oficial de CANTV (`origin/feature/frontend-react19`). Se extirparon de TODOS los commits pasados las carpetas `.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `AGENTS.md`, `SESSION_CONTEXT.md`, `publish_official.sh` y `sync_laptop.sh`. Se podaron commits vacíos y se ejecutó `git push --force origin feature/frontend-react19`. Quedó físicamente y criptográficamente **imposible** hacer `git revert` o visualizar archivos de desarrollo en GitHub. El repositorio personal (`ilidan0160/cantv-mtt-workspace`) se mantiene 100% intacto con todo el historial y bitácoras. Cero discrepancias.
 
 ---
 
@@ -50,3 +50,4 @@
 - [x] **T61:** Deshabilitadas las píldoras públicas de autocompletado en `LoginModal.tsx`: campos en blanco por defecto, ingreso manual de identificador y contraseña, alternador de visibilidad (ojo) y link de recuperación.
 - [x] **T62:** Generación del documento institucional [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) (2 páginas ejecutivas, matriz maestra de 9 roles RBAC, alcance funcional, guías para el evaluador y firmas).
 - [x] **T63:** Blindaje y depuración del repositorio corporativo CANTV (`origin/feature/frontend-react19`): erradicadas carpetas y bitácoras locales (`.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `SESSION_CONTEXT.md`), manteniendo el código 100% operativo y seguro en producción. Commit `32c18fe`.
+- [x] **T64:** Purga criptográfica definitiva con `git filter-branch` en `feature/frontend-react19`: reescritura de toda la historia histórica, extirpación de archivos y carpetas privadas de cada commit previo, poda de commits vacíos y `git push --force origin feature/frontend-react19`. Imposibilidad física de hacer revert o ver historial en CANTV. Repositorio personal (`ilidan0160`) 100% preservado.
