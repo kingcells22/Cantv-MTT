@@ -11,6 +11,7 @@ import { ActualizacionView } from './components/views/ActualizacionView';
 import { BandejaGdcView } from './components/views/BandejaGdcView';
 import { BandejaRegionalView } from './components/views/BandejaRegionalView';
 import { MatrizDatosView } from './components/views/MatrizDatosView';
+import { SmtpConfigView } from './components/views/SmtpConfigView';
 import { FichaPdfModal } from './components/modals/FichaPdfModal';
 import { VerActaModal } from './components/modals/VerActaModal';
 
@@ -67,6 +68,8 @@ const AppContent: React.FC = () => {
         return 'Bandeja de Validación Estadal';
       case 'databaseView':
         return 'Matriz de Datos (51 Cols)';
+      case 'smtpConfigView':
+        return 'Panel SuperAdmin (Configuración SMTP y Ciberseguridad)';
       default:
         return 'Sistema MTT';
     }
@@ -144,6 +147,10 @@ const AppContent: React.FC = () => {
 
           {currentView === 'databaseView' && (
             <MatrizDatosView records={records} onOpenPdf={handleOpenPdf} />
+          )}
+
+          {currentView === 'smtpConfigView' && (
+            <SmtpConfigView />
           )}
         </main>
       </div>
