@@ -23,15 +23,19 @@ echo "==========================================================================
 ORIGIN_URL=$(git remote get-url origin 2>/dev/null || echo "")
 if [[ "${ORIGIN_URL}" =~ "cantv-mtt-workspace" ]] || [[ "${ORIGIN_URL}" =~ "ilidan0160" ]]; then
     git remote rename origin personal 2>/dev/null || true
-    git remote add origin https://github.com/kingcells22/Cantv-MTT.git 2>/dev/null || true
+    git remote add origin git@github.com:kingcells22/Cantv-MTT.git 2>/dev/null || true
 fi
 if ! git remote | grep -q "^origin$"; then
-    git remote add origin https://github.com/kingcells22/Cantv-MTT.git 2>/dev/null || true
+    git remote add origin git@github.com:kingcells22/Cantv-MTT.git 2>/dev/null || true
 fi
 
-# 1. Si estamos en la rama de sincronización personal, nos cambiamos a la oficial y traemos el código
+# 1. Traer la rama oficial desde el repositorio de CANTV
+echo "🔄 Sincronizando referencias de '${OFFICIAL_BRANCH}' desde el repositorio oficial..."
+git fetch origin "${OFFICIAL_BRANCH}" 2>/dev/null || true
+
+# 2. Si estamos en la rama de sincronización personal, nos cambiamos a la oficial y traemos el código
 if [ "${CURRENT_BRANCH}" != "${OFFICIAL_BRANCH}" ]; then
-    echo "🔀 Te encuentras en '${CURRENT_BRANCH}'. Cambiando a rama oficial '${OFFICIAL_BRANCH}'..."
+    echo "🔀 Te encuentras en '${CURRENT_BRANCH}'. Preparando rama oficial '${OFFICIAL_BRANCH}'..."
     
     # Asegurar que no hay cambios sueltos sin commitear antes de cambiar de rama
     if ! git diff-index --quiet HEAD --; then
@@ -40,7 +44,11 @@ if [ "${CURRENT_BRANCH}" != "${OFFICIAL_BRANCH}" ]; then
         git commit -m "sync: autoguardado previo a publicación oficial (${TIMESTAMP})" || true
     fi
 
-    git checkout "${OFFICIAL_BRANCH}"
+    if git show-ref --verify --quiet "refs/heads/${OFFICIAL_BRANCH}"; then
+        git checkout "${OFFICIAL_BRANCH}"
+    else
+        git checkout -b "${OFFICIAL_BRANCH}" origin/"${OFFICIAL_BRANCH}" 2>/dev/null || git checkout -b "${OFFICIAL_BRANCH}"
+    fi
 
     echo "📥 Fusionando avances de código desde '${CURRENT_BRANCH}'..."
     git merge "${CURRENT_BRANCH}" -m "merge: integración de avances hacia rama oficial (${TIMESTAMP})" --no-edit || true
@@ -74,6 +82,11 @@ fi
 echo ""
 echo "🌐 Publicando rama oficial a GitHub CANTV (origin)..."
 git push origin "${OFFICIAL_BRANCH}"
+
+if [ "${CURRENT_BRANCH}" != "${OFFICIAL_BRANCH}" ]; then
+    echo "🔙 Regresando a tu rama de trabajo '${CURRENT_BRANCH}'..."
+    git checkout "${CURRENT_BRANCH}"
+fi
 
 sync 2>/dev/null || true
 
