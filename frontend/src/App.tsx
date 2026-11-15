@@ -38,14 +38,14 @@ const AppContent: React.FC = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const queryCode = urlParams.get('verificar') || urlParams.get('codigo');
 
-    const targetCode = match ? decodeURIComponent(match[1]) : queryCode;
-    if (targetCode) {
-      const cleanTarget = targetCode.trim();
+    const rawTarget = match ? decodeURIComponent(match[1]) : queryCode;
+    if (rawTarget) {
+      const cleanTarget = rawTarget.replace(/\/+$/, '').trim().toLowerCase();
       const found = records.find(
         (r) =>
-          r.codigo_mtt === cleanTarget ||
-          r.expediente_num === cleanTarget ||
-          String(r.id) === cleanTarget
+          (r.codigo_mtt && r.codigo_mtt.trim().toLowerCase() === cleanTarget) ||
+          (r.expediente_num && r.expediente_num.trim().toLowerCase() === cleanTarget) ||
+          String(r.id).trim().toLowerCase() === cleanTarget
       );
       if (found) {
         setPdfRecord(found);
