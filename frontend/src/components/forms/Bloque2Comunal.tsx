@@ -179,7 +179,6 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange, err
             <p className="text-[11px] text-red-600 font-medium mt-1">{errors.parroquia}</p>
           )}
         </div>
-        </div>
 
         {/* Nombre Circuito Comunal */}
         <div className="md:col-span-4">
