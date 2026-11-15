@@ -1,6 +1,7 @@
 import React from 'react';
 import { MTTRecord } from '../../types/mtt';
 import { X, Printer, QrCode, ShieldCheck } from 'lucide-react';
+import { QrCodeView } from '../common/QrCodeView';
 
 interface FichaPdfModalProps {
   record: MTTRecord | null;
@@ -20,6 +21,12 @@ export const FichaPdfModal: React.FC<FichaPdfModalProps> = ({ record, isOpen, on
     month: '2-digit',
     year: 'numeric',
   });
+
+  const verificationCode = record.codigo_mtt || record.expediente_num || '000';
+  const verificationUrl =
+    typeof window !== 'undefined' && window.location.origin
+      ? `${window.location.origin}/verificar/${encodeURIComponent(verificationCode)}`
+      : `http://cantvprueba.fii.gob.ve/verificar/${encodeURIComponent(verificationCode)}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto no-print-backdrop">
@@ -235,46 +242,21 @@ export const FichaPdfModal: React.FC<FichaPdfModalProps> = ({ record, isOpen, on
 
           {/* QR de Validación Oficial */}
           <div className="text-center pt-2 border-t border-gray-200 flex flex-col items-center justify-center">
-            <div className="p-2 border border-gray-300 rounded bg-white shadow-sm inline-block">
-              {/* SVG QR Code Simulation */}
-              <svg
-                className="w-20 h-20 mx-auto"
-                viewBox="0 0 100 100"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="100" height="100" fill="white" />
-                {/* Outer corners */}
-                <rect x="10" y="10" width="25" height="25" fill="#212529" />
-                <rect x="15" y="15" width="15" height="15" fill="white" />
-                <rect x="18" y="18" width="9" height="9" fill="#212529" />
-
-                <rect x="65" y="10" width="25" height="25" fill="#212529" />
-                <rect x="70" y="15" width="15" height="15" fill="white" />
-                <rect x="73" y="18" width="9" height="9" fill="#212529" />
-
-                <rect x="10" y="65" width="25" height="25" fill="#212529" />
-                <rect x="15" y="70" width="15" height="15" fill="white" />
-                <rect x="18" y="73" width="9" height="9" fill="#212529" />
-
-                {/* Pattern dots */}
-                <rect x="42" y="15" width="6" height="6" fill="#212529" />
-                <rect x="52" y="15" width="6" height="6" fill="#212529" />
-                <rect x="42" y="25" width="6" height="6" fill="#212529" />
-                <rect x="42" y="35" width="16" height="6" fill="#212529" />
-                <rect x="15" y="45" width="20" height="6" fill="#212529" />
-                <rect x="45" y="50" width="10" height="10" fill="#212529" />
-                <rect x="65" y="45" width="8" height="8" fill="#212529" />
-                <rect x="80" y="45" width="8" height="8" fill="#212529" />
-                <rect x="65" y="65" width="10" height="10" fill="#212529" />
-                <rect x="80" y="70" width="10" height="10" fill="#212529" />
-                <rect x="45" y="75" width="15" height="8" fill="#212529" />
-              </svg>
-              <p className="text-[10px] text-gray-500 font-medium mt-1">
+            <div className="p-2.5 border border-gray-300 rounded bg-white shadow-sm inline-block">
+              {/* Código QR Real y Escaneable */}
+              <div className="flex justify-center p-1 bg-white rounded">
+                <QrCodeView
+                  value={verificationUrl}
+                  size={96}
+                  level="M"
+                  className="mx-auto"
+                />
+              </div>
+              <p className="text-[10px] text-gray-700 font-bold mt-1.5">
                 QR de Verificación Oficial en Red
               </p>
-              <p className="text-[9px] font-mono text-gray-400">
-                /verificar/{record.codigo_mtt || record.expediente_num || '000'}
+              <p className="text-[9px] font-mono text-gray-500 max-w-[200px] truncate">
+                {verificationUrl}
               </p>
             </div>
           </div>
