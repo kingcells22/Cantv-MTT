@@ -2,14 +2,14 @@
 ## SINCOMTT - Sistema Integral de Mesas Técnicas de Telecomunicaciones
 ### CANTV · Gerencia General de Formación y Participación del Poder Popular (GGFPP)
 
-### ESTADO ACTUAL: [FASE 8 - CORRECCIÓN SINTAXIS JSX BLOQUE2COMUNAL Y DESPLIEGUE DOCKER VPS COMPLETADOS]
-* **Fecha:** 2026-11-15 (Actualizado: 17:00 -04:00)
+### ESTADO ACTUAL: [FASE 8 - BLINDAJE REPO OFICIAL, LOGIN SEGURO Y EMISIÓN PDF DE CREDENCIALES COMPLETADOS]
+* **Fecha:** 2026-11-15 (Actualizado: 17:18 -04:00)
 * **Agente a Cargo:** `SINCOMTT-FrontendArchitect`
 * **Entorno de Trabajo:** Linux / `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144`
 * **Dominio Institucional:** `http://cantvprueba.fii.gob.ve`
 * **Rama Git:** `workspace/laptop-sync` y `feature/frontend-react19`
-* **Hito Alcanzado:** Subsanado error TS1005 / TS1109 en `src/components/forms/Bloque2Comunal.tsx` (removida etiqueta de cierre `</div>` sobrante que desbalanceaba el grid y provocaba fallo en `npm run build` en el Docker builder del VPS). Balance JSX verificado al 100% en todos los componentes del frontend. Publicado en `origin/feature/frontend-react19` (Commit `40a4584`) y sincronizado en `personal/workspace/laptop-sync`. Paquete agnóstico regenerado: `sincomtt_vps_bundle_20261115_165808.tar.gz`. Cero discrepancias.
+* **Hito Alcanzado:** Eliminadas las píldoras de autocompletado en `LoginModal.tsx` para blindar el acceso a datos sensibles (ingreso manual estricto). Emisión del documento oficial institucional [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) (2 páginas ejecutivas con la matriz de 9 roles RBAC, credenciales temporales, alcance funcional y protocolos NIST SP 800-63B). Blindaje total de la rama oficial de CANTV (`origin/feature/frontend-react19`): erradicadas todas las carpetas y bitácoras internas (`.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `SESSION_CONTEXT.md`), quedando el repositorio corporativo pulcro con solo el código ejecutable. Cero discrepancias.
 
 ---
 
@@ -47,3 +47,6 @@
 - [x] **T58:** Código QR interactivo en Ficha Oficial: soporte de clic directo para abrir verificación oficial en nueva pestaña, botones "Probar Enlace" y "Copiar URL", normalización de búsqueda en `App.tsx`. Commit `6537ea7`, remotos actualizados y paquete `sincomtt_vps_bundle_20261115_132000.tar.gz`.
 - [x] **T59:** Implementación integral del Rol SuperAdmin (Nivel 6) y Pasarela SMTP (`SmtpConfigView.tsx`), Modal de Recuperación Segura NIST SP 800-63B por Correo (`RecuperarPasswordModal.tsx`), selector de 9 cuentas de prueba en `LoginModal.tsx`, migración SQL `backend/migration_smtp_superadmin.sql`, documentación BDR-013, commit `838f333`, push a ambos remotos y paquete agnóstico VPS `sincomtt_vps_bundle_20261115_134020.tar.gz`.
 - [x] **T60:** Resolución de fallo de compilación TypeScript (`TS1005: ')' expected`) en `Bloque2Comunal.tsx`: eliminado `</div>` redundante, verificado balance sintáctico estricto en todos los archivos `.tsx`/`.ts`, commit `40a4584`, push a `origin/feature/frontend-react19` y `personal/workspace/laptop-sync`, y generado paquete `sincomtt_vps_bundle_20261115_165808.tar.gz`.
+- [x] **T61:** Deshabilitadas las píldoras públicas de autocompletado en `LoginModal.tsx`: campos en blanco por defecto, ingreso manual de identificador y contraseña, alternador de visibilidad (ojo) y link de recuperación.
+- [x] **T62:** Generación del documento institucional [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) (2 páginas ejecutivas, matriz maestra de 9 roles RBAC, alcance funcional, guías para el evaluador y firmas).
+- [x] **T63:** Blindaje y depuración del repositorio corporativo CANTV (`origin/feature/frontend-react19`): erradicadas carpetas y bitácoras locales (`.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `SESSION_CONTEXT.md`), manteniendo el código 100% operativo y seguro en producción. Commit `32c18fe`.
