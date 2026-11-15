@@ -40,3 +40,5 @@
 - [x] **T51:** Sincronización física de búferes con `sync` en Linux.
 - [x] **T52:** Publicación oficial exitosa al repositorio empresarial de CANTV (`origin/feature/frontend-react19` en `https://github.com/kingcells22/Cantv-MTT.git`) con blindaje defensivo de bitácoras locales.
 - [x] **T53:** Sincronización física final de búferes con `sync`.
+- [x] **T54:** Limpieza de interfaz en `Bloque2Comunal.tsx`: erradicación de los números de código Ubigeo en las opciones del combo de parroquias (`{p.nombre}`) y remoción del badge de Ubigeo INE en el encabezado para mantener los nombres 100% limpios.
+- [x] **T55:** Actualización y publicación en repositorios remotos (`origin` y `personal`).

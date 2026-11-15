@@ -48,11 +48,6 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
         <h3 className="text-base font-bold text-blue-600 tracking-wide uppercase">
           2. Organización Comunal y Demografía (Maestro INE)
         </h3>
-        {currentUbigeoCode && (
-          <span className="text-xs bg-blue-100 text-blue-800 font-mono font-bold px-2 py-0.5 rounded">
-            Ubigeo INE: {currentUbigeoCode}
-          </span>
-        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
@@ -149,7 +144,7 @@ export const Bloque2Comunal: React.FC<Bloque2Props> = ({ formData, onChange }) =
             </option>
             {parroquias.map((p) => (
               <option key={p.ubigeo_code} value={p.nombre}>
-                {p.nombre} ({p.ubigeo_code})
+                {p.nombre}
               </option>
             ))}
           </select>
