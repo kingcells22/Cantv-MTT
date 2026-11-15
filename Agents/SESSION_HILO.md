@@ -35,3 +35,6 @@
 - [x] **T46:** Sincronización de `frontend/src/types/mtt.ts`, `frontend/src/schemas/mttSchema.ts` y regeneración de `frontend/src/data/mtt_dataset.json` con los 2.563 registros consolidados.
 - [x] **T47:** Documentación de BDR-012 en `Agents/BDR_REGISTRO_DEFECTOS.md` y actualización de `SESSION_CONTEXT.md`.
 - [x] **T48:** Regeneración de `Backup/latest.sql` y `Backup/latest.tar` (4.52 MB).
+- [x] **T49:** Generación del paquete agnóstico de despliegue para VPS [sincomtt_vps_bundle_20261115_111526.tar.gz](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/sincomtt_vps_bundle_20261115_111526.tar.gz) (8.0 MB).
+- [x] **T50:** Commit y push exitoso del snapshot de trabajo a la rama remota `workspace/laptop-sync` (Commit `d9a7ab9`).
+- [x] **T51:** Sincronización física de búferes con `sync` en Linux.
