@@ -2,14 +2,14 @@
 ## SINCOMTT - Sistema Integral de Mesas Técnicas de Telecomunicaciones
 ### CANTV · Gerencia General de Formación y Participación del Poder Popular (GGFPP)
 
-### ESTADO ACTUAL: [FASE 7 - GENERADOR DE QR OFICIAL ESCANEABLE Y PUBLICACIÓN COMPLETADA]
-* **Fecha:** 2026-11-15 (Actualizado: 12:59 -04:00)
+### ESTADO ACTUAL: [FASE 7 - VALIDACIÓN ESTRICTA DE CAMPOS OBLIGATORIOS (*) Y GENERADOR QR COMPLETADO AL 100%]
+* **Fecha:** 2026-11-15 (Actualizado: 13:14 -04:00)
 * **Agente a Cargo:** `SINCOMTT-FrontendArchitect`
 * **Entorno de Trabajo:** Linux / `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144`
 * **Dominio Institucional:** `http://cantvprueba.fii.gob.ve`
 * **Rama Git:** `workspace/laptop-sync`
-* **Hito Alcanzado:** Implementado generador autónomo de Códigos QR escaneables (ISO/IEC 18004, Reed-Solomon GF(256), cero dependencias externas) en `frontend/src/utils/qrCode.ts` y `frontend/src/components/common/QrCodeView.tsx`. Integrado en la Ficha Oficial PDF (`FichaPdfModal.tsx`) apuntando a `/verificar/{codigo_mtt}` y listener en `App.tsx` para apertura automática al escanear. Publicado en Git corporativo (`origin/feature/frontend-react19`) y personal (`workspace/laptop-sync`). Paquete agnóstico VPS `sincomtt_vps_bundle_20261115_125734.tar.gz` generado. Cero discrepancias.
+* **Hito Alcanzado:** Implementada validación estricta de todos los campos con asterisco (`*`) en formularios de registro y actualización: `nombre_mtt`, `tipo_mtt`, `fecha_creacion`, `region`, `entidad_federal`, `municipio`, `parroquia`, `zona_servida`, `mtt_en_huella_gpon`. Soporte de mensajes inline, bordes y aros de foco en rojo defensivo (`border-red-500`), prevención de envío en formularios y generador de Códigos QR oficial autónomo (ISO/IEC 18004). Ambos remotos (`origin` y `personal`) actualizados al commit `8d33350` y paquete `sincomtt_vps_bundle_20261115_131247.tar.gz` generado. Cero discrepancias.
 
 ---
 
@@ -43,3 +43,4 @@
 - [x] **T54:** Limpieza de interfaz en `Bloque2Comunal.tsx`: erradicación de los números de código Ubigeo en las opciones del combo de parroquias (`{p.nombre}`) y remoción del badge de Ubigeo INE en el encabezado para mantener los nombres 100% limpios.
 - [x] **T55:** Actualización y publicación en repositorios remotos (`origin` y `personal`).
 - [x] **T56:** Implementación completa del generador de Códigos QR autónomo (ISO/IEC 18004, GF(256), `qrCode.ts`, `QrCodeView.tsx`), integración en la Ficha Resumen Oficial (`FichaPdfModal.tsx`), soporte de verificación por URL (`/verificar/:codigo` en `App.tsx`), commit `3c58c4d`, push a ambos remotos y generación del paquete `sincomtt_vps_bundle_20261115_125734.tar.gz`.
+- [x] **T57:** Blindaje y validación estricta de todos los campos con asterisco (`*`) en formularios: actualización de `mttSchema.ts` (`fecha_creacion` y obligatorios), destacados visuales con `<span className="text-red-500 font-bold ml-0.5">*</span>`, bordes y focos rojos `border-red-500`, mensajes de error inline y bloqueo defensivo en `RegistroView.tsx` y `ActualizacionView.tsx`. Commit `8d33350`, push a ambos remotos y paquete agnóstico `sincomtt_vps_bundle_20261115_131247.tar.gz`.
