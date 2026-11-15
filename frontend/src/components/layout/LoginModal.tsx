@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { RolInstitucional } from '../../types/mtt';
-import { ROLES_DISPONIBLES } from '../../data/catalogos';
 import { Radio, LogIn, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { RecuperarPasswordModal } from '../modals/RecuperarPasswordModal';
 
 export const LoginModal: React.FC = () => {
-  const { usuario, rol, login, isLoginModalOpen, cuentasUsuarios } = useAuth();
+  const { login, isLoginModalOpen } = useAuth();
   const [userVal, setUserVal] = useState<string>('');
   const [passwordVal, setPasswordVal] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [roleVal, setRoleVal] = useState<RolInstitucional>(rol || 'Coordinador / Coordinadora');
   const [isRecoverModalOpen, setIsRecoverModalOpen] = useState<boolean>(false);
 
   if (!isLoginModalOpen) return null;
@@ -20,13 +17,8 @@ export const LoginModal: React.FC = () => {
     const cleanUser = userVal.trim();
     if (!cleanUser) return;
 
-    // Detectar automáticamente el rol institucional si la cuenta está registrada
-    const cuentaRegistrada = cuentasUsuarios.find(
-      (u) => u.usuario.toLowerCase() === cleanUser.toLowerCase()
-    );
-    const rolEfectivo = cuentaRegistrada ? (cuentaRegistrada.rol as RolInstitucional) : roleVal;
-
-    login(cleanUser, rolEfectivo);
+    // El rol institucional está estrictamente vinculado a la cuenta del usuario en BD
+    login(cleanUser);
   };
 
   return (
@@ -93,26 +85,6 @@ export const LoginModal: React.FC = () => {
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
               </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
-                Rol Institucional de Acceso (RBAC)
-              </label>
-              <select
-                value={roleVal}
-                onChange={(e) => setRoleVal(e.target.value as RolInstitucional)}
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white"
-              >
-                {ROLES_DISPONIBLES.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.nombre}
-                  </option>
-                ))}
-              </select>
-              <p className="text-[11px] text-gray-500 mt-1 italic">
-                {ROLES_DISPONIBLES.find((r) => r.id === roleVal)?.descripcion}
-              </p>
             </div>
 
             <div className="pt-2">
