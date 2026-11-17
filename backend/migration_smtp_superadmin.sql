@@ -15,7 +15,7 @@ ON CONFLICT (id) DO UPDATE SET
     descripcion = EXCLUDED.descripcion;
 
 -- 2. Asegurar que la secuencia de roles esté sincronizada
-SELECT setval('roles_id_seq', (SELECT MAX(id) FROM public.roles));
+SELECT setval(pg_get_serial_sequence('public.roles', 'id'), (SELECT MAX(id) FROM public.roles));
 
 -- 3. Ampliación defensiva de la tabla de usuarios
 ALTER TABLE public.usuarios 
