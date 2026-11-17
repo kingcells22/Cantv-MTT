@@ -11,6 +11,7 @@ Este directorio contiene los informes técnicos especializados divididos por res
 | :--- | :--- | :--- | :--- |
 | **Anthony Domínguez** | Arquitectura Frontend, UI/UX Oficial, Contenedores Docker Debian, Reverse Proxy Nginx, Ubigeo INE y Pruebas End-to-End | `feature/frontend-react19` | [01_ANTHONY_DOMINGUEZ/INFORME_TECNICO_ANTHONY_DOMINGUEZ.md](01_ANTHONY_DOMINGUEZ/INFORME_TECNICO_ANTHONY_DOMINGUEZ.md) |
 | **Kenny Navarro** | Arquitectura Backend, API REST FastAPI, Modelado SQLAlchemy, Persistencia PostgreSQL, Schemas Pydantic y Dockerfile Python | `Devs` | [02_KENNY_NAVARRO/INFORME_TECNICO_KENNY_NAVARRO.md](02_KENNY_NAVARRO/INFORME_TECNICO_KENNY_NAVARRO.md) |
+| **Planificación Integral (Plane)** | Backlog Maestro Full-Stack, Base de Datos, Redis, Ciberseguridad (Zero-Trust / NIST) y Pruebas Piloto CANTV | `feature/frontend-react19` | [PLAN_MAESTRO_EJECUCION_SINCOMTT.md](PLAN_MAESTRO_EJECUCION_SINCOMTT.md) |
 
 ---
 
