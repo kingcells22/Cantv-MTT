@@ -8,10 +8,12 @@ interface AuthContextType {
   isAuthenticated: boolean;
   esSuperAdmin: boolean;
   login: (user: string, role?: RolInstitucional) => void;
-  logout: () => void;
+  logout: (reason?: 'inactividad' | 'manual') => void;
   openLoginModal: () => void;
   closeLoginModal: () => void;
   isLoginModalOpen: boolean;
+  sessionExpiredNotice: string | null;
+  tiempoRestanteSegundos: number;
   puedeRegistrar: boolean;
   puedeEditar: boolean;
   puedeAsignarCodigo: boolean;
@@ -27,6 +29,9 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// Tiempo máximo de inactividad de sesión: 15 minutos exactos (NIST SP 800-63B)
+const SESSION_TIMEOUT_MS = 15 * 60 * 1000;
 
 const initialSmtpConfig: SmtpConfig = {
   servidor_host: 'smtp.cantv.com.ve',
@@ -51,10 +56,13 @@ const initialCuentas: UsuarioCuenta[] = GENERIC_TEST_USERS.map((u, i) => ({
 }));
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [usuario, setUsuario] = useState<string>('anthony.dominguez');
-  const [rol, setRol] = useState<RolInstitucional>('SuperAdmin');
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+  // Por defecto NO autenticado: se requiere inicio de sesión obligatorio
+  const [usuario, setUsuario] = useState<string>('');
+  const [rol, setRol] = useState<RolInstitucional>('Usuario Consulta');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(true);
+  const [sessionExpiredNotice, setSessionExpiredNotice] = useState<string | null>(null);
+  const [tiempoRestanteSegundos, setTiempoRestanteSegundos] = useState<number>(900);
   const [smtpConfig, setSmtpConfig] = useState<SmtpConfig>(initialSmtpConfig);
   const [cuentasUsuarios, setCuentasUsuarios] = useState<UsuarioCuenta[]>(initialCuentas);
   // Almacén en memoria de tokens de recuperación activos (TTL 15 min)
@@ -63,10 +71,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const savedUser = localStorage.getItem('mtt_user');
     const savedRole = localStorage.getItem('mtt_role') as RolInstitucional;
-    if (savedUser && savedRole) {
+    const expiraStr = localStorage.getItem('mtt_session_expira');
+    const expira = expiraStr ? Number(expiraStr) : 0;
+    const now = Date.now();
+
+    if (savedUser && savedRole && expira && now < expira) {
+      // Sesión previa válida y no expirada
       setUsuario(savedUser);
       setRol(savedRole);
+      setIsAuthenticated(true);
+      setIsLoginModalOpen(false);
+      setSessionExpiredNotice(null);
+      localStorage.setItem('mtt_session_expira', String(now + SESSION_TIMEOUT_MS));
+    } else {
+      // Sin sesión previa o expirada: requerir login
+      setUsuario('');
+      setRol('Usuario Consulta');
+      setIsAuthenticated(false);
+      setIsLoginModalOpen(true);
+      localStorage.removeItem('mtt_user');
+      localStorage.removeItem('mtt_role');
+      localStorage.removeItem('mtt_session_expira');
+      if (expira && now >= expira) {
+        setSessionExpiredNotice(
+          'Su sesión anterior ha finalizado por inactividad (15 min). Por favor, inicie sesión.'
+        );
+      }
     }
+
     const savedSmtp = localStorage.getItem('mtt_smtp_config');
     if (savedSmtp) {
       try {
@@ -81,8 +113,46 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
+  // Monitor continuo de inactividad de sesión (TTL 15 minutos)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    let lastThrottle = Date.now();
+
+    const registerActivity = () => {
+      const now = Date.now();
+      if (now - lastThrottle > 15000) {
+        lastThrottle = now;
+        localStorage.setItem('mtt_session_expira', String(now + SESSION_TIMEOUT_MS));
+      }
+    };
+
+    const events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
+    events.forEach((ev) => window.addEventListener(ev, registerActivity, { passive: true }));
+
+    const intervalId = setInterval(() => {
+      const expiraStr = localStorage.getItem('mtt_session_expira');
+      const expira = expiraStr ? Number(expiraStr) : 0;
+      const now = Date.now();
+
+      if (!expira || now >= expira) {
+        logout('inactividad');
+      } else {
+        const diffSec = Math.max(0, Math.floor((expira - now) / 1000));
+        setTiempoRestanteSegundos(diffSec);
+      }
+    }, 5000);
+
+    return () => {
+      events.forEach((ev) => window.removeEventListener(ev, registerActivity));
+      clearInterval(intervalId);
+    };
+  }, [isAuthenticated]);
+
   const login = (newUser: string, newRole?: RolInstitucional) => {
     const cleanUser = newUser.trim();
+    if (!cleanUser) return;
+
     let effectiveRole: RolInstitucional = newRole || 'Coordinador / Coordinadora';
 
     if (!newRole) {
@@ -107,16 +177,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    setUsuario(cleanUser || 'usuario.institucional');
+    const now = Date.now();
+    const expira = now + SESSION_TIMEOUT_MS;
+
+    setUsuario(cleanUser);
     setRol(effectiveRole);
     setIsAuthenticated(true);
     setIsLoginModalOpen(false);
-    localStorage.setItem('mtt_user', cleanUser || 'usuario.institucional');
+    setSessionExpiredNotice(null);
+    setTiempoRestanteSegundos(900);
+
+    localStorage.setItem('mtt_user', cleanUser);
     localStorage.setItem('mtt_role', effectiveRole);
+    localStorage.setItem('mtt_session_expira', String(expira));
   };
 
-  const logout = () => {
+  const logout = (reason?: 'inactividad' | 'manual') => {
+    setIsAuthenticated(false);
+    setUsuario('');
+    setRol('Usuario Consulta');
     setIsLoginModalOpen(true);
+    localStorage.removeItem('mtt_user');
+    localStorage.removeItem('mtt_role');
+    localStorage.removeItem('mtt_session_expira');
+
+    if (reason === 'inactividad') {
+      setSessionExpiredNotice(
+        'Su sesión ha finalizado automáticamente por 15 minutos de inactividad (Protocolo de Ciberseguridad NIST SP 800-63B). Por favor, ingrese de nuevo.'
+      );
+    } else {
+      setSessionExpiredNotice(null);
+    }
   };
 
   const openLoginModal = () => setIsLoginModalOpen(true);

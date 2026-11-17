@@ -23,7 +23,7 @@ const AppContent: React.FC = () => {
 
   const { records, addRecord, updateRecord, assignCode, returnRecord, approveRegional } =
     useMTTStorage();
-  const { rol } = useAuth();
+  const { rol, isAuthenticated } = useAuth();
 
   const handleOpenPdf = (record: MTTRecord) => setPdfRecord(record);
   const handleClosePdf = () => setPdfRecord(null);
@@ -82,6 +82,15 @@ const AppContent: React.FC = () => {
     ).length,
     pendientesRegional: records.filter((r) => r.estatus_validacion === 'ENVIADO_REGIONAL').length,
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <LoginModal />
+        {pdfRecord && <FichaPdfModal record={pdfRecord} onClose={handleClosePdf} />}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
