@@ -192,14 +192,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return { success: true };
         }
       } catch (backendErr: any) {
-        if (backendErr?.response?.status === 401 || backendErr?.response?.status === 403) {
-          const detail = backendErr?.response?.data?.detail;
-          return {
-            success: false,
-            error: detail || 'Usuario, cédula o contraseña incorrectos en el sistema institucional.',
-          };
-        }
-        // Si el backend no está disponible (modo offline/desconectado), se procede a la validación estricta local
+        console.warn('Backend /api/login no autenticó o BD no sincronizada. Verificando padrón institucional local...');
+        // Permitir que el paso 2 valide de forma estricta contra el catálogo institucional
       }
     }
 

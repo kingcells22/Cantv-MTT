@@ -52,9 +52,9 @@ VALUES (
     'Configuración oficial de la pasarela de correo saliente SMTP'
 ) ON CONFLICT (clave) DO NOTHING;
 
--- 5. Padrón de Usuarios Genéricos para Pruebas (Hash Bcrypt Cost 12)
+-- 5. Padrón de Usuarios Genéricos para Pruebas (Hash Bcrypt Cost 12 verificado)
 -- Contraseñas temporales NIST de prueba:
--- superadmin:      SuperAdmin.2026#CANTV! ($2b$12$Z0Hw5.C2mIe9qE7kG8bWp.QZ2L3r6K7x9V0s1D2f3G4h5J6k7L8m9)
+-- superadmin:      SuperAdmin.2026#CANTV!
 -- test_promotor:   Promotor.2026#C1!
 -- test_coordinador:Coord.2026#C2!
 -- test_regional:   Regional.2026#C3!
@@ -66,16 +66,18 @@ VALUES (
 
 INSERT INTO public.usuarios (usuario, password_hash, rol_id, nombre, cedula, correo_institucional, activo)
 VALUES 
-('superadmin', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 8, 'Anthony Domínguez (SuperAdmin - FIIIDT)', '10000001', 'anthony.dominguez@fii.gob.ve', true),
-('test_promotor', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 1, 'Promotor Comunal de Campo', '10000002', 'promotor.campo@cantv.com.ve', true),
-('test_coordinador', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 2, 'Coordinador Territorial GGFPP', '10000003', 'coordinador.ggfpp@cantv.com.ve', true),
-('test_regional', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 3, 'Gerente Regional Estadal', '10000004', 'gerente.regional@cantv.com.ve', true),
-('test_gdc', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 4, 'Consultor GDC Nacional', '10000005', 'consultor.gdc@cantv.com.ve', true),
-('test_gpacyg', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 5, 'Auditor Nacional GPACyG', '10000006', 'auditor.gpacyg@cantv.com.ve', true),
-('test_linea', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 6, 'Gerente de Línea Operativa', '10000007', 'gerente.linea@cantv.com.ve', true),
-('test_general', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 6, 'Gerente General GGFPP', '10000008', 'gerente.general@cantv.com.ve', true),
-('test_consulta', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 7, 'Usuario de Consulta Pública', '10000009', 'consulta.publica@cantv.com.ve', true)
+('superadmin', '$2b$12$PVE1XsfmXQA9SF5RoV0RbOFPtEbme9X8FRd2uehg/FeokrImpQZQW', 8, 'Anthony Domínguez (SuperAdmin - FIIIDT)', '10000001', 'anthony.dominguez@fii.gob.ve', true),
+('anthony.dominguez', '$2b$12$PVE1XsfmXQA9SF5RoV0RbOFPtEbme9X8FRd2uehg/FeokrImpQZQW', 8, 'Anthony Domínguez (SuperAdmin - FIIIDT)', '10000001', 'anthony.dominguez@fii.gob.ve', true),
+('test_promotor', '$2b$12$C3ozBkIF6qvr3KUwvw44yeT5s3YBfwqLIDQ6FPzboHXq52BivXDEC', 1, 'Promotor Comunal de Campo', '10000002', 'promotor.campo@cantv.com.ve', true),
+('test_coordinador', '$2b$12$onWXte0STub3Iil5KNzYrugpXTjz87VyYAGvhCpoC14oI5Gkj7ZB6', 2, 'Coordinador Territorial GGFPP', '10000003', 'coordinador.ggfpp@cantv.com.ve', true),
+('test_regional', '$2b$12$PgtF.4x9OeUgvlf1MTQCUOUl94/CVnFQsWiFIj9DdPgYzWlDp.Xv.', 3, 'Gerente Regional Estadal', '10000004', 'gerente.regional@cantv.com.ve', true),
+('test_gdc', '$2b$12$zqYy/4r2s3pIAjjP/vnEoOi1YJzFCLRDg4I1N4QofwXjGa4xC7sfu', 4, 'Consultor GDC Nacional', '10000005', 'consultor.gdc@cantv.com.ve', true),
+('test_gpacyg', '$2b$12$Vw7rlUer0HpEePEwx3eH5.qH7OfeEfcsOF.GGtWfAUqCzeaHFCubW', 5, 'Auditor Nacional GPACyG', '10000006', 'auditor.gpacyg@cantv.com.ve', true),
+('test_linea', '$2b$12$95MXEdqhcE83N2r/UR3iee95./0jf3nWLoPknkB1JiBI7AqY0PPO.', 6, 'Gerente de Línea Operativa', '10000007', 'gerente.linea@cantv.com.ve', true),
+('test_general', '$2b$12$wfDTva9YtsCXCELjGHbs0O9wrVbyDdO9nKG5KB2l2FXwbLPI8oDE2', 6, 'Gerente General GGFPP', '10000008', 'gerente.general@cantv.com.ve', true),
+('test_consulta', '$2b$12$E896aPWh3GuNJV61ZNSAKeqYaPO.B2Zeb1h7kMIA8LukzBALzVsaq', 7, 'Usuario de Consulta Pública', '10000009', 'consulta.publica@cantv.com.ve', true)
 ON CONFLICT (usuario) DO UPDATE SET
+    password_hash = EXCLUDED.password_hash,
     rol_id = EXCLUDED.rol_id,
     correo_institucional = EXCLUDED.correo_institucional,
     activo = EXCLUDED.activo;
