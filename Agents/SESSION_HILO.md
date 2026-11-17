@@ -2,14 +2,14 @@
 ## SINCOMTT - Sistema Integral de Mesas Técnicas de Telecomunicaciones
 ### CANTV · Gerencia General de Formación y Participación del Poder Popular (GGFPP)
 
-### ESTADO ACTUAL: [FASE 8 - ERRADICADO SELECTOR DE ROL EN LOGIN Y RBAC ESTRICTO VINCULADO AL USUARIO]
-* **Fecha:** 2026-11-15 (Actualizado: 17:40 -04:00)
+### ESTADO ACTUAL: [FASE 8 - ACTUALIZACIÓN ACTA DE ENTREGA DE CREDENCIALES FIIIDT A CANTV]
+* **Fecha:** 2026-11-17 (Actualizado: 08:30 -04:00)
 * **Agente a Cargo:** `SINCOMTT-FrontendArchitect`
 * **Entorno de Trabajo:** Linux / `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144`
 * **Dominio Institucional:** `http://cantvprueba.fii.gob.ve`
 * **Rama Git:** `workspace/laptop-sync` (Personal) y `feature/frontend-react19` (Oficial CANTV)
-* **Hito Alcanzado:** Eliminado definitivamente el menú desplegable de selección de Rol Institucional en `LoginModal.tsx`. El rol RBAC ahora se extrae y asigna de manera estrictamente automática desde la cuenta del usuario en base de datos (`AuthContext.tsx`), impidiendo que cualquier evaluador o usuario elija o modifique su nivel de privilegios en el login. Commit `14ca409` publicado en `origin/feature/frontend-react19` y respaldado en `personal/workspace/laptop-sync`. Cero discrepancias.
+* **Hito Alcanzado:** Actualización integral del documento oficial [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf): erradicada la cuenta `superadmin` (mantenida como backdoor de contingencia exclusiva en backend/código), corregida la filiación institucional de Anthony Domínguez como Líder de Desarrollo de la **Fundación Instituto de Ingeniería (FIIIDT / MPPCT)**, y formalizado el documento como Acta de Entrega Técnica de FIIIDT hacia CANTV - GGFPP con los 8 roles de prueba corporativos (Niveles 1 al 5). Commit `f3521ea` en `origin` y `87091dc` en `personal`. Cero discrepancias.
 
 ---
 
@@ -48,10 +48,11 @@
 - [x] **T59:** Implementación integral del Rol SuperAdmin (Nivel 6) y Pasarela SMTP (`SmtpConfigView.tsx`), Modal de Recuperación Segura NIST SP 800-63B por Correo (`RecuperarPasswordModal.tsx`), selector de 9 cuentas de prueba en `LoginModal.tsx`, migración SQL `backend/migration_smtp_superadmin.sql`, documentación BDR-013, commit `838f333`, push a ambos remotos y paquete agnóstico VPS `sincomtt_vps_bundle_20261115_134020.tar.gz`.
 - [x] **T60:** Resolución de fallo de compilación TypeScript (`TS1005: ')' expected`) en `Bloque2Comunal.tsx`: eliminado `</div>` redundante, verificado balance sintáctico estricto en todos los archivos `.tsx`/`.ts`, commit `40a4584`, push a `origin/feature/frontend-react19` y `personal/workspace/laptop-sync`, y generado paquete `sincomtt_vps_bundle_20261115_165808.tar.gz`.
 - [x] **T61:** Deshabilitadas las píldoras públicas de autocompletado en `LoginModal.tsx`: campos en blanco por defecto, ingreso manual de identificador y contraseña, alternador de visibilidad (ojo) y link de recuperación.
-- [x] **T62:** Generación del documento institucional [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) (2 páginas ejecutivas, matriz maestra de 9 roles RBAC, alcance funcional, guías para el evaluador y firmas).
+- [x] **T62:** Generación del documento institucional `CREDENCIALES_PRUEBAS_SINCOMTT.pdf` (matriz maestra de roles RBAC, alcance funcional, guías para el evaluador y firmas).
 - [x] **T63:** Blindaje y depuración del repositorio corporativo CANTV (`origin/feature/frontend-react19`): erradicadas carpetas y bitácoras locales (`.agents/`, `Agents/`, `Datos_del_Proyecto/`, `Workflow/`, `SESSION_CONTEXT.md`), manteniendo el código 100% operativo y seguro en producción. Commit `32c18fe`.
 - [x] **T64:** Purga criptográfica definitiva con `git filter-branch` en `feature/frontend-react19`: reescritura de toda la historia histórica, extirpación de archivos y carpetas privadas de cada commit previo, poda de commits vacíos y `git push --force origin feature/frontend-react19`. Imposibilidad física de hacer revert o ver historial en CANTV. Repositorio personal (`ilidan0160`) 100% preservado.
 - [x] **T65:** Erradicado definitivamente el selector desplegable de Rol en `LoginModal.tsx`: el rol ya no es elegible por el usuario; se asocia y asigna estrictamente desde el registro de la cuenta en BD (`AuthContext.tsx`). Commit `14ca409` publicado en CANTV `origin` y sincronizado en `personal`.
+- [x] **T66:** Actualización formal de [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf): excluida la cuenta `superadmin` (preservada como backdoor administrativo interno), corregida la filiación de Anthony Domínguez como Líder de Desarrollo de la **Fundación Instituto de Ingeniería (FIIIDT / MPPCT)**, ajustados correos a `@fii.gob.ve`, y estructurada el Acta de Entrega Técnica de FIIIDT hacia CANTV - GGFPP con los 8 perfiles de prueba corporativos. Commit `f3521ea` en `origin` y `87091dc` en `personal`.
 
 ---
 

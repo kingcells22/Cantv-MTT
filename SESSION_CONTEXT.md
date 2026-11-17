@@ -1,14 +1,14 @@
 # SESSION_CONTEXT · BITÁCORA DE RELEVO Y SINCRONIZACIÓN
 ## Proyecto SINCOMTT (CANTV · GGFPP · FIIIDT)
 
-### 📅 Fecha de Sesión: 2026-11-15 (Actualizado: 17:40 -04:00)
+### 📅 Fecha de Sesión: 2026-11-17 (Actualizado: 08:30 -04:00)
 * **Sistema Operativo / Entorno:** Linux (Ubuntu x86_64) en `/home/anthony/Documentos/Proyectos/cantv-mtt-workspace`
 * **IP Servidor Físico / VPS:** `171.31.100.144` (Acceso Web: `http://171.31.100.144` y Dominio `http://cantvprueba.fii.gob.ve`)
 * **Proxy Perimetral FII:** `171.0.40.4` (OpenResty enrutando al servidor físico)
-* **Repositorio Remoto Oficial:** `git@github.com:kingcells22/Cantv-MTT.git` (`feature/frontend-react19` ACTUALIZADA AL 100% - Commit `14ca409` - Selector de rol erradicado)
-* **Repositorio Remoto Personal:** `git@github.com:ilidan0160/cantv-mtt-workspace.git` (`workspace/laptop-sync` SINCRONIZADA AL 100%)
+* **Repositorio Remoto Oficial:** `git@github.com:kingcells22/Cantv-MTT.git` (`feature/frontend-react19` ACTUALIZADA - Commit `f3521ea` - Filiación FIIIDT y sin superadmin en acta)
+* **Repositorio Remoto Personal:** `git@github.com:ilidan0160/cantv-mtt-workspace.git` (`workspace/laptop-sync` SINCRONIZADA AL 100% - Commit `87091dc`)
 * **Agente Activo:** `SINCOMTT-FrontendArchitect`
-* **Estado Operativo:** **SELECTOR DE ROL ERRADICADO EN LOGIN Y RBAC ESTRICTO ASOCIADO AL USUARIO** (Formulario de login ahora solicita única y exclusivamente `Usuario o Cédula` y `Contraseña`; el rol se asigna automáticamente de la cuenta en base de datos. Commit `14ca409` publicado en CANTV `origin` y sincronizado en `personal`). Cero discrepancias.
+* **Estado Operativo:** **ACTA DE ENTREGA FIIIDT A CANTV ACTUALIZADA Y SIN SUPERADMIN** (Documento [CREDENCIALES_PRUEBAS_SINCOMTT.pdf](file:///home/anthony/Documentos/Proyectos/cantv-mtt-workspace/CREDENCIALES_PRUEBAS_SINCOMTT.pdf) reemitido formalmente: excluida la cuenta `superadmin` preservada como backdoor exclusivo de Anthony, ajustada la filiación de Anthony Domínguez a la Fundación Instituto de Ingeniería (FIIIDT / MPPCT) con correos `@fii.gob.ve`, y matriz de los 8 roles de prueba lista para entrega a CANTV GGFPP). Cero discrepancias.
 
 ---
 
