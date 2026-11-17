@@ -87,7 +87,13 @@ const AppContent: React.FC = () => {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
         <LoginModal />
-        {pdfRecord && <FichaPdfModal record={pdfRecord} onClose={handleClosePdf} />}
+        {pdfRecord && (
+          <FichaPdfModal
+            record={pdfRecord}
+            isOpen={Boolean(pdfRecord)}
+            onClose={handleClosePdf}
+          />
+        )}
       </div>
     );
   }

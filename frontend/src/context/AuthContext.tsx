@@ -319,6 +319,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         openLoginModal,
         closeLoginModal,
         isLoginModalOpen,
+        sessionExpiredNotice,
+        tiempoRestanteSegundos,
         puedeRegistrar,
         puedeEditar,
         puedeAsignarCodigo,
