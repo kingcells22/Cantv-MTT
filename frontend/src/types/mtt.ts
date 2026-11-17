@@ -17,6 +17,7 @@ export type Sexo = 'MUJER' | 'HOMBRE';
 
 export interface MTTRecord {
   id?: string;
+  backend_id?: number;
   // BLOQUE 1: UBICACIÓN E IDENTIFICACIÓN (Cols A-R)
   codigo_mtt: string | null; // Col A
   codigo_ubigeo_base?: string | null; // 6 dígitos inmutables INE
@@ -27,6 +28,7 @@ export interface MTTRecord {
   municipio: string; // Col D
   parroquia: string; // Col E
   parroquia_id?: string | null;
+  sector?: string;
   codigo_circuito_comunal: string | null; // Col F
   nombre_circuito_comunal: string; // Col G (Regla 3: N/D)
   nombre_mtt: string; // Col H

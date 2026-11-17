@@ -1,25 +1,33 @@
 import { useState, useEffect } from 'react';
 import { MTTRecord } from '../types/mtt';
 import initialMttDataRaw from '../data/mtt_dataset.json';
+import { mttService, catalogoService } from '../services/api';
 
-const STORAGE_KEY = 'mtt_records_sincomtt_v1';
+const STORAGE_KEY = 'mtt_records_sincomtt_v2';
 
 export const useMTTStorage = () => {
   const [records, setRecords] = useState<MTTRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Initialize records from localStorage or initial dataset
+  // Initialize records from localStorage or initial dataset and sync with FastAPI + Redis
   useEffect(() => {
     try {
+      // Purgar clave obsoleta v1 si existía en el navegador con filas basura de Excel
+      if (localStorage.getItem('mtt_records_sincomtt_v1')) {
+        localStorage.removeItem('mtt_records_sincomtt_v1');
+      }
+
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         setRecords(JSON.parse(stored));
       } else {
-        // Map raw data from Excel JSON
+        // Map raw data from Excel JSON (2,557 registros verificados)
         const mapped: MTTRecord[] = (initialMttDataRaw as any[]).map((item, index) => {
           const isPending = !item.codigo_mtt || item.codigo_mtt === '' || item.codigo_mtt === 'PENDIENTE';
+          const numericId = item.id ? Number(item.id) : index + 1;
           return {
-            id: `mtt-${index + 1}`,
+            id: `mtt-${numericId}`,
+            backend_id: numericId,
             codigo_mtt: isPending ? null : item.codigo_mtt,
             region: item.region || 'CAPITAL',
             entidad_federal: item.entidad_federal || 'DISTRITO CAPITAL',
@@ -204,11 +212,52 @@ export const useMTTStorage = () => {
     } finally {
       setLoading(false);
     }
+
+    // Sincronización defensiva en segundo plano con PostgreSQL + Redis vía FastAPI (/api/catalogos/estados y /api/mtt)
+    catalogoService.getEstados().catch(() => {});
+    mttService
+      .getAll()
+      .then((apiRows) => {
+        if (!Array.isArray(apiRows) || apiRows.length === 0) return;
+        setRecords((prev) => {
+          const byBackendId = new Map(apiRows.map((row) => [Number(row.backend_id ?? row.id), row]));
+          const knownIds = new Set(prev.map((r) => r.backend_id).filter((id): id is number => typeof id === 'number'));
+
+          const merged = prev.map((rec) => {
+            const match = rec.backend_id ? byBackendId.get(rec.backend_id) : undefined;
+            if (!match) return rec;
+            return {
+              ...rec,
+              codigo_mtt: match.codigo_mtt ?? rec.codigo_mtt,
+              estatus_mtt: (match.estatus_mtt as MTTRecord['estatus_mtt']) || rec.estatus_mtt,
+            };
+          });
+
+          const brandNew: MTTRecord[] = apiRows
+            .filter((row) => {
+              const bid = Number(row.backend_id ?? row.id);
+              return !isNaN(bid) && bid > 2563 && !knownIds.has(bid);
+            })
+            .map((row) => ({
+              ...row,
+              id: `mtt-${row.backend_id ?? row.id}`,
+              estatus_validacion: row.codigo_mtt ? ('APROBADO_GDC' as const) : ('ENVIADO_REGIONAL' as const),
+            }));
+
+          const next = brandNew.length > 0 ? [...brandNew, ...merged] : merged;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+          return next;
+        });
+      })
+      .catch(() => {});
   }, []);
 
-  const saveRecords = (newRecords: MTTRecord[]) => {
-    setRecords(newRecords);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newRecords));
+  const saveRecords = (updater: MTTRecord[] | ((prev: MTTRecord[]) => MTTRecord[])) => {
+    setRecords((prev) => {
+      const next = typeof updater === 'function' ? updater(prev) : updater;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
   };
 
   const addRecord = (record: Omit<MTTRecord, 'id' | 'expediente_num'>) => {
@@ -221,54 +270,82 @@ export const useMTTStorage = () => {
       estatus_validacion: 'ENVIADO_REGIONAL',
       verificado: 'NO',
     };
-    const updated = [newRecord, ...records];
-    saveRecords(updated);
+    saveRecords((prev) => [newRecord, ...prev]);
+
+    // Persistir en PostgreSQL vía POST /api/mtt (invalida caché Redis mtt:list:*)
+    mttService
+      .create(newRecord)
+      .then((res) => {
+        if (res?.mtt_id) {
+          saveRecords((prev) =>
+            prev.map((r) => (r.id === newId ? { ...r, backend_id: Number(res.mtt_id) } : r))
+          );
+        }
+      })
+      .catch((err) => {
+        console.warn('POST /api/mtt no disponible, registro mantenido en almacenamiento local:', err?.message || err);
+      });
+
     return newRecord;
   };
 
   const updateRecord = (id: string, updates: Partial<MTTRecord>) => {
-    const updated = records.map((r) => (r.id === id ? { ...r, ...updates } : r));
-    saveRecords(updated);
+    saveRecords((prev) => prev.map((r) => (r.id === id ? { ...r, ...updates } : r)));
   };
 
   const assignCode = (id: string, codigo: string) => {
-    const updated = records.map((r) =>
-      r.id === id
-        ? {
-            ...r,
-            codigo_mtt: codigo,
-            estatus_validacion: 'APROBADO_GDC' as const,
-            verificado: 'SI' as const,
-            fecha_verificacion: new Date().toISOString().split('T')[0],
-          }
-        : r
+    const target = records.find((r) => r.id === id);
+    const fechaVerif = new Date().toISOString().split('T')[0];
+
+    saveRecords((prev) =>
+      prev.map((r) =>
+        r.id === id
+          ? {
+              ...r,
+              codigo_mtt: codigo,
+              estatus_mtt: 'ACTIVA',
+              estatus_validacion: 'APROBADO_GDC' as const,
+              verificado: 'SI' as const,
+              fecha_verificacion: fechaVerif,
+            }
+          : r
+      )
     );
-    saveRecords(updated);
+
+    // Sincronizar asignación oficial en PostgreSQL vía PATCH /api/mtt/{id}/codigo
+    const backendId = target?.backend_id;
+    if (backendId && !isNaN(backendId)) {
+      mttService.assignCode(backendId, codigo).catch((err) => {
+        console.warn('PATCH /api/mtt/{id}/codigo no disponible, código guardado localmente:', err?.message || err);
+      });
+    }
   };
 
   const returnRecord = (id: string, motivo: string) => {
-    const updated = records.map((r) =>
-      r.id === id
-        ? {
-            ...r,
-            estatus_validacion: 'DEVUELTO' as const,
-            motivo_devolucion: motivo,
-          }
-        : r
+    saveRecords((prev) =>
+      prev.map((r) =>
+        r.id === id
+          ? {
+              ...r,
+              estatus_validacion: 'DEVUELTO' as const,
+              motivo_devolucion: motivo,
+            }
+          : r
+      )
     );
-    saveRecords(updated);
   };
 
   const approveRegional = (id: string) => {
-    const updated = records.map((r) =>
-      r.id === id
-        ? {
-            ...r,
-            estatus_validacion: 'VALIDADO_REGIONAL' as const,
-          }
-        : r
+    saveRecords((prev) =>
+      prev.map((r) =>
+        r.id === id
+          ? {
+              ...r,
+              estatus_validacion: 'VALIDADO_REGIONAL' as const,
+            }
+          : r
+      )
     );
-    saveRecords(updated);
   };
 
   return {

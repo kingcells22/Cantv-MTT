@@ -75,11 +75,25 @@ VALUES
 ('test_gpacyg', '$2b$12$Vw7rlUer0HpEePEwx3eH5.qH7OfeEfcsOF.GGtWfAUqCzeaHFCubW', 5, 'Auditor Nacional GPACyG', '10000006', 'auditor.gpacyg@cantv.com.ve', true),
 ('test_linea', '$2b$12$95MXEdqhcE83N2r/UR3iee95./0jf3nWLoPknkB1JiBI7AqY0PPO.', 6, 'Gerente de Línea Operativa', '10000007', 'gerente.linea@cantv.com.ve', true),
 ('test_general', '$2b$12$wfDTva9YtsCXCELjGHbs0O9wrVbyDdO9nKG5KB2l2FXwbLPI8oDE2', 6, 'Gerente General GGFPP', '10000008', 'gerente.general@cantv.com.ve', true),
-('test_consulta', '$2b$12$E896aPWh3GuNJV61ZNSAKeqYaPO.B2Zeb1h7kMIA8LukzBALzVsaq', 7, 'Usuario de Consulta Pública', '10000009', 'consulta.publica@cantv.com.ve', true)
+('test_consulta', '$2b$12$E896aPWh3GuNJV61ZNSAKeqYaPO.B2Zeb1h7kMIA8LukzBALzVsaq', 7, 'Usuario de Consulta Pública', '10000009', 'consulta.publica@cantv.com.ve', true),
+('admin_gdc', '$2b$12$U3NefPYKkGP2FAMr5EgAwu7/G9vcuRuMwhWn.qfpwIiBc7G5vGFGG', 4, 'ADMINISTRADOR GENERAL GDC', '10000000', 'admin.gdc@cantv.com.ve', true)
 ON CONFLICT (usuario) DO UPDATE SET
     password_hash = EXCLUDED.password_hash,
     rol_id = EXCLUDED.rol_id,
     correo_institucional = EXCLUDED.correo_institucional,
     activo = EXCLUDED.activo;
+
+-- 6. Saneamiento de integridad territorial en mtt_principal (erradicar filas de leyenda Excel y corregir espacio en código)
+DELETE FROM public.mtt_principal
+WHERE id IN (2559, 2560, 2561, 2562)
+  AND (codigo_mtt IS NULL OR codigo_mtt = '')
+  AND nombre IN ('N/D', 'ENTIDAD FEDERAL');
+
+UPDATE public.mtt_principal
+SET codigo_mtt = '171001.01', parroquia_id = 733
+WHERE id = 2553 AND codigo_mtt = '171001. 01';
+
+-- 7. Sincronizar secuencia de usuarios
+SELECT setval(pg_get_serial_sequence('public.usuarios', 'id'), COALESCE((SELECT MAX(id) FROM public.usuarios), 1));
 
 COMMIT;

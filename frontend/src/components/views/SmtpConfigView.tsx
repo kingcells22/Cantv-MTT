@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { SmtpConfig, UsuarioCuenta } from '../../types/mtt';
 import { GENERIC_TEST_USERS } from '../../data/catalogos';
@@ -40,6 +40,10 @@ export const SmtpConfigView: React.FC = () => {
   const toggleReveal = (id: string) => {
     setRevealedPasswords((prev) => ({ ...prev, [id]: !prev[id] }));
   };
+
+  useEffect(() => {
+    setFormSmtp(smtpConfig);
+  }, [smtpConfig]);
 
   // Estado para reseteo administrativo
   const [modalResetUser, setModalResetUser] = useState<UsuarioCuenta | null>(null);

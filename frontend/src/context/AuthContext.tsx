@@ -62,6 +62,21 @@ const initialCuentas: UsuarioCuenta[] = GENERIC_TEST_USERS.map((u, i) => ({
   ultimo_acceso: '2026-11-15 12:45',
 }));
 
+const normalizeBackendRole = (rawRole: string, username: string): RolInstitucional => {
+  const cleanRole = (rawRole || '').trim();
+  if (ROLES_DISPONIBLES.some((r) => r.id === cleanRole)) {
+    return cleanRole as RolInstitucional;
+  }
+  if (cleanRole === 'Usuario de Consulta') {
+    return 'Usuario Consulta';
+  }
+  if (cleanRole === 'Gerente General y Gerente de Línea') {
+    return username.toLowerCase().includes('linea') ? 'Gerente de Línea' : 'Gerente General';
+  }
+  const matchedUser = GENERIC_TEST_USERS.find((u) => u.usuario.toLowerCase() === username.toLowerCase());
+  return (matchedUser?.rol as RolInstitucional) || 'Usuario Consulta';
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Por defecto NO autenticado: se requiere inicio de sesión obligatorio
   const [usuario, setUsuario] = useState<string>('');
@@ -84,11 +99,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     if (savedUser && savedRole && expira && now < expira) {
       // Sesión previa válida y no expirada
+      const normalizedRole = normalizeBackendRole(savedRole, savedUser);
       setUsuario(savedUser);
-      setRol(savedRole);
+      setRol(normalizedRole);
       setIsAuthenticated(true);
       setIsLoginModalOpen(false);
       setSessionExpiredNotice(null);
+      localStorage.setItem('mtt_role', normalizedRole);
       localStorage.setItem('mtt_session_expira', String(now + SESSION_TIMEOUT_MS));
     } else {
       // Sin sesión previa o expirada: requerir login
@@ -163,6 +180,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [isAuthenticated]);
 
+  const activateSession = (effectiveUser: string, effectiveRole: RolInstitucional) => {
+    const expira = Date.now() + SESSION_TIMEOUT_MS;
+    setUsuario(effectiveUser);
+    setRol(effectiveRole);
+    setIsAuthenticated(true);
+    setIsLoginModalOpen(false);
+    setSessionExpiredNotice(null);
+    setTiempoRestanteSegundos(900);
+
+    localStorage.setItem('mtt_user', effectiveUser);
+    localStorage.setItem('mtt_role', effectiveRole);
+    localStorage.setItem('mtt_session_expira', String(expira));
+  };
+
   const login = async (
     userOrCedula: string,
     passwordOrRole?: string | RolInstitucional,
@@ -177,44 +208,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return { success: false, error: 'Por favor ingrese su usuario o cédula.' };
     }
 
-    // 1. Si no es simulación directa de rol y se suministró clave, intentar autenticación con el Backend FastAPI
-    if (!forcedRole && cleanPass) {
-      try {
-        const backendRes = await authService.login(cleanUser, cleanPass);
-        if (backendRes && backendRes.status === 'success') {
-          const effectiveUser = backendRes.usuario || cleanUser;
-          const effectiveRole = (backendRes.rol as RolInstitucional) || 'Usuario Consulta';
-
-          const now = Date.now();
-          setUsuario(effectiveUser);
-          setRol(effectiveRole);
-          setIsAuthenticated(true);
-          setIsLoginModalOpen(false);
-          setSessionExpiredNotice(null);
-          setTiempoRestanteSegundos(900);
-
-          localStorage.setItem('mtt_user', effectiveUser);
-          localStorage.setItem('mtt_role', effectiveRole);
-          localStorage.setItem('mtt_session_expira', String(now + SESSION_TIMEOUT_MS));
-
-          return { success: true };
-        }
-      } catch (backendErr: any) {
-        console.warn('Backend /api/login no autenticó o BD no sincronizada. Verificando padrón institucional local...');
-        // Permitir que el paso 2 valide de forma estricta contra el catálogo institucional
-      }
+    if (forcedRole) {
+      activateSession(cleanUser, forcedRole);
+      return { success: true };
     }
 
-    // 2. Validación estricta con el padrón institucional (GENERIC_TEST_USERS)
     const rawLower = cleanUser.toLowerCase();
     const numCedula = rawLower.replace(/^[vejpg]-?/, '');
 
+    // Buscar cuenta en el catálogo institucional y estado dinámico local
     const account = GENERIC_TEST_USERS.find((u) => {
       const uUser = u.usuario.toLowerCase();
       const uMail = u.correo.toLowerCase();
       const uCedula = u.cedula.toLowerCase().replace(/^[vejpg]-?/, '');
       const uAliases = u.alias ? u.alias.map((a) => a.toLowerCase()) : [];
-
       return (
         uUser === rawLower ||
         uMail === rawLower ||
@@ -225,34 +232,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       );
     });
 
-    // Si se especificó rol forzado (simulación SuperAdmin)
-    if (forcedRole) {
-      const now = Date.now();
-      const expira = now + SESSION_TIMEOUT_MS;
-      setUsuario(cleanUser);
-      setRol(forcedRole);
-      setIsAuthenticated(true);
-      setIsLoginModalOpen(false);
-      setSessionExpiredNotice(null);
-      setTiempoRestanteSegundos(900);
-
-      localStorage.setItem('mtt_user', cleanUser);
-      localStorage.setItem('mtt_role', forcedRole);
-      localStorage.setItem('mtt_session_expira', String(expira));
-      return { success: true };
-    }
-
-    if (!account) {
-      return {
-        success: false,
-        error: `El usuario o cédula «${cleanUser}» no está registrado en el sistema. Verifique sus datos o consulte al Administrador.`,
-      };
-    }
-
-    // Buscar en estado dinámico para considerar cambios de clave o suspensiones
     const dynamicAccount = cuentasUsuarios.find(
       (u) =>
-        u.usuario.toLowerCase() === account.usuario.toLowerCase() ||
+        u.usuario.toLowerCase() === (account?.usuario || cleanUser).toLowerCase() ||
+        u.correo.toLowerCase() === rawLower ||
         (u.cedula && u.cedula.replace(/^[vejpg]-?/, '') === numCedula)
     );
 
@@ -263,34 +246,56 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
     }
 
-    // Contraseña esperada: la configurada por el SuperAdmin o la de catálogo inicial
-    const expectedPassword = dynamicAccount?.password || account.passwordDemo;
+    // Si SuperAdmin cambió localmente la contraseña de esta cuenta (BDR-013), validar contra la nueva clave activa
+    const isPasswordLocallyOverridden = Boolean(
+      dynamicAccount?.password && account && dynamicAccount.password !== account.passwordDemo
+    );
 
-    // Verificar contraseña estricta
-    if (cleanPass && cleanPass !== expectedPassword) {
+    if (isPasswordLocallyOverridden && dynamicAccount) {
+      if (cleanPass !== dynamicAccount.password) {
+        return {
+          success: false,
+          error: 'Contraseña institucional incorrecta. Utilice la nueva clave asignada por el Administrador.',
+        };
+      }
+      activateSession(dynamicAccount.usuario, normalizeBackendRole(dynamicAccount.rol, dynamicAccount.usuario));
+      return { success: true };
+    }
+
+    // Intentar autenticación nativa contra PostgreSQL en Backend FastAPI (/api/login)
+    const backendUsername = account ? account.usuario : cleanUser;
+    if (cleanPass) {
+      try {
+        const backendRes = await authService.login(backendUsername, cleanPass);
+        if (backendRes && backendRes.status === 'success') {
+          const effectiveUser = backendRes.usuario || backendUsername;
+          const effectiveRole = normalizeBackendRole(backendRes.rol, effectiveUser);
+          activateSession(effectiveUser, effectiveRole);
+          return { success: true };
+        }
+      } catch {
+        // Si backend retorna 401 (ej. BD sin migrar aún o alias) se evalúa estrictamente en el padrón local
+      }
+    }
+
+    if (!account && !dynamicAccount) {
+      return {
+        success: false,
+        error: `El usuario o cédula «${cleanUser}» no está registrado en el sistema. Verifique sus datos o consulte al Administrador.`,
+      };
+    }
+
+    const expectedPassword = dynamicAccount?.password || account?.passwordDemo || '';
+    if (!cleanPass || cleanPass !== expectedPassword) {
       return {
         success: false,
         error: 'Contraseña institucional incorrecta. Verifique mayúsculas, minúsculas y caracteres especiales.',
       };
     }
 
-    const effectiveRole = (dynamicAccount?.rol || account.rol || 'Usuario Consulta') as RolInstitucional;
-    const effectiveUser = dynamicAccount?.usuario || account.usuario;
-
-    const now = Date.now();
-    const expira = now + SESSION_TIMEOUT_MS;
-
-    setUsuario(effectiveUser);
-    setRol(effectiveRole);
-    setIsAuthenticated(true);
-    setIsLoginModalOpen(false);
-    setSessionExpiredNotice(null);
-    setTiempoRestanteSegundos(900);
-
-    localStorage.setItem('mtt_user', effectiveUser);
-    localStorage.setItem('mtt_role', effectiveRole);
-    localStorage.setItem('mtt_session_expira', String(expira));
-
+    const effectiveUser = dynamicAccount?.usuario || account!.usuario;
+    const effectiveRole = normalizeBackendRole(dynamicAccount?.rol || account!.rol, effectiveUser);
+    activateSession(effectiveUser, effectiveRole);
     return { success: true };
   };
 
@@ -392,6 +397,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         mensaje: 'El token de recuperación ha expirado (límite de 15 minutos alcanzado).',
       };
     }
+
+    const cleanKey = nuevaClave.trim();
+    if (!cleanKey) {
+      return {
+        success: false,
+        mensaje: 'La nueva contraseña no puede estar vacía.',
+      };
+    }
+
+    // Actualizar la contraseña activa de la cuenta y persistir en almacenamiento local
+    setCuentasUsuarios((prev) => {
+      const updated = prev.map((u) =>
+        u.usuario.toLowerCase() === info.usuario.toLowerCase()
+          ? { ...u, password: cleanKey, must_change_password: false }
+          : u
+      );
+      localStorage.setItem('mtt_usuarios_cuentas', JSON.stringify(updated));
+      return updated;
+    });
 
     // Invalida el token (un solo uso estricto)
     setTokensRecuperacion((prev) => {
