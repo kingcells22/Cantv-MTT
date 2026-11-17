@@ -66,7 +66,7 @@ VALUES (
 
 INSERT INTO public.usuarios (usuario, password_hash, rol_id, nombre, cedula, correo_institucional, activo)
 VALUES 
-('superadmin', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 8, 'Anthony Domínguez (SuperAdmin)', '10000001', 'anthony.dominguez@cantv.com.ve', true),
+('superadmin', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 8, 'Anthony Domínguez (SuperAdmin - FIIIDT)', '10000001', 'anthony.dominguez@fii.gob.ve', true),
 ('test_promotor', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 1, 'Promotor Comunal de Campo', '10000002', 'promotor.campo@cantv.com.ve', true),
 ('test_coordinador', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 2, 'Coordinador Territorial GGFPP', '10000003', 'coordinador.ggfpp@cantv.com.ve', true),
 ('test_regional', '$2b$12$e68YmX5gT9O1f3mX0pM5yO4QhK6uN0hR8eG8l2sD5jE4k7u9r0t1y', 3, 'Gerente Regional Estadal', '10000004', 'gerente.regional@cantv.com.ve', true),

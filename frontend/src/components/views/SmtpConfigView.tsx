@@ -30,7 +30,7 @@ export const SmtpConfigView: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<'smtp' | 'usuarios' | 'ciberseguridad'>('smtp');
   const [formSmtp, setFormSmtp] = useState<SmtpConfig>(smtpConfig);
-  const [correoPrueba, setCorreoPrueba] = useState('anthony.dominguez@cantv.com.ve');
+  const [correoPrueba, setCorreoPrueba] = useState('anthony.dominguez@fii.gob.ve');
   const [notifExito, setNotifExito] = useState<string | null>(null);
   const [notifError, setNotifError] = useState<string | null>(null);
 
