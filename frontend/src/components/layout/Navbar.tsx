@@ -8,7 +8,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ title, onToggleSidebar }) => {
-  const { usuario, rol, logout } = useAuth();
+  const { usuario, rol, logout, tiempoRestanteSegundos } = useAuth();
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
   return (
@@ -48,19 +48,22 @@ export const Navbar: React.FC<NavbarProps> = ({ title, onToggleSidebar }) => {
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <div className="px-4 py-2 border-b border-gray-100 bg-gray-50">
-                <p className="text-xs text-gray-500 font-medium">Sesión activa</p>
+                <p className="text-xs text-gray-500 font-medium">Sesión activa (NIST SP 800-63B)</p>
                 <p className="text-sm font-bold text-gray-800 truncate">{usuario}</p>
                 <p className="text-xs text-blue-600 font-medium">{rol}</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">
+                  Inactividad: {Math.floor(tiempoRestanteSegundos / 60)}m {String(tiempoRestanteSegundos % 60).padStart(2, '0')}s
+                </p>
               </div>
               <button
                 onClick={() => {
                   setDropdownOpen(false);
-                  logout();
+                  logout('manual');
                 }}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center space-x-2 transition font-medium"
+                className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center space-x-2 transition font-medium"
               >
                 <LogOut className="h-4 w-4 text-red-500" />
-                <span>Cambiar de Rol / Salir</span>
+                <span>Cerrar Sesión</span>
               </button>
             </div>
           )}
