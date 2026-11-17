@@ -189,11 +189,11 @@ export interface TestUserAccount {
 export const GENERIC_TEST_USERS: TestUserAccount[] = [
   {
     usuario: 'superadmin',
-    nombre: 'Anthony Domínguez (SuperAdmin)',
-    correo: 'anthony.dominguez@cantv.com.ve',
+    nombre: 'Anthony Domínguez (SuperAdmin - FIIIDT)',
+    correo: 'anthony.dominguez@fii.gob.ve',
     rol: 'SuperAdmin',
     passwordDemo: 'SuperAdmin.2026#CANTV!',
-    descripcion: 'Control maestro de infraestructura, configuración de pasarela SMTP y reseteo de claves',
+    descripcion: 'Control maestro de infraestructura, configuración de pasarela SMTP y reseteo de claves (FIIIDT)',
   },
   {
     usuario: 'test_promotor',
