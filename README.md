@@ -26,19 +26,19 @@ El sistema implementa una arquitectura desacoplada de alto rendimiento basada en
   - ORM **SQLAlchemy** con **psycopg2** y validación Pydantic.
   - Endpoints REST para autenticación con cifrado **bcrypt**, catálogos de Ubigeo INE 2026 en cascada (Estados $\rightarrow$ Municipios $\rightarrow$ Parroquias), consulta relacional multicapa y asignación oficial de código MTT por parte de Consultores GDC.
 
-- **Base de Datos (RDBMS):**
-  - **PostgreSQL 16 (Debian Bookworm)**.
-  - Estructura relacional normalizada (`mtt_principal`, `organizacion_comunal`, `vocerias`, `seguimiento`, `estados`, `municipios`, `parroquias`, `roles`, `usuarios`) poblada con 2.187 registros históricos de MTTs.
+- **Base de Datos y Caché (RDBMS + In-Memory):**
+  - **PostgreSQL 16 (Debian Bookworm)** + **Redis 7 (Bookworm)**.
+  - Estructura relacional normalizada (`mtt_principal`, `organizacion_comunal`, `vocerias`, `seguimiento`, `estados`, `municipios`, `parroquias`, `mtt_secuencias_parroquia`, `roles`, `usuarios`, `configuracion_sistema`) poblada con **2.557 registros consolidados de MTTs** y **58 índices activos** B-Tree/funcionales.
 
 ---
 
 ## 🚀 Despliegue Rápido con Docker Compose
 
-La solución está lista para ejecutarse en entornos de producción o pruebas (VM `171.0.40.7`):
+La solución está lista para ejecutarse en entornos de producción o pruebas:
 
 ```bash
 # 1. Clonar el repositorio y situarse en la raíz del proyecto
-cd CANTV-MMT
+cd Cantv-MTT
 
 # 2. Construir imágenes y levantar servicios
 docker compose up -d --build
@@ -61,7 +61,8 @@ El aplicativo estará disponible inmediatamente en el puerto 80:
 3. **Gerente Regional (Nivel 3):** Validación estadística y seguimiento estadal.
 4. **Consultor GDC (Nivel 4):** Asignación exclusiva del código oficial MTT (`PATCH /api/mtt/{id}/codigo`) y emisión de providencias.
 5. **Consultor GPACyG (Nivel 4):** Auditoría nacional y control de gestión.
-6. **Gerente de Línea / Usuario Consulta (Nivel 5):** Dashboards ejecutivos, métricas globales y reportes consolidados.
+6. **Gerente de Línea / Gerente General / Usuario Consulta (Nivel 5):** Dashboards ejecutivos, métricas globales y consulta pública.
+7. **SuperAdmin (Nivel 6 - Infraestructura TI):** Configuración de pasarela SMTP y políticas de ciberseguridad (NIST SP 800-63B, expiración de sesión de 15 minutos por inactividad).
 
 ---
 

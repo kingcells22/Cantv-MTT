@@ -17,7 +17,7 @@ flowchart TD
         Nginx -->|SPA Estática React 19| Static["Dist React 19 + Tailwind"]
         Nginx -->|Reverse Proxy /api/*| Backend["mtt-backend\n(FastAPI / Python 3.12:8000)"]
         Backend -->|Caché en RAM :6379\n(Catálogos / Ubigeo / Sesiones)| Redis[("mtt-redis\n(Redis 7 Bookworm:6379)\nMax 128MB LRU")]
-        Backend -->|Pool Conexiones Reutilizables :5432\n(pool_pre_ping=True, 20-50 conex)| DB[("mtt-database\n(PostgreSQL 16:5432)\n2.187 Registros + 12 Índices")]
+        Backend -->|Pool Conexiones Reutilizables :5432\n(pool_pre_ping=True, 20-50 conex)| DB[("mtt-database\n(PostgreSQL 16:5432)\n2.557 Registros + 58 Índices")]
     end
 ```
 
