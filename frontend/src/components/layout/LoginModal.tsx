@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Radio, LogIn, Eye, EyeOff, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { Radio, LogIn, Eye, EyeOff, ShieldCheck, AlertTriangle, AlertCircle } from 'lucide-react';
 import { RecuperarPasswordModal } from '../modals/RecuperarPasswordModal';
 
 export const LoginModal: React.FC = () => {
@@ -9,16 +9,37 @@ export const LoginModal: React.FC = () => {
   const [passwordVal, setPasswordVal] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isRecoverModalOpen, setIsRecoverModalOpen] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   if (!isLoginModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
     const cleanUser = userVal.trim();
-    if (!cleanUser) return;
+    const cleanPass = passwordVal.trim();
 
-    // El rol institucional está estrictamente vinculado a la cuenta del usuario en BD
-    login(cleanUser);
+    if (!cleanUser) {
+      setErrorMsg('Por favor ingrese su usuario o cédula.');
+      return;
+    }
+    if (!cleanPass) {
+      setErrorMsg('Por favor ingrese su contraseña institucional.');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await login(cleanUser, cleanPass);
+      if (!res.success) {
+        setErrorMsg(res.error || 'Credenciales inválidas.');
+      }
+    } catch (err: any) {
+      setErrorMsg(err?.message || 'Error de autenticación.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,6 +66,13 @@ export const LoginModal: React.FC = () => {
             </div>
           )}
 
+          {errorMsg && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-800 rounded-lg text-xs flex items-start gap-2.5 animate-fadeIn">
+              <AlertCircle className="h-4 w-4 text-red-600 mt-0.5 shrink-0" />
+              <span className="font-medium">{errorMsg}</span>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
@@ -53,11 +81,14 @@ export const LoginModal: React.FC = () => {
               <input
                 type="text"
                 value={userVal}
-                onChange={(e) => setUserVal(e.target.value)}
+                onChange={(e) => {
+                  setUserVal(e.target.value);
+                  if (errorMsg) setErrorMsg(null);
+                }}
                 required
                 autoFocus
                 className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                placeholder="Ej. V-14258963 ó usuario institucional"
+                placeholder="Ej. superadmin, test_linea ó V-10000001"
               />
             </div>
 
@@ -78,7 +109,10 @@ export const LoginModal: React.FC = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={passwordVal}
-                  onChange={(e) => setPasswordVal(e.target.value)}
+                  onChange={(e) => {
+                    setPasswordVal(e.target.value);
+                    if (errorMsg) setErrorMsg(null);
+                  }}
                   required
                   className="w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition font-mono"
                   placeholder="••••••••••••"
@@ -97,10 +131,15 @@ export const LoginModal: React.FC = () => {
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 text-sm"
+                disabled={isLoading}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 text-sm"
               >
-                <LogIn className="h-4 w-4" />
-                <span>Ingresar al Sistema</span>
+                {isLoading ? (
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
+                ) : (
+                  <LogIn className="h-4 w-4" />
+                )}
+                <span>{isLoading ? 'Verificando credenciales...' : 'Ingresar al Sistema'}</span>
               </button>
             </div>
 

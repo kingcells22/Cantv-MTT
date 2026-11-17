@@ -129,6 +129,7 @@ export interface SmtpConfig {
 export interface UsuarioCuenta {
   id: string;
   usuario: string;
+  cedula?: string;
   nombre_completo: string;
   correo: string;
   rol: RolInstitucional;

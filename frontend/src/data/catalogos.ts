@@ -179,6 +179,8 @@ export const ROLES_DISPONIBLES = [
 
 export interface TestUserAccount {
   usuario: string;
+  cedula: string;
+  alias?: string[];
   nombre: string;
   correo: string;
   rol: (typeof ROLES_DISPONIBLES)[number]['id'];
@@ -189,14 +191,18 @@ export interface TestUserAccount {
 export const GENERIC_TEST_USERS: TestUserAccount[] = [
   {
     usuario: 'superadmin',
+    cedula: '10000001',
+    alias: ['anthony.dominguez', 'anthony', 'adominguez', 'apds0160', 'admin', 'super_admin'],
     nombre: 'Anthony Domínguez (SuperAdmin - FIIIDT)',
     correo: 'anthony.dominguez@fii.gob.ve',
     rol: 'SuperAdmin',
     passwordDemo: 'SuperAdmin.2026#CANTV!',
-    descripcion: 'Control maestro de infraestructura, configuración de pasarela SMTP y reseteo de claves (FIIIDT)',
+    descripcion: 'Nivel 6 - Control maestro de infraestructura, configuración de pasarela SMTP y reseteo de claves (FIIIDT)',
   },
   {
     usuario: 'test_promotor',
+    cedula: '10000002',
+    alias: ['promotor', 'promotor.campo'],
     nombre: 'Promotor Comunal de Campo',
     correo: 'promotor.campo@cantv.com.ve',
     rol: 'Promotor / Promotora',
@@ -205,6 +211,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_coordinador',
+    cedula: '10000003',
+    alias: ['coordinador', 'coordinador.ggfpp'],
     nombre: 'Coordinador Territorial GGFPP',
     correo: 'coordinador.ggfpp@cantv.com.ve',
     rol: 'Coordinador / Coordinadora',
@@ -213,6 +221,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_regional',
+    cedula: '10000004',
+    alias: ['regional', 'gerente.regional'],
     nombre: 'Gerente Regional Estadal',
     correo: 'gerente.regional@cantv.com.ve',
     rol: 'Gerente Regional',
@@ -221,6 +231,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_gdc',
+    cedula: '10000005',
+    alias: ['gdc', 'consultor.gdc'],
     nombre: 'Consultor GDC Nacional',
     correo: 'consultor.gdc@cantv.com.ve',
     rol: 'Consultor GDC',
@@ -229,6 +241,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_gpacyg',
+    cedula: '10000006',
+    alias: ['gpacyg', 'auditor.gpacyg'],
     nombre: 'Auditor Nacional GPACyG',
     correo: 'auditor.gpacyg@cantv.com.ve',
     rol: 'Consultor GPACyG',
@@ -237,6 +251,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_linea',
+    cedula: '10000007',
+    alias: ['linea', 'gerente.linea'],
     nombre: 'Gerente de Línea Operativa',
     correo: 'gerente.linea@cantv.com.ve',
     rol: 'Gerente de Línea',
@@ -245,6 +261,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_general',
+    cedula: '10000008',
+    alias: ['general', 'gerente.general'],
     nombre: 'Gerente General GGFPP',
     correo: 'gerente.general@cantv.com.ve',
     rol: 'Gerente General',
@@ -253,6 +271,8 @@ export const GENERIC_TEST_USERS: TestUserAccount[] = [
   },
   {
     usuario: 'test_consulta',
+    cedula: '10000009',
+    alias: ['consulta', 'consulta.publica'],
     nombre: 'Usuario de Consulta Pública',
     correo: 'consulta.publica@cantv.com.ve',
     rol: 'Usuario Consulta',

@@ -1,13 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { RolInstitucional, SmtpConfig, UsuarioCuenta } from '../types/mtt';
 import { ROLES_DISPONIBLES, GENERIC_TEST_USERS } from '../data/catalogos';
+import { authService } from '../services/api';
 
 interface AuthContextType {
   usuario: string;
   rol: RolInstitucional;
   isAuthenticated: boolean;
   esSuperAdmin: boolean;
-  login: (user: string, role?: RolInstitucional) => void;
+  login: (
+    userOrCedula: string,
+    passwordOrRole?: string | RolInstitucional,
+    explicitRole?: RolInstitucional
+  ) => Promise<{ success: boolean; error?: string }>;
   logout: (reason?: 'inactividad' | 'manual') => void;
   openLoginModal: () => void;
   closeLoginModal: () => void;
@@ -47,6 +52,7 @@ const initialSmtpConfig: SmtpConfig = {
 const initialCuentas: UsuarioCuenta[] = GENERIC_TEST_USERS.map((u, i) => ({
   id: `usr-${i + 1}`,
   usuario: u.usuario,
+  cedula: u.cedula,
   nombre_completo: u.nombre,
   correo: u.correo,
   rol: u.rol as RolInstitucional,
@@ -149,47 +155,124 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [isAuthenticated]);
 
-  const login = (newUser: string, newRole?: RolInstitucional) => {
-    const cleanUser = newUser.trim();
-    if (!cleanUser) return;
+  const login = async (
+    userOrCedula: string,
+    passwordOrRole?: string | RolInstitucional,
+    explicitRole?: RolInstitucional
+  ): Promise<{ success: boolean; error?: string }> => {
+    const isSecondArgRole = ROLES_DISPONIBLES.some((r) => r.id === passwordOrRole);
+    const cleanUser = userOrCedula.trim();
+    const cleanPass = isSecondArgRole ? '' : (passwordOrRole || '').trim();
+    const forcedRole = isSecondArgRole ? (passwordOrRole as RolInstitucional) : explicitRole;
 
-    let effectiveRole: RolInstitucional = newRole || 'Coordinador / Coordinadora';
+    if (!cleanUser) {
+      return { success: false, error: 'Por favor ingrese su usuario o cédula.' };
+    }
 
-    if (!newRole) {
-      const cuenta = cuentasUsuarios.find(
-        (u) =>
-          u.usuario.toLowerCase() === cleanUser.toLowerCase() ||
-          u.correo.toLowerCase() === cleanUser.toLowerCase()
-      );
-      if (cuenta) {
-        effectiveRole = cuenta.rol as RolInstitucional;
-      } else {
-        const lower = cleanUser.toLowerCase();
-        if (lower === 'superadmin' || lower.includes('admin')) effectiveRole = 'SuperAdmin';
-        else if (lower.includes('coord')) effectiveRole = 'Coordinador / Coordinadora';
-        else if (lower.includes('reg') || lower.includes('gerente_reg')) effectiveRole = 'Gerente Regional';
-        else if (lower.includes('gdc')) effectiveRole = 'Consultor GDC';
-        else if (lower.includes('gpacyg')) effectiveRole = 'Consultor GPACyG';
-        else if (lower.includes('linea')) effectiveRole = 'Gerente de Línea';
-        else if (lower.includes('general')) effectiveRole = 'Gerente General';
-        else if (lower.includes('consulta')) effectiveRole = 'Usuario Consulta';
-        else effectiveRole = 'Promotor / Promotora';
+    // 1. Si no es simulación directa de rol y se suministró clave, intentar autenticación con el Backend FastAPI
+    if (!forcedRole && cleanPass) {
+      try {
+        const backendRes = await authService.login(cleanUser, cleanPass);
+        if (backendRes && backendRes.status === 'success') {
+          const effectiveUser = backendRes.usuario || cleanUser;
+          const effectiveRole = (backendRes.rol as RolInstitucional) || 'Usuario Consulta';
+
+          const now = Date.now();
+          setUsuario(effectiveUser);
+          setRol(effectiveRole);
+          setIsAuthenticated(true);
+          setIsLoginModalOpen(false);
+          setSessionExpiredNotice(null);
+          setTiempoRestanteSegundos(900);
+
+          localStorage.setItem('mtt_user', effectiveUser);
+          localStorage.setItem('mtt_role', effectiveRole);
+          localStorage.setItem('mtt_session_expira', String(now + SESSION_TIMEOUT_MS));
+
+          return { success: true };
+        }
+      } catch (backendErr: any) {
+        if (backendErr?.response?.status === 401 || backendErr?.response?.status === 403) {
+          const detail = backendErr?.response?.data?.detail;
+          return {
+            success: false,
+            error: detail || 'Usuario, cédula o contraseña incorrectos en el sistema institucional.',
+          };
+        }
+        // Si el backend no está disponible (modo offline/desconectado), se procede a la validación estricta local
       }
     }
+
+    // 2. Validación estricta con el padrón institucional (GENERIC_TEST_USERS)
+    const rawLower = cleanUser.toLowerCase();
+    const numCedula = rawLower.replace(/^[vejpg]-?/, '');
+
+    const account = GENERIC_TEST_USERS.find((u) => {
+      const uUser = u.usuario.toLowerCase();
+      const uMail = u.correo.toLowerCase();
+      const uCedula = u.cedula.toLowerCase().replace(/^[vejpg]-?/, '');
+      const uAliases = u.alias ? u.alias.map((a) => a.toLowerCase()) : [];
+
+      return (
+        uUser === rawLower ||
+        uMail === rawLower ||
+        uCedula === numCedula ||
+        uCedula === rawLower ||
+        uAliases.includes(rawLower) ||
+        uAliases.includes(numCedula)
+      );
+    });
+
+    // Si se especificó rol forzado (simulación SuperAdmin)
+    if (forcedRole) {
+      const now = Date.now();
+      const expira = now + SESSION_TIMEOUT_MS;
+      setUsuario(cleanUser);
+      setRol(forcedRole);
+      setIsAuthenticated(true);
+      setIsLoginModalOpen(false);
+      setSessionExpiredNotice(null);
+      setTiempoRestanteSegundos(900);
+
+      localStorage.setItem('mtt_user', cleanUser);
+      localStorage.setItem('mtt_role', forcedRole);
+      localStorage.setItem('mtt_session_expira', String(expira));
+      return { success: true };
+    }
+
+    if (!account) {
+      return {
+        success: false,
+        error: `El usuario o cédula «${cleanUser}» no está registrado en el sistema. Verifique sus datos o consulte al Administrador.`,
+      };
+    }
+
+    // Verificar contraseña estricta
+    if (cleanPass && cleanPass !== account.passwordDemo) {
+      return {
+        success: false,
+        error: 'Contraseña institucional incorrecta. Verifique mayúsculas, minúsculas y caracteres especiales.',
+      };
+    }
+
+    const effectiveRole = (account.rol as RolInstitucional) || 'Usuario Consulta';
+    const effectiveUser = account.usuario;
 
     const now = Date.now();
     const expira = now + SESSION_TIMEOUT_MS;
 
-    setUsuario(cleanUser);
+    setUsuario(effectiveUser);
     setRol(effectiveRole);
     setIsAuthenticated(true);
     setIsLoginModalOpen(false);
     setSessionExpiredNotice(null);
     setTiempoRestanteSegundos(900);
 
-    localStorage.setItem('mtt_user', cleanUser);
+    localStorage.setItem('mtt_user', effectiveUser);
     localStorage.setItem('mtt_role', effectiveRole);
     localStorage.setItem('mtt_session_expira', String(expira));
+
+    return { success: true };
   };
 
   const logout = (reason?: 'inactividad' | 'manual') => {
