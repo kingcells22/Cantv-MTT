@@ -56,6 +56,7 @@ const initialCuentas: UsuarioCuenta[] = GENERIC_TEST_USERS.map((u, i) => ({
   nombre_completo: u.nombre,
   correo: u.correo,
   rol: u.rol as RolInstitucional,
+  password: u.passwordDemo,
   activo: true,
   must_change_password: false,
   ultimo_acceso: '2026-11-15 12:45',
@@ -114,7 +115,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const savedCuentas = localStorage.getItem('mtt_usuarios_cuentas');
     if (savedCuentas) {
       try {
-        setCuentasUsuarios(JSON.parse(savedCuentas));
+        const parsed = JSON.parse(savedCuentas);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const merged = initialCuentas.map((init) => {
+            const found = parsed.find((p: any) => p.usuario === init.usuario || p.id === init.id);
+            return found ? { ...init, ...found, password: found.password || init.password } : init;
+          });
+          setCuentasUsuarios(merged);
+        }
       } catch (e) {}
     }
   }, []);
@@ -241,16 +249,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
     }
 
+    // Buscar en estado dinámico para considerar cambios de clave o suspensiones
+    const dynamicAccount = cuentasUsuarios.find(
+      (u) =>
+        u.usuario.toLowerCase() === account.usuario.toLowerCase() ||
+        (u.cedula && u.cedula.replace(/^[vejpg]-?/, '') === numCedula)
+    );
+
+    if (dynamicAccount && !dynamicAccount.activo) {
+      return {
+        success: false,
+        error: `La cuenta «${cleanUser}» está desactivada o suspendida por políticas institucionales.`,
+      };
+    }
+
+    // Contraseña esperada: la configurada por el SuperAdmin o la de catálogo inicial
+    const expectedPassword = dynamicAccount?.password || account.passwordDemo;
+
     // Verificar contraseña estricta
-    if (cleanPass && cleanPass !== account.passwordDemo) {
+    if (cleanPass && cleanPass !== expectedPassword) {
       return {
         success: false,
         error: 'Contraseña institucional incorrecta. Verifique mayúsculas, minúsculas y caracteres especiales.',
       };
     }
 
-    const effectiveRole = (account.rol as RolInstitucional) || 'Usuario Consulta';
-    const effectiveUser = account.usuario;
+    const effectiveRole = (dynamicAccount?.rol || account.rol || 'Usuario Consulta') as RolInstitucional;
+    const effectiveUser = dynamicAccount?.usuario || account.usuario;
 
     const now = Date.now();
     const expira = now + SESSION_TIMEOUT_MS;
@@ -300,8 +325,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const adminResetPassword = (usuarioId: string, nuevaClave: string) => {
+    const cleanKey = nuevaClave.trim();
+    if (!cleanKey) return;
     setCuentasUsuarios((prev) => {
-      const updated = prev.map((u) => (u.id === usuarioId ? { ...u, must_change_password: true } : u));
+      const updated = prev.map((u) =>
+        u.id === usuarioId ? { ...u, password: cleanKey, must_change_password: true } : u
+      );
       localStorage.setItem('mtt_usuarios_cuentas', JSON.stringify(updated));
       return updated;
     });

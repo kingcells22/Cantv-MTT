@@ -133,6 +133,7 @@ export interface UsuarioCuenta {
   nombre_completo: string;
   correo: string;
   rol: RolInstitucional;
+  password?: string;
   activo: boolean;
   must_change_password: boolean;
   ultimo_acceso?: string;

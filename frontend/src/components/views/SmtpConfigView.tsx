@@ -16,6 +16,8 @@ import {
   UserCheck,
   UserX,
   RefreshCw,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 
 export const SmtpConfigView: React.FC = () => {
@@ -33,6 +35,11 @@ export const SmtpConfigView: React.FC = () => {
   const [correoPrueba, setCorreoPrueba] = useState('anthony.dominguez@fii.gob.ve');
   const [notifExito, setNotifExito] = useState<string | null>(null);
   const [notifError, setNotifError] = useState<string | null>(null);
+  const [revealedPasswords, setRevealedPasswords] = useState<Record<string, boolean>>({});
+
+  const toggleReveal = (id: string) => {
+    setRevealedPasswords((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   // Estado para reseteo administrativo
   const [modalResetUser, setModalResetUser] = useState<UsuarioCuenta | null>(null);
@@ -338,7 +345,8 @@ export const SmtpConfigView: React.FC = () => {
                   <th className="px-3 py-2.5">Usuario / Login</th>
                   <th className="px-3 py-2.5">Nombre Completo</th>
                   <th className="px-3 py-2.5">Correo Institucional</th>
-                  <th className="px-3 py-2.5">Rol Institucional (RBAC)</th>
+                  <th className="px-3 py-2.5">Rol (RBAC)</th>
+                  <th className="px-3 py-2.5">Contraseña Activa</th>
                   <th className="px-3 py-2.5 text-center">Estatus</th>
                   <th className="px-3 py-2.5 text-right">Acciones de Seguridad</th>
                 </tr>
@@ -346,6 +354,9 @@ export const SmtpConfigView: React.FC = () => {
               <tbody className="divide-y divide-gray-200">
                 {cuentasUsuarios.map((u) => {
                   const demoPass = GENERIC_TEST_USERS.find((gt) => gt.usuario === u.usuario)?.passwordDemo;
+                  const activePass = u.password || demoPass || 'N/D';
+                  const isRevealed = revealedPasswords[u.id];
+
                   return (
                     <tr key={u.id} className="hover:bg-gray-50 transition">
                       <td className="px-3 py-2.5 font-mono font-bold text-blue-700">
@@ -361,6 +372,21 @@ export const SmtpConfigView: React.FC = () => {
                         <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-gray-100 text-gray-800 border border-gray-200">
                           {u.rol}
                         </span>
+                      </td>
+                      <td className="px-3 py-2.5 font-mono text-xs">
+                        <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded border border-gray-200 w-fit">
+                          <span className="font-semibold text-gray-800">
+                            {isRevealed ? activePass : '••••••••••••'}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => toggleReveal(u.id)}
+                            className="text-gray-400 hover:text-gray-600 transition p-0.5"
+                            title={isRevealed ? 'Ocultar contraseña' : 'Ver contraseña'}
+                          >
+                            {isRevealed ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+                          </button>
+                        </div>
                       </td>
                       <td className="px-3 py-2.5 text-center">
                         {u.activo ? (
