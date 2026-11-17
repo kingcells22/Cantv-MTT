@@ -136,7 +136,7 @@ export const RecuperarPasswordModal: React.FC<RecuperarPasswordModalProps> = ({ 
                   type="text"
                   value={identificador}
                   onChange={(e) => setIdentificador(e.target.value)}
-                  placeholder="ej. usuario@cantv.com.ve o usuario@fii.gob.ve"
+                  placeholder="Ingrese su usuario o correo institucional"
                   required
                   className="w-full pl-9 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 />
